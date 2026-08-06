@@ -1,32 +1,40 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devocional Diário | Raízes das Escrituras</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
     <script>
          window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-8TCP5MM38F');
     </script>
-    
-    <meta charset="UTF-8">
-    <title>Devocional Diário | Raízes das Escrituras</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
-    
 </head>
 
-<body>
+<body style="padding-top: 70px;">
+
+    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999;"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt', 
+                layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <header>
-
-        <div id="google_translate_element" style="margin-bottom: 15px;"></div>
         <div class="cabecalho-centralizado">
             <h1>📖 Devocional Diário</h1>
-            <a href="refletir.html" class="btn-referencia">Voltar</a>
+            <a href="refletir.html" class="btn-voltar">Voltar para reflexões</a>
         </div>
     </header>
 
@@ -57,12 +65,15 @@
             <blockquote>
                 "Senhor, obrigado por Tua Palavra que me guia. Que a verdade que li hoje não fique apenas na minha mente, mas que ela guie minhas decisões, minhas palavras e meu coração ao longo deste dia. Que eu possa refletir o Teu amor em tudo o que eu fizer. Amém."
             </blockquote>
-            <a href="https://paodiario.org/" target="_blank">Ler o devocional de hoje</a>
+            <br>
+            <div class="container-botao">
+                <a href="https://paodiario.org/" class="btn-referencia" target="_blank">📖 Ler o devocional de hoje</a>
+            </div>
         </section>
 
     </main>
 
-     <footer>
+    <footer>
         <div class="rodape-container">
             <div class="rodape-texto">
                 <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
@@ -73,13 +84,5 @@
         </div>
     </footer>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>    
-    
 </body>
 </html>

@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
-
 <head>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
-    <script>
-         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-8TCP5MM38F');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raízes das Escrituras</title>
+    
+    <title>Raízes das Escrituras | Estudos Bíblicos Profundos e Fundamentados</title>
+    <meta name="description" content="Conheça as raízes, compreenda as Escrituras e viva seus ensinamentos. Explore estudos bíblicos profundos e gratuitos organizados por livros da Bíblia.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Raízes das Escrituras">
+    <meta property="og:description" content="Estudos bíblicos profundos e fundamentados. Conheça as raízes, compreenda as Escrituras e viva seus ensinamentos.">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
-    
 </head>
 
 <body>
 
+    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999;"></div>
 
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+            pageLanguage: 'pt', 
+            layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
     <header class="hero">
-
-        <div id="google_translate_element" style="margin-bottom: 15px;"></div>
         <div class="hero-conteudo">
             <img src="logo.jfif" alt="Logo Raízes das Escrituras" class="logo-site">
             <h1>Raízes das Escrituras</h1>
@@ -34,53 +37,50 @@
         </div>
     </header>
     
-    <div style="text-align: center; margin: 30px 20px;">
-        <input type="text" id="campoPesquisa" placeholder="Qual livro você quer ler? (ex: João)" 
-        style="padding: 12px; width: 100%; max-width: 400px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px;">
-    
-        <button onclick="fazerPesquisa()" 
-            style="padding: 12px 20px; border-radius: 8px; background-color: #2c3e50; color: white; border: none; cursor: pointer; font-size: 16px; margin-top: 10px;">
-            
-        </button>
+    <div class="area-pesquisa" style="text-align: center; margin-top: 20px;">
+        <input type="text" id="campoBusca" placeholder="Qual livro você quer ler? (ex: João)" style="padding: 10px; width: 300px; border-radius: 5px; border: 1px solid #ccc;">
+        <button onclick="buscarLivro()" style="padding: 10px 20px; background-color: #2e4a3b; color: white; border: none; border-radius: 5px; cursor: pointer;">Buscar</button>
     </div>
 
     <script>
-        function fazerPesquisa() {
-    
-            let textoDigitado = document.getElementById('campoPesquisa').value.toLowerCase();
-    
-            textoDigitado = textoDigitado.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-
-            const dicionarioDeLivros = {
-                "1 corintios": "1corintios.html",
-                "primeira corintios": "1corintios.html",
-                "joao": "joao.html",
-                "jo": "jo.html",
-                "jonas": "jonas.html",
-                "joel": "joel.html",
-                "isaias": "isaias.html",
-                "jeremias": "jeremias.html",
-                "habacuque": "habacuque.html",
-                "hebreus": "hebreus.html",
-                "geografia biblica": "geografia-biblica.html"
-            };
-
-            if (dicionarioDeLivros[textoDigitado]) {
-                window.location.href = dicionarioDeLivros[textoDigitado];
+        function buscarLivro() {
+            let texto = document.getElementById('campoBusca').value.toLowerCase();
+            texto = texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            texto = texto.replace(/\s+/g, '');
+            if(texto !== "") {
+                window.location.href = texto + ".html";
             } else {
-        
-        alert("Livro ou ensinamento não encontrado. Verifique se o nome está correto ou se o estudo já foi publicado.");
-    }
-}
-</script>
+                alert("Por favor, digite o nome de um livro.");
+            }
+        }
+
+        document.getElementById('campoBusca').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                buscarLivro();
+            }
+        });
+    </script>
 
     <main>
+
+        <section style="text-align: center; padding: 2rem 1rem; max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 1.5rem; color: #333; margin-bottom: 10px;">Por onde começar?</h2>
+            <p style="color: #666; margin-bottom: 20px;">Para novos visitantes, sugerimos iniciar pelos estudos fundamentais abaixo:</p>
+            
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <!-- Os botões já estão com a cor verde (#2e4a3b) da sua identidade visual -->
+                <a href="joao.html" style="padding: 10px 20px; background-color: #2e4a3b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: opacity 0.2s;">Evangelho de João</a>
+                
+                <a href="romanos.html" style="padding: 10px 20px; background-color: #2e4a3b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: opacity 0.2s;">Carta aos Romanos</a>
+                
+                <a href="genesis.html" style="padding: 10px 20px; background-color: #2e4a3b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: opacity 0.2s;">Gênesis</a>
+            </div>
+        </section>
+
         <section class="jornadas">
             <h2 style="margin-bottom: 40px;">Escolha sua jornada</h2>
-
             
             <div class="grade-menu-principal">
-                
                 <a href="conhecer-escrituras.html" class="card-principal">
                     <span class="icone-card">📖</span>
                     <h3>Conhecer as Escrituras</h3>
@@ -104,11 +104,10 @@
                     <h3>Momento de reflexão</h3>
                     <p>Reserve um momento para meditar e fortalecer sua caminhada espiritual.</p>
                 </a>
-
             </div>
         </section>
-    </main>
 
+    </main>
 
     <footer>
         <div class="rodape-container">
@@ -116,18 +115,9 @@
                 <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
                 <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
             </div>
-            
             <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
         </div>
     </footer>
-
-    
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     
 </body>
 </html>
