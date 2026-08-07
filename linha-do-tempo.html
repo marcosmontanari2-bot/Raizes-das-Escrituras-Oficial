@@ -6,13 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Linha do Tempo Bíblica - Raízes das Escrituras | Estudo Bíblico</title>
-    <meta name="description" content="Explore a cronologia dos eventos bíblicos: desde a criação e os patriarcas, passando pelo exílio, período interbíblico, até o surgimento da Igreja cristã.">
+    <meta name="description" content="Explore a cronologia visual dos eventos bíblicos: desde a criação e os patriarcas, passando pelo exílio, período interbíblico, até o surgimento da Igreja cristã.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Linha do Tempo Bíblica - Raízes das Escrituras">
-    <meta property="og:description" content="Conheça o fio condutor da história da salvação de Gênesis ao Apocalipse através da linha do tempo cronológica.">
+    <meta property="og:description" content="Conheça o fio condutor da história da salvação de Gênesis ao Apocalipse através de uma linha do tempo visual e cronológica.">
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+
+    <style>
+        /* Estilos específicos para a Linha do Tempo Visual */
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #2e4a3b;
+            top: 10px;
+            bottom: 10px;
+            left: 31px;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        .timeline-step {
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            margin-bottom: 40px;
+            padding-left: 65px;
+        }
+        .timeline-step::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 21px;
+            background-color: #ffffff;
+            border: 4px solid #2e4a3b;
+            top: 4px;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .timeline-content {
+            padding: 20px 25px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        .timeline-content h3 {
+            margin-top: 0;
+            color: #2e4a3b;
+            font-size: 1.2rem;
+        }
+        @media screen and (max-width: 600px) {
+            .timeline-container::after {
+                left: 21px;
+            }
+            .timeline-step {
+                padding-left: 45px;
+            }
+            .timeline-step::after {
+                left: 11px;
+            }
+        }
+    </style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
     <script>
@@ -39,7 +102,7 @@
 
     <header>
         <div class="cabecalho-centralizado">
-            <h1>🗓️ Linha do Tempo</h1>
+            <h1>🗓️ Linha do Tempo Bíblica</h1>
             <a href="aprofundar.html" class="btn-voltar">Voltar para os temas</a>
         </div>
     </header>
@@ -56,100 +119,99 @@
             <strong style="color: #333;">Linha do Tempo</strong>
         </nav>
     
-        <section class="artigo-leitura">
+        <section class="artigo-leitura" style="max-width: 800px; margin: 0 auto; padding: 0 15px;">
             <h2>O Fio Condutor da História</h2>
-
             <p>
-                A Bíblia não está organizada estritamente em ordem cronológica (por data de acontecimento). Os livros estão agrupados por estilo literário (história, poesia, profecia). Por isso, conhecer a Linha do Tempo é fundamental para não se perder na leitura e entender como a história da salvação avança, de Gênesis ao Apocalipse.
+                A Bíblia não está organizada estritamente em ordem cronológica (por data de acontecimento). Os livros estão agrupados por estilo literário (história, poesia, profecia). Por isso, esta linha do tempo visual é fundamental para não se perder na leitura e entender como a história da salvação avança, de Gênesis ao Apocalipse.
             </p>
+        </section>
 
-            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px 20px; margin: 25px 0;">
-                <h3 style="font-size: 1.1rem; color: #333; margin-top: 0; margin-bottom: 10px;">Neste estudo:</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8;">
-                    <li><a href="#patriarcas" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">1. A Criação e os Patriarcas</a></li>
-                    <li><a href="#exodo" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">2. O Êxodo e a Conquista</a></li>
-                    <li><a href="#reis" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">3. Juízes e Reis</a></li>
-                    <li><a href="#exilio" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">4. Reino Dividido, Exílio e Retorno</a></li>
-                    <li><a href="#interbiblico" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">5. O Período Interbíblico</a></li>
-                    <li><a href="#igreja" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">6. O Messias e a Igreja</a></li>
-                </ul>
+        <div class="timeline-container">
+
+            <div class="timeline-step" id="patriarcas">
+                <div class="timeline-content">
+                    <h3>🌍 A Criação e os Patriarcas (Até ~1800 a.C.)</h3>
+                    <img src="linha-tempo-patriarcas.jpeg" alt="Abraão observando as estrelas" class="img-destaque" style="margin: 15px 0;">
+                    <p>
+                        Tudo começa com a criação do mundo, a queda do homem e o dilúvio. Depois, Deus chama um homem, Abraão, e faz com ele uma aliança, prometendo transformar sua família em uma grande nação. A história segue com seus descendentes: Isaque, Jacó (Israel) e José, cuja história leva a família para o Egito, fugindo da fome.
+                    </p>
+                </div>
             </div>
-            
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
 
-            <h3 id="patriarcas">🌍 A Criação e os Patriarcas (Até ~1800 a.C.)</h3>
+            <div class="timeline-step" id="exodo">
+                <div class="timeline-content">
+                    <h3>🚶 O Êxodo e a Conquista (~1400 a.C.)</h3>
+                    <img src="linha-tempo-exodo.jpeg" alt="Travessia do Mar Vermelho" class="img-destaque" style="margin: 15px 0;">
+                    <p>
+                        Após 400 anos, a família virou uma nação escrava no Egito. Deus levanta Moisés para libertá-los. Após 40 anos vagando no deserto e recebendo a Lei no Sinai, Josué assume a liderança e conduz o povo na conquista militar da Terra Prometida (Canaã), dividindo-a entre as 12 tribos.
+                    </p>
+                </div>
+            </div>
 
-            <img src="linha-tempo-patriarcas.jpeg" alt="Abraão observando as estrelas" class="img-destaque">
+            <div class="timeline-step" id="reis">
+                <div class="timeline-content">
+                    <h3>👑 Juízes e Reis (~1050 a.C. a 930 a.C.)</h3>
+                    <img src="linha-tempo-reis.jpeg" alt="O Rei Davi" class="img-destaque" style="margin: 15px 0;">
+                    <p>
+                        Israel passa por um longo período liderado por "Juízes" (como Sansão e Gideão) até exigirem um Rei. O Reino Unido de Israel atinge seu auge militar com Davi e seu auge de riqueza e sabedoria com Salomão, que constrói o primeiro Templo em Jerusalém.
+                    </p>
+                </div>
+            </div>
 
-            <p>
-                Tudo começa com a criação do mundo, a queda do homem e o dilúvio. Depois, Deus chama um homem, Abraão, e faz com ele uma aliança, prometendo transformar sua família em uma grande nação. A história segue com seus descendentes: Isaque, Jacó (que tem o nome mudado para Israel) e José, cuja história leva as 70 pessoas da família para o Egito, fugindo da fome.
-            </p>
+            <div class="timeline-step" id="exilio">
+                <div class="timeline-content">
+                    <h3>💔 Reino Dividido, Exílio e Retorno (930 a.C. a ~400 a.C.)</h3>
+                    <img src="linha-tempo-exilio.jpeg" alt="Judeus cativos na Babilônia" class="img-destaque" style="margin: 15px 0;">
+                    <p>
+                        Após Salomão, a nação racha em duas: Israel (Norte) e Judá (Sul). Com a infidelidade dos reis, Israel é destruída pela Assíria e Judá é levada cativa para a Babilônia. Após 70 anos de exílio, os persas permitem o retorno dos judeus (sob Zorobabel, Esdras e Neemias) para reconstruir Jerusalém e o Templo.
+                    </p>
+                </div>
+            </div>
 
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
+            <div class="timeline-step" id="interbiblico">
+                <div class="timeline-content">
+                    <h3>🤫 O Período Interbíblico (~400 a.C. a 4 a.C.)</h3>
+                    <img src="linha-tempo-interbiblico.jpeg" alt="Gregos e Romanos" class="img-destaque" style="margin: 15px 0;">
+                    <p>
+                        Os chamados "400 anos de silêncio" separam o Antigo do Novo Testamento. O Império Grego domina a região, a cultura se mistura (surgindo fariseus e saduceus) e, por fim, o Império Romano conquista o mundo, preparando o cenário exato para o nascimento do Messias.
+                    </p>
+                </div>
+            </div>
 
-            <h3 id="exodo">🚶 O Êxodo e a Conquista (~1400 a.C.)</h3>
+            <!-- Passo 6 -->
+            <div class="timeline-step" id="igreja">
+                <div class="timeline-content">
+                    <h3>✝️ O Messias e a Igreja (Séc. I d.C.)</h3>
+                    <img src="linha-tempo-igreja.jpeg" alt="Jesus e a propagação do Evangelho" class="img-destaque" style="margin: 15px 0;">
+                    <p>
+                        Jesus nasce, cumpre as profecias, morre e ressuscita. O Espírito Santo desce no Pentecostes e a Igreja Primitiva nasce. Liderados pelos apóstolos, o Evangelho rompe fronteiras e alcança o mundo gentio. A Bíblia se encerra com as cartas às igrejas e a visão profética do Apocalipse.
+                    </p>
+                </div>
+            </div>
 
-            <img src="linha-tempo-exodo.jpeg" alt="Travessia do Mar Vermelho" class="img-destaque">
+        </div>
 
-            <p>
-                Após 400 anos, a família virou uma nação escrava no Egito. Deus levanta Moisés para libertá-los (Êxodo). Após 40 anos vagando no deserto e recebendo a Lei no Sinai, Moisés morre. Josué assume a liderança e lidera o povo na conquista militar da Terra Prometida (Canaã), dividindo-a entre as 12 tribos.
-            </p>
-
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
-
-            <h3 id="reis">👑 Juízes e Reis (~1050 a.C. a 930 a.C.)</h3>
-
-            <img src="linha-tempo-reis.jpeg" alt="O Rei Davi" class="img-destaque">
-
-            <p>
-                Israel passa por um longo e caótico período liderado por "Juízes" (como Sansão e Gideão). Pedindo para serem como as outras nações, eles exigem um Rei. O Reino Unido de Israel atinge seu auge militar com Davi e seu auge de riqueza e sabedoria com Salomão, que constrói o primeiro Templo em Jerusalém.
-            </p>
-
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
-
-            <h3 id="exilio">💔 Reino Dividido, Exílio e Retorno (930 a.C. a ~400 a.C.)</h3>
-
-            <img src="linha-tempo-exilio.jpeg" alt="Judeus cativos na Babilônia" class="img-destaque">
-
-            <p>
-                Após a morte de Salomão, a nação racha em duas: Israel (Norte) e Judá (Sul). Os reis se desviam de Deus e os profetas (como Elias, Isaías e Jeremias) alertam sobre o juízo. Israel é destruída pela Assíria. Judá is levada cativa para a Babilônia. Após 70 anos de exílio, os persas permitem o retorno dos judeus (sob a liderança de Zorobabel, Esdras e Neemias) para reconstruir Jerusalém e o Templo.
-            </p>
-
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
-
-            <h3 id="interbiblico">🤫 O Período Interbíblico (~400 a.C. a 4 a.C.)</h3>
-
-            <img src="linha-tempo-interbiblico.jpeg" alt="Gregos e Romanos" class="img-destaque">
-
-            <p>
-                Os chamados "400 anos de silêncio" separam o Antigo do Novo Testamento. Durante esse tempo, não houve profetas bíblicos. Contudo, muita coisa aconteceu: o Império Grego dominou a região, a cultura se misturou (surgindo grupos como Fariseus e Saduceus) e, por fim, o Império Romano conquistou o mundo, preparando o cenário exato para o nascimento do Messias.
-            </p>
-
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
-
-            <h3 id="igreja">✝️ O Messias e a Igreja (Séc. I d.C.)</h3>
-
-            <img src="linha-tempo-igreja.jpeg" alt="Jesus e a propagação do Evangelho" class="img-destaque">
-
-            <p>
-                Jesus nasce, cumpre as profecias, realiza seu ministério, é crucificado e ressuscita. Após sua ascensão, o Espírito Santo desce no Pentecostes e a Igreja Primitiva nasce. Liderados pelos apóstolos, especialmente Paulo, o Evangelho rompe as fronteiras de Israel e alcança os gentios por todo o Império Romano. A Bíblia se encerra com as cartas às igrejas e a visão profética do Apocalipse.
-            </p>
-
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
-
+        <section style="max-width: 800px; margin: 40px auto; padding: 0 15px; text-align: center;">
             <h3>✅ Resumo</h3>
-
             <p>
-                Ler a Bíblia com a cronologia em mente é como montar um quebra-cabeça com a imagem da caixa do lado. Você percebe que todos os eventos estão perfeitamente conectados, caminhando em direção à redenção da humanidade em Cristo.
+                Ler a Bíblia com esta cronologia em mente é como montar um quebra-cabeça com a imagem na caixa. Você percebe que todos os eventos estão perfeitamente conectados rumo à redenção em Cristo.
             </p>
 
             <div class="container-botao" style="margin-top: 20px;">
                 <a href="https://pt.wikipedia.org/wiki/Cronologia_b%C3%ADblica" class="btn-referencia" target="_blank">
-                    ⏳ Explorar Cronologia Bíblica
+                    ⏳ Explorar Cronologia Completa na Wikipedia
                 </a>
             </div>
         </section>
 
+        <div style="text-align: center; margin: 50px auto; max-width: 800px; padding: 30px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+            <h2 style="color: #2e4a3b; margin-top: 0; font-size: 1.5rem;">🎥 Aprofunde seu estudo</h2>
+            <p style="color: #475569; margin-bottom: 25px; font-size: 1rem;">Deseja visualizar melhor a história bíblica?<br>Acesse estudos relacionados no YouTube.</p>
+            <a href="https://www.youtube.com/results?search_query=Linha+do+tempo+b%C3%ADblica+Bible+Project+Portugu%C3%AAs" target="_blank" style="background-color: #2e4a3b; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                ▶ Ver no YouTube
+            </a>
+        </div>
+    
         <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
         
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
@@ -176,7 +238,6 @@
                     <a href="mailto:marcosmontanari2@gmail.com" style="color: #2e4a3b; text-decoration: underline; font-weight: bold;">marcosmontanari2@gmail.com</a>
                 </div>
             </div>
-
         </div>
         
     </main>
