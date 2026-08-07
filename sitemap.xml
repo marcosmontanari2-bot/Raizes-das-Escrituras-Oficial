@@ -49,5 +49,11 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    
+    <url>
+        <loc>https://raizes-das-escrituras.netlify.app/politica-de-privacidade.html</loc>
+        <priority>0.5</priority>
+    </url>
 
+</urlset>
 </urlset>
