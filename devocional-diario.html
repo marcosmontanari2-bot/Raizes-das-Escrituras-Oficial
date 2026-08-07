@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Devocional Diário - Raízes das Escrituras | Reflexão</title>
-    <meta name="description" content="Aprenda como construir o hábito do devocional diário. Passos práticos para leitura da Bíblia, oração e aplicação da Palavra no seu dia a dia.">
+    <title>Devocional Diário - Raízes das Escrituras | Reflexão e Oração</title>
+    <meta name="description" content="Comece o seu dia com Deus. Leia o devocional diário com versículos, reflexões e orações para fortalecer sua fé.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Devocional Diário - Raízes das Escrituras">
-    <meta property="og:description" content="Guia prático para iniciar e manter seu devocional diário com Deus.">
-
+    <meta property="og:description" content="Meditação bíblica, aplicação prática e oração para começar bem o seu dia.">
+    
     <link rel="stylesheet" href="style.css"> 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
 
@@ -25,7 +25,7 @@
 
 <body style="padding-top: 70px;">
 
-    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999;"></div>
+    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999; min-width: 150px; min-height: 40px;"></div>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
@@ -39,85 +39,76 @@
 
     <header>
         <div class="cabecalho-centralizado">
-            <h1>📖 Devocional Diário</h1>
+            <h1>🌅 Devocional Diário</h1>
             <a href="refletir.html" class="btn-voltar">Voltar para reflexões</a>
         </div>
     </header>
 
     <main class="conteudo-principal">
         
-        <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px;">
+        <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
             <a href="index.html" style="color: #2e4a3b; text-decoration: none;">🏠 Home</a> 
             <span style="margin: 0 5px;">&gt;</span> 
-            <a href="refletir.html" style="color: #2e4a3b; text-decoration: none;">Refletir</a>
+            <a href="refletir.html" style="color: #2e4a3b; text-decoration: none;">Momento de Reflexão</a>
             <span style="margin: 0 5px;">&gt;</span> 
             <strong style="color: #333;">Devocional Diário</strong>
         </nav>
-
-        <section class="introducao">
-            <h2>O Pão Nosso de Cada Dia</h2>
-            <p>O devocional diário é o compromisso de alimentar sua alma antes de enfrentar o mundo. Não se trata de uma maratona de leitura, mas de um encontro diário e intencional com Deus, onde a Sua Palavra molda a sua perspectiva para o dia que se inicia.</p>
-            
-            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px 20px; margin: 25px 0;">
-                <h3 style="font-size: 1.1rem; color: #333; margin-top: 0; margin-bottom: 10px;">Nesta reflexão:</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8;">
-                    <li><a href="#habito" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">1. Como Construir o Hábito</a></li>
-                    <li><a href="#oracao" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">2. Oração de Encerramento</a></li>
-                </ul>
+        
+        <section style="max-width: 800px; margin: 30px auto; padding: 0 15px;">
+            <div style="background-color: #f8fafc; border-left: 5px solid #2e4a3b; padding: 25px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <p style="font-size: 0.9rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: bold;">📖 Versículo de Hoje</p>
+                <blockquote id="devocional-versiculo" style="font-size: 1.3rem; color: #1e293b; font-style: italic; margin: 0; line-height: 1.6;">
+                </blockquote>
+                <p id="devocional-referencia" style="text-align: right; font-weight: bold; color: #2e4a3b; margin-top: 15px; margin-bottom: 0;">
+                </p>
             </div>
-
         </section>
 
-        <section class="metodo-estudo" id="habito">
-            <h2>Como Construir o Hábito</h2>
-            
+        <section class="introducao" style="max-width: 800px; margin: 0 auto; padding: 0 15px;">
+            <h2 id="devocional-titulo"></h2>
+            <p id="devocional-texto" style="line-height: 1.8;">
+            </p>
+        </section>
+        
+        <section class="metodo-estudo" style="max-width: 800px; margin: 0 auto; padding: 0 15px;">
             <div class="passos">
-                <h3>1. Escolha o Tempo e o Lugar</h3>
-                <p>A constância vence a intensidade. É melhor dedicar 10 minutos todos os dias no mesmo horário e local do que tentar estudar por uma hora apenas quando sobra tempo. Crie um ambiente livre de distrações.</p>
-
-                <h3>2. Oração Inicial</h3>
-                <p>Antes de abrir a Bíblia, peça ao Espírito Santo: "Senhor, abre os meus olhos para que eu veja as maravilhas da Tua Lei". A oração prepara o terreno do seu coração para receber a semente da Palavra.</p>
-
-                <h3>3. Leitura e Aplicação Rápida</h3>
-                <p>Leia um capítulo, um salmo ou um plano de leitura. Não tente absorver tudo de uma vez. Foque em um versículo que saltou aos seus olhos e tente responder: <em>"O que isso me ensina sobre Deus e como devo viver hoje?"</em></p>
+                <h3>💡 Aplicação Prática para Hoje</h3>
+                <p id="devocional-aplicacao">
+                </p>
             </div>
         </section>
 
-        <div style="text-align: center; margin: 50px 0; padding: 30px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h2 style="color: #2e4a3b; margin-top: 0; font-size: 1.5rem;">🎥 Aprofunde seu estudo</h2>
-            <p style="color: #475569; margin-bottom: 25px; font-size: 1rem;">Deseja aprender como ler a Bíblia de forma prática?<br>Assista a este vídeo para começar.</p>
-            <a href="https://www.youtube.com/watch?v=C4ESqtwjqQo" target="_blank" style="background-color: #2e4a3b; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                ▶ Ver no YouTube
+        <section style="max-width: 800px; margin: 40px auto; padding: 0 15px;">
+            <div style="background-color: #2e4a3b; color: white; padding: 30px; border-radius: 8px; text-align: center;">
+                <h2 style="color: #e2e8f0; margin-top: 0; font-size: 1.4rem;">🙏 Oração de Hoje</h2>
+                <p id="devocional-oracao" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 0; font-style: italic;">
+                </p>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin: 50px auto; padding: 30px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; max-width: 800px;">
+            <h2 style="color: #2e4a3b; margin-top: 0; font-size: 1.5rem;">🎥 Palavra Amiga</h2>
+            <p style="color: #475569; margin-bottom: 25px; font-size: 1rem;">Reserve mais alguns minutos do seu dia ouvindo uma mensagem edificante para fortalecer a sua fé.</p>
+            <a href="https://www.youtube.com/results?search_query=devocional+diario+palavra+de+deus+curto" target="_blank" style="background-color: #2e4a3b; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                ▶ Ouvir Devocional
             </a>
         </div>
-    
-        <section class="perguntas-reflexivas" id="oracao">
-            <h2>Oração de Encerramento</h2>
-            <p>Conclua seu tempo de devocional com uma oração simples:</p>
-            <blockquote>
-                "Senhor, obrigado por Tua Palavra que me guia. Que a verdade que li hoje não fique apenas na minha mente, mas que ela guie minhas decisões, minhas palavras e meu coração ao longo deste dia. Que eu possa refletir o Teu amor em tudo o que eu fizer. Amém."
-            </blockquote>
-            <br>
-            <div class="container-botao">
-                <a href="https://paodiario.org/" class="btn-referencia" target="_blank">📖 Ler o devocional de hoje</a>
-            </div>
-        </section>
 
         <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
         
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
             
             <div style="flex: 1; min-width: 250px; background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2e4a3b; text-align: left;">
                 <h3 style="font-size: 1.1rem; color: #333; margin-top: 0;">Continue sua jornada:</h3>
                 <ul style="list-style-type: none; padding: 0; margin-top: 10px; line-height: 1.8;">
-                    <li><strong>Reflexões ➡️</strong> <a href="refletir.html" style="color: #2e4a3b; text-decoration: none;">Ver mais temas</a></li>
-                    <li><strong>Início 🏠</strong> <a href="index.html" style="color: #2e4a3b; text-decoration: none;">Página Inicial</a></li>
+                    <li><strong>Ler a Bíblia ➡️</strong> <a href="conhecer-escrituras.html" style="color: #2e4a3b; text-decoration: none;">Biblioteca de Estudos</a></li>
+                    <li><strong>Reflexões 📖</strong> <a href="refletir.html" style="color: #2e4a3b; text-decoration: none;">Ver outros momentos</a></li>
                 </ul>
             </div>
 
             <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
                 <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
-                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este estudo foi útil, considere apoiar a manutenção do site.</p>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este devocional abençoou o seu dia, considere apoiar a manutenção do site.</p>
                 
                 <p style="margin-bottom: 5px; color: #333; font-size: 0.9rem;"><strong>Chave PIX (Celular):</strong></p>
                 <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;" title="Clique para copiar">
@@ -129,9 +120,7 @@
                     <a href="mailto:marcosmontanari2@gmail.com" style="color: #2e4a3b; text-decoration: underline; font-weight: bold;">marcosmontanari2@gmail.com</a>
                 </div>
             </div>
-
         </div>
-
     </main>
 
     <footer>
@@ -139,12 +128,274 @@
             <div class="rodape-texto">
                 <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
                 <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
-                <a href="politica-de-privacidade.html">Política de Privacidade</a>
+                 <a href="politica-de-privacidade.html">Política de Privacidade</a>
             </div>
-            
             <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
         </div>
     </footer>
 
+    <script>
+        const listaDevocionais = [
+            {
+                versiculo: "Graças ao grande amor do Senhor é que não somos consumidos, pois as suas misericórdias são inesgotáveis. Renovam-se cada manhã.",
+                referencia: "Lamentações 3:22-23",
+                titulo: "Uma Nova Página em Branco",
+                texto: "Muitas vezes, carregamos os fardos de ontem para o dia de hoje. A misericórdia do Senhor não é algo que ficou no passado; ela nasce junto com o sol todos os dias.",
+                aplicacao: "Hoje, decida deixar as falhas de ontem no passado. Seja misericordioso com você mesmo.",
+                oracao: '"Senhor, obrigado porque as Tuas misericórdias se renovaram nesta manhã. Ajuda-me a deixar para trás os erros de ontem. Amém."'
+            },
+            {
+                versiculo: "Entregue o seu caminho ao Senhor; confie nele, e ele agirá.",
+                referencia: "Salmos 37:5",
+                titulo: "O Poder de Soltar o Controle",
+                texto: "Nós adoramos ter o controle das situações. Mas a verdadeira paz só vem quando reconhecemos que Deus sabe o que é melhor. Entregar o caminho significa parar de tentar resolver tudo com a própria força.",
+                aplicacao: "Identifique uma área da sua vida que está te causando ansiedade e declare em voz alta que você a entrega a Deus hoje.",
+                oracao: '"Pai, eu confesso que às vezes tento controlar tudo. Hoje, eu entrego meus medos e meu caminho em Tuas mãos. Amém."'
+            },
+            {
+                versiculo: "Não andem ansiosos por coisa alguma, mas em tudo, pela oração e súplicas, e com ação de graças, apresentem seus pedidos a Deus.",
+                referencia: "Filipenses 4:6",
+                titulo: "O Antídoto contra a Ansiedade",
+                texto: "A ansiedade nos faz olhar para o futuro com medo. A Bíblia nos ensina a trocar a preocupação pela oração. Quando agradecemos e pedimos, a paz de Deus guarda a nossa mente.",
+                aplicacao: "Toda vez que uma preocupação surgir hoje, pare por 1 minuto e transforme essa preocupação em uma oração.",
+                oracao: '"Deus, tira do meu coração o peso da ansiedade. Que a Tua paz, que excede todo entendimento, guarde a minha mente. Amém."'
+            },
+            {
+                versiculo: "Confie no Senhor de todo o seu coração e não se apoie em seu próprio entendimento.",
+                referencia: "Provérbios 3:5",
+                titulo: "Fé Além da Lógica",
+                texto: "Às vezes, as circunstâncias não fazem sentido. Nossa tendência é tentar resolver os problemas baseados na nossa própria inteligência, mas Deus nos convida a confiar Nele mesmo quando não entendemos o processo.",
+                aplicacao: "Se algo não está saindo como o planejado, escolha confiar que Deus vê o quadro completo, enquanto você vê apenas uma parte.",
+                oracao: '"Senhor, ensina-me a confiar em Ti mesmo quando eu não compreendo o que está acontecendo. Guia os meus passos. Amém."'
+            },
+            {
+                versiculo: "Deixo-lhes a paz; a minha paz lhes dou. Não a dou como o mundo a dá. Não se perturbem os seus corações, nem tenham medo.",
+                referencia: "João 14:27",
+                titulo: "A Verdadeira Paz",
+                texto: "A paz que o mundo oferece depende de que tudo esteja bem. A paz que Jesus dá é interna e inabalável, mesmo quando há caos ao nosso redor. Ela nos guarda do medo.",
+                aplicacao: "Diante de um conflito hoje, respire fundo e peça a paz de Cristo antes de reagir.",
+                oracao: '"Jesus, enche o meu coração com a Tua paz que excede todo entendimento. Afasta o medo da minha mente. Amém."'
+            },
+            {
+                versiculo: "Mas os que esperam no Senhor renovarão as suas forças. Voarão alto como águias; correrão e não ficarão exaustos.",
+                referencia: "Isaías 40:31",
+                titulo: "Força para Continuar",
+                texto: "O cansaço físico, mental e espiritual faz parte da vida humana. No entanto, quando colocamos nossa esperança em Deus, Ele nos dá um vigor sobrenatural para não desistirmos no meio do caminho.",
+                aplicacao: "Se você se sente esgotado, tire um momento hoje apenas para descansar na presença de Deus, sem pedir nada, só agradecendo.",
+                oracao: '"Pai amado, minhas forças estão no fim. Renova o meu vigor físico e espiritual para que eu possa continuar a minha jornada. Amém."'
+            },
+            {
+                versiculo: "Suportem-se uns aos outros e perdoem as queixas que tiverem uns contra os outros. Perdoem como o Senhor lhes perdoou.",
+                referencia: "Colossenses 3:13",
+                titulo: "O Poder Libertador do Perdão",
+                texto: "Guardar rancor é como beber veneno esperando que o outro morra. O perdão não é sobre justificar o erro do outro, mas sobre libertar a si mesmo, seguindo o exemplo de Cristo que nos perdoou primeiro.",
+                aplicacao: "Existe alguém que você precisa perdoar? Dê o primeiro passo hoje, entregando a dor a Deus.",
+                oracao: '"Senhor, ajuda-me a liberar perdão àqueles que me feriram, assim como Tu me perdoaste. Cura o meu coração de toda mágoa. Amém."'
+            },
+            {
+                versiculo: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.",
+                referencia: "1 Coríntios 13:4",
+                titulo: "A Prática do Amor",
+                texto: "O amor bíblico não é apenas um sentimento, é uma escolha diária de atitudes. É escolher a paciência quando somos testados e a bondade quando não somos notados. O amor age.",
+                aplicacao: "Demonstre amor prático hoje: tenha paciência com alguém difícil ou faça um ato de bondade anônimo.",
+                oracao: '"Deus de amor, ensina-me a amar as pessoas com o Teu amor: com paciência, bondade e sem egoísmo. Amém."'
+            },
+            {
+                versiculo: "Não fui eu que lhe ordenei? Seja forte e corajoso! Não se apavore, nem se desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.",
+                referencia: "Josué 1:9",
+                titulo: "Coragem para Avançar",
+                texto: "A coragem não é a ausência do medo, mas a decisão de seguir em frente apesar dele. Deus não nos promete ausência de batalhas, mas garante a Sua presença em todas elas.",
+                aplicacao: "Enfrente hoje aquilo que você tem adiado por medo. Lembre-se: Deus está caminhando com você.",
+                oracao: '"Senhor, retira de mim o espírito de covardia. Dá-me a ousadia e a coragem necessárias para enfrentar os desafios de hoje. Amém."'
+            },
+            {
+                versiculo: "Porque sou eu que conheço os planos que tenho para vocês, diz o Senhor, planos de fazê-los prosperar e não de lhes causar dano, planos de dar-lhes esperança e um futuro.",
+                referencia: "Jeremias 29:11",
+                titulo: "Um Futuro de Esperança",
+                texto: "Nos momentos mais sombrios, podemos achar que fomos esquecidos. Porém, Deus tem um propósito desenhado para cada um de nós. Seus planos são de vida, paz e esperança.",
+                aplicacao: "Quando o pessimismo tentar invadir sua mente, declare em voz alta que Deus tem um bom futuro planejado para você.",
+                oracao: '"Pai, obrigado porque os Teus planos para mim são bons. Ajuda-me a confiar no Teu futuro, mesmo quando o presente é difícil. Amém."'
+            },
+            {
+                versiculo: "Assim brilhe a luz de vocês diante dos homens, para que vejam as suas boas obras e glorifiquem ao Pai de vocês, que está nos céus.",
+                referencia: "Mateus 5:16",
+                titulo: "Seja a Luz",
+                texto: "Nós somos chamados para fazer a diferença onde estamos. Não para ganharmos os aplausos, mas para que, através das nossas boas atitudes, as pessoas consigam enxergar o amor de Deus.",
+                aplicacao: "Onde você pode ser luz hoje? Um sorriso no trânsito, uma palavra de encorajamento no trabalho ou ajuda em casa.",
+                oracao: '"Senhor, que a minha vida seja um reflexo do Teu amor. Usa-me para iluminar os lugares escuros por onde eu passar hoje. Amém."'
+            },
+            {
+                versiculo: "Alegrem-se na esperança, sejam pacientes na tribulação, perseverem na oração.",
+                referencia: "Romanos 12:12",
+                titulo: "A Receita da Resiliência",
+                texto: "Paulo nos dá três instruções claras para a vida cristã: manter o foco no céu (esperança), aguentar firme nos dias difíceis (paciência) e nunca parar de falar com Deus (oração).",
+                aplicacao: "Mantenha o foco nestes três verbos hoje: Alegrar-se, Ter paciência e Orar constantemente.",
+                oracao: '"Espírito Santo, enche-me de esperança, dá-me paciência nas provações e ajuda-me a ter uma vida constante de oração. Amém."'
+            },
+            {
+                versiculo: "A tua palavra é lâmpada que ilumina os meus passos e luz que clareia o meu caminho.",
+                referencia: "Salmos 119:105",
+                titulo: "A Bússola Segura",
+                texto: "Vivemos em um mundo cheio de opiniões e direções confusas. A Palavra de Deus é a única verdade absoluta que nos guia, iluminando um passo de cada vez para não tropeçarmos.",
+                aplicacao: "Antes de tomar qualquer decisão importante hoje, consulte o que os princípios bíblicos dizem sobre o assunto.",
+                oracao: '"Senhor, que a Tua Palavra seja sempre o meu manual de vida. Guia as minhas escolhas através da Tua verdade. Amém."'
+            },
+            {
+                versiculo: "Pois vocês são salvos pela graça, por meio da fé, e isto não vem de vocês, é dom de Deus.",
+                referencia: "Efésios 2:8",
+                titulo: "O Presente Imerecido",
+                texto: "A graça é o favor de Deus que nós não merecíamos. Não podemos comprar nem trabalhar o suficiente para alcançar a salvação. É um presente. O nosso papel é apenas aceitar pela fé.",
+                aplicacao: "Pare de tentar ser perfeito para ser amado por Deus. Aceite o amor Dele e deixe que esse amor transforme as suas atitudes.",
+                oracao: '"Pai, muito obrigado pela Tua graça maravilhosa. Eu reconheço que sem Ti nada sou, e aceito o dom da salvação. Amém."'
+            },
+            {
+                versiculo: "Eu lhes disse essas coisas para que em mim vocês tenham paz. Neste mundo vocês terão aflições; contudo, tenham ânimo! Eu venci o mundo.",
+                referencia: "João 16:33",
+                titulo: "Coragem nas Lutas",
+                texto: "Jesus foi muito sincero: ser cristão não nos isenta dos problemas da vida. A diferença é que não lutamos sozinhos e nem para vencer, mas lutamos a partir de uma vitória já garantida por Ele.",
+                aplicacao: "Qual aflição você está enfrentando? Olhe para o problema e lembre-se: Cristo já venceu o mundo.",
+                oracao: '"Senhor Jesus, obrigado por não esconder a realidade das lutas, mas me dar a garantia da vitória através do Teu poder. Amém."'
+            },
+            {
+                versiculo: "Tudo posso naquele que me fortalece.",
+                referencia: "Filipenses 4:13",
+                titulo: "O Segredo do Contentamento",
+                texto: "Muitas vezes usamos esse versículo para conquistas pessoais, mas o contexto de Paulo era sobre saber viver bem tanto na fartura quanto na pobreza. A força de Deus nos faz passar por qualquer situação de cabeça erguida.",
+                aplicacao: "Seja grato hoje pelas coisas simples que você tem, em vez de reclamar pelo que ainda falta.",
+                oracao: '"Deus, ensina-me a estar contente em toda e qualquer situação, sabendo que a minha força não vem de mim, mas de Ti. Amém."'
+            },
+            {
+                versiculo: "Aquele que habita no abrigo do Altíssimo e descansa à sombra do Todo-poderoso pode dizer ao Senhor: Tu és o meu refúgio e a minha fortaleza.",
+                referencia: "Salmos 91:1-2",
+                titulo: "O Refúgio Seguro",
+                texto: "Habitar é diferente de visitar. Quando fazemos da presença de Deus a nossa morada diária, encontramos descanso e proteção. É lá que o medo perde a força.",
+                aplicacao: "Se a insegurança bater hoje, feche os olhos por um instante e imagine-se abrigado sob as asas do Deus Todo-Poderoso.",
+                oracao: '"Senhor, Tu és o meu porto seguro. Escolho habitar na Tua presença e descansar sob a Tua sombra hoje e sempre. Amém."'
+            },
+            {
+                versiculo: "Eu o instruirei e o ensinarei no caminho que você deve seguir; eu o aconselharei e cuidarei de você.",
+                referencia: "Salmos 32:8",
+                titulo: "O Guia Perfeito",
+                texto: "Deus não nos deixa tateando no escuro. Ele promete nos instruir e nos guiar com Seus próprios olhos sobre nós. Isso demonstra um cuidado pessoal, íntimo e amoroso do Criador conosco.",
+                aplicacao: "Se você tem dúvidas sobre qual caminho tomar profissional ou pessoalmente, peça conselhos a Deus e espere Ele responder.",
+                oracao: '"Pai, eu não sei todos os passos do meu futuro, mas descanso sabendo que Tu estás cuidando de mim e me guiando. Amém."'
+            },
+            {
+                versiculo: "A alegria do Senhor é a vossa força.",
+                referencia: "Neemias 8:10",
+                titulo: "A Força da Alegria",
+                texto: "A felicidade depende do que acontece do lado de fora, mas a alegria do Senhor é uma certeza interna de quem somos em Deus. Quando cultivamos essa alegria, nos tornamos mais fortes.",
+                aplicacao: "Sorria mais hoje. Agradeça por algo que você geralmente ignora e veja como sua força interna vai aumentar.",
+                oracao: '"Senhor, que a Tua alegria seja a minha força. Não permita que as dificuldades roubem o meu sorriso e a minha paz. Amém."'
+            },
+            {
+                versiculo: "Nada façam por ambição egoísta ou por vaidade, mas humildemente considerem os outros superiores a vocês mesmos.",
+                referencia: "Filipenses 2:3",
+                titulo: "A Beleza da Humildade",
+                texto: "Vivemos em uma sociedade que exalta o ego, mas o Reino de Deus funciona de ponta-cabeça. O maior é aquele que serve. A humildade nos liberta da pressão de ter que provar algo para os outros.",
+                aplicacao: "Hoje, tente fazer o dia de outra pessoa melhor sem esperar nenhum reconhecimento ou agradecimento por isso.",
+                oracao: '"Pai, arranca do meu coração toda raiz de orgulho e egoísmo. Ajuda-me a enxergar as necessidades do meu próximo. Amém."'
+            },
+            {
+                versiculo: "Portanto, se alguém está em Cristo, é nova criação. As coisas antigas já passaram; eis que surgiram coisas novas!",
+                referencia: "2 Coríntios 5:17",
+                titulo: "Um Novo Começo",
+                texto: "Não importa o que você fez ou quem você foi no passado. Ao se entregar a Jesus, o seu histórico é apagado. Você se torna uma página em branco nas mãos do Criador, pronto para uma nova história.",
+                aplicacao: "Não deixe que ninguém (nem mesmo você) use o seu passado para te acusar. Você é uma nova criatura.",
+                oracao: '"Obrigado, Jesus, pelo Teu perdão que me faz novo. Ajuda-me a viver a nova vida que o Senhor conquistou para mim na cruz. Amém."'
+            },
+            {
+                versiculo: "É melhor ter companhia do que estar sozinho... Se um cair, o amigo pode ajudá-lo a levantar-se.",
+                referencia: "Eclesiastes 4:9-10",
+                titulo: "Não Caminhe Sozinho",
+                texto: "Deus nos criou para vivermos em comunidade. O isolamento nos torna alvos fáceis para o desânimo e o pecado. Precisamos de irmãos na fé para nos apoiar quando tropeçarmos.",
+                aplicacao: "Mande uma mensagem para um amigo hoje. Encoraje alguém ou seja humilde para pedir ajuda se você estiver precisando.",
+                oracao: '"Senhor, obrigado pelas pessoas que o Senhor colocou na minha vida. Ensina-me a ser um bom amigo e a valorizar a comunhão. Amém."'
+            },
+            {
+                versiculo: "Venham a mim, todos os que estão cansados e sobrecarregados, e eu darei descanso a vocês.",
+                referencia: "Mateus 11:28",
+                titulo: "O Convite para o Descanso",
+                texto: "Jesus vê a sua bagagem emocional e o seu cansaço físico. O convite Dele não é para te dar mais regras, mas para trocar o seu fardo pesado pelo jugo leve da Sua graça.",
+                aplicacao: "Quais fardos você está carregando hoje que não pertencem a você? Entregue-os a Jesus agora mesmo.",
+                oracao: '"Jesus, estou cansado das pressões da vida. Entrego a Ti minhas cargas emocionais e recebo o Teu descanso. Amém."'
+            },
+            {
+                versiculo: "O meu Deus suprirá todas as necessidades de vocês, de acordo com as suas gloriosas riquezas em Cristo Jesus.",
+                referencia: "Filipenses 4:19",
+                titulo: "O Provedor Fiel",
+                texto: "Às vezes confundimos vontades com necessidades. Deus não promete nos dar tudo o que nosso ego quer, mas Ele garante que não faltará nada do que precisamos para viver os propósitos Dele.",
+                aplicacao: "Se a ansiedade financeira bater hoje, troque a preocupação por uma declaração de confiança na provisão de Deus.",
+                oracao: '"Pai Celeste, eu confio na Tua providência. Ajuda-me a trabalhar com excelência e a confiar que o Senhor cuida das minhas necessidades. Amém."'
+            },
+            {
+                versiculo: "Pois estou convencido de que nem morte nem vida... nem qualquer outra coisa na criação será capaz de nos separar do amor de Deus que está em Cristo Jesus.",
+                referencia: "Romanos 8:38-39",
+                titulo: "O Amor Inseparável",
+                texto: "Não há distância, pecado, falha ou força no universo capaz de cortar o amor que Deus tem por você. A obra da cruz construiu uma ponte indestrutível entre você e o Pai.",
+                aplicacao: "Caminhe hoje com a cabeça erguida, com a plena convicção de que você é profunda e incondicionalmente amado por Deus.",
+                oracao: '"Meu Deus, a dimensão do Teu amor me constrange. Obrigado porque nada pode me separar de Ti. Ajuda-me a amar de volta. Amém."'
+            },
+            {
+                versiculo: "Tudo o que for verdadeiro, tudo o que for nobre, tudo o que for correto... seja isso o que ocupe o pensamento de vocês.",
+                referencia: "Filipenses 4:8",
+                titulo: "Filtro de Pensamentos",
+                texto: "A nossa mente é o principal campo de batalha. O que consumimos através da internet, conversas e mídias molda nossos pensamentos. Deus nos orienta a filtrar tudo o que entra na nossa cabeça.",
+                aplicacao: "Hoje, policie o que você assiste e lê. Se a informação roubar a sua paz, troque-a por algo que edifique o seu espírito.",
+                oracao: '"Senhor, purifica a minha mente. Ajuda-me a focar em coisas que são verdadeiras, nobres, puras e amáveis diante de Ti. Amém."'
+            },
+            {
+                versiculo: "Que o Deus da esperança os encha de toda alegria e paz, por sua confiança nele, para que vocês transbordem de esperança, pelo poder do Espírito Santo.",
+                referencia: "Romanos 15:13",
+                titulo: "Transbordando Esperança",
+                texto: "A esperança do cristão não é um otimismo cego, é uma âncora firmada em quem Deus é. Quando confiamos Nele, o Espírito Santo nos enche de paz até transbordarmos para abençoar os outros.",
+                aplicacao: "Com quem você pode compartilhar uma palavra de esperança hoje? Transborde aquilo que Deus tem derramado em você.",
+                oracao: '"Deus de esperança, enche-me com a Tua alegria. Usa-me para levar palavras de vida e consolo a quem está precisando. Amém."'
+            },
+            {
+                versiculo: "O Senhor é a minha luz e a minha salvação; de quem terei temor? O Senhor é o meu forte refúgio; de quem terei medo?",
+                referencia: "Salmos 27:1",
+                titulo: "Livres do Medo",
+                texto: "O medo paralisa, mas a luz do Senhor clareia as sombras das nossas dúvidas. Se o próprio Criador do universo é o nosso escudo e salvação, não há intimidação que possa resistir.",
+                aplicacao: "Diante de um desafio hoje, substitua a frase 'e se der errado?' por 'o Senhor é a minha luz e o meu escudo'.",
+                oracao: '"Senhor, afasta de mim todo o medo e insegurança. Que a certeza da Tua presença seja a minha maior fonte de confiança. Amém."'
+            },
+            {
+                versiculo: "Porque somos criação de Deus realizada em Cristo Jesus para fazermos boas obras, as quais Deus preparou antes para nós as praticarmos.",
+                referencia: "Efésios 2:10",
+                titulo: "Obras Preparadas",
+                texto: "Nós somos a obra-prima de Deus. E Ele não nos salvou apenas para irmos ao céu, mas para sermos úteis aqui na Terra, realizando as boas ações que Ele já desenhou para nós.",
+                aplicacao: "Fique atento hoje: Deus vai colocar pequenas oportunidades de ajudar ou abençoar alguém no seu caminho. Não deixe passar.",
+                oracao: '"Pai, que privilégio ser a Tua obra. Dá-me sensibilidade espiritual para enxergar e realizar as boas obras que preparaste para mim hoje. Amém."'
+            },
+            {
+                versiculo: "O Senhor te abençoe e te guarde; o Senhor faça resplandecer o seu rosto sobre ti e te conceda graça; o Senhor volte para ti o seu rosto e te dê paz.",
+                referencia: "Números 6:24-26",
+                titulo: "A Bênção do Criador",
+                texto: "Esta é a bênção que os sacerdotes pronunciavam sobre o povo de Deus. Ela resume o desejo do coração de Deus para nós: cuidado, proteção, favor imerecido (graça) e paz profunda.",
+                aplicacao: "Tome posse dessa promessa! Ore abençoando a sua família, o seu trabalho e a sua casa usando essas mesmas palavras hoje.",
+                oracao: '"Amém, Senhor! Recebo a Tua bênção sobre a minha vida, a minha família e os meus projetos. Que a Tua paz esteja sobre nós. Amém."'
+            }
+        ];
+
+        function carregarDevocional() {
+            const hoje = new Date();
+            const inicioDoAno = new Date(hoje.getFullYear(), 0, 0);
+            const diferenca = hoje - inicioDoAno;
+            const diaDoAno = Math.floor(diferenca / 1000 / 60 / 60 / 24);
+
+            const indiceDoDia = diaDoAno % listaDevocionais.length;
+            const devocional = listaDevocionais[indiceDoDia];
+
+            document.getElementById('devocional-versiculo').innerText = '"' + devocional.versiculo + '"';
+            document.getElementById('devocional-referencia').innerText = "— " + devocional.referencia;
+            document.getElementById('devocional-titulo').innerText = devocional.titulo;
+            document.getElementById('devocional-texto').innerText = devocional.texto;
+            document.getElementById('devocional-aplicacao').innerText = devocional.aplicacao;
+            document.getElementById('devocional-oracao').innerText = devocional.oracao;
+        }
+
+        carregarDevocional();
+    </script>
 </body>
 </html>
