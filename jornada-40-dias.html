@@ -21,6 +21,12 @@
         gtag('js', new Date());
         gtag('config', 'G-8TCP5MM38F');
     </script>
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </head>
 
 <body style="padding-top: 70px;">

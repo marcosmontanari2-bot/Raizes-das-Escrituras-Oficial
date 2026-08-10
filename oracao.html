@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sala de Oração | Raízes das Escrituras</title>
+    <meta name="description" content="Compartilhe o que pesa no seu coração e receba uma oração personalizada baseada na Palavra de Deus.">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
+    <script>
+         window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8TCP5MM38F');
+    </script>
+
+    <style>
+        .ferramenta-reflexao { max-width: 800px; margin: 20px auto 40px auto; text-align: center; padding: 20px; }
+        .caixa-interativa { background-color: #fcfcfc; border-radius: 8px; padding: 40px 20px; margin: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        /* Aqui a caixa é maior para a pessoa escrever mais se quiser */
+        .input-sentimento { width: 90%; max-width: 550px; padding: 15px; margin: 20px 0; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.3s ease; resize: vertical; font-family: inherit; }
+        .input-sentimento:focus { border-color: #2e4a3b; }
+        
+        .btn-buscar { background-color: #2e4a3b; color: white; padding: 15px 35px; border: none; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease; }
+        .btn-buscar:hover { background-color: #1b3327; }
+        .btn-buscar:disabled { background-color: #94a3b8; cursor: not-allowed; }
+        
+        .resultado-caixa { margin-top: 40px; padding: 30px; border-radius: 8px; background: white; border-left: 5px solid #2e4a3b; display: none; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.05); opacity: 0; transition: opacity 0.5s ease; }
+        
+        .oracao-texto { margin-top: 0; font-size: 1.25rem; color: #1e293b; line-height: 1.8; white-space: pre-wrap; }
+    </style>
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+</head>
+
+<body style="padding-top: 70px;">
+
+    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.VERTICAL }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <header>
+        <div class="cabecalho-centralizado">
+            <h1>🙏 Sala de Oração</h1>
+            <a href="refletir.html" class="btn-voltar">Voltar para reflexões</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <a href="index.html" style="color: #2e4a3b; text-decoration: none;">🏠 Home</a> 
+            <span style="margin: 0 5px;">&gt;</span> 
+            <strong style="color: #333;">Sala de Oração</strong>
+        </nav>
+
+        <div class="ferramenta-reflexao">
+            <h2>Como podemos orar por você hoje?</h2>
+            <p>Deus nos ouve quando abrimos o nosso coração. Escreva abaixo o que você está sentindo, uma aflição, um pedido de cura ou até mesmo um agradecimento.</p>
+            
+            <div class="caixa-interativa">
+                <textarea id="estadoEmocional" class="input-sentimento" rows="4" placeholder="Ex: Estou com muito medo de uma decisão que preciso tomar no trabalho amanhã..." onkeydown="if(event.key === 'Enter' && !event.shiftKey){ event.preventDefault(); gerarOracao(); }"></textarea>
+                <br>
+                <button onclick="gerarOracao()" class="btn-buscar" id="btnAcao">
+                    🙏 Fazer uma Oração
+                </button>
+                
+                <div id="resultado" class="resultado-caixa">
+                    <div id="oracaoTexto" class="oracao-texto"></div>
+                </div>
+            </div>
+        </div>
+
+        <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            
+            <div style="flex: 1; min-width: 250px; background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2e4a3b; text-align: left;">
+                <h3 style="font-size: 1.1rem; color: #333; margin-top: 0;">Explore outras áreas:</h3>
+                <ul style="list-style-type: none; padding: 0; margin-top: 10px; line-height: 1.8;">
+                    <li><strong>Biblioteca Bíblica ➡️</strong> <a href="conhecer-escrituras.html" style="color: #2e4a3b; text-decoration: none;">Conhecer as Escrituras</a></li>
+                    <li><strong>Aprofundamento 📚</strong> <a href="aprofundar.html" style="color: #2e4a3b; text-decoration: none;">Estudos Temáticos</a></li>
+                </ul>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
+                <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site tem edificado a sua vida, considere apoiar a sua manutenção.</p>
+                
+                <p style="margin-bottom: 5px; color: #333; font-size: 0.9rem;"><strong>Chave PIX (Celular):</strong></p>
+                <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;" title="Clique para copiar">
+                    31995077541
+                </div>
+                
+                <div style="margin-top: 15px; font-size: 0.85rem; color: #475569;">
+                    <strong>Contato / E-mail:</strong><br>
+                    <a href="mailto:marcosmontanari2@gmail.com" style="color: #2e4a3b; text-decoration: underline; font-weight: bold;">marcosmontanari2@gmail.com</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="rodape-container">
+            <div class="rodape-texto">
+                <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
+                <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
+                <a href="politica-de-privacidade.html">Política de Privacidade</a>
+            </div>
+            
+            <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
+        </div>
+    </footer>
+
+    <script>
+        async function gerarOracao() {
+            const inputElemento = document.getElementById('estadoEmocional');
+            const inputUsuario = inputElemento.value.trim();
+            const divResultado = document.getElementById('resultado');
+            const oracaoTexto = document.getElementById('oracaoTexto');
+            const botao = document.getElementById('btnAcao');
+
+            if (!inputUsuario) {
+                alert("Por favor, escreva o seu pedido ou sentimento.");
+                return;
+            }
+
+            botao.disabled = true;
+            botao.innerText = "⏳ Escrevendo oração...";
+            divResultado.style.opacity = '0';
+
+            try {
+                
+                const resposta = await fetch('/.netlify/functions/orar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sentimento: inputUsuario })
+                });
+
+                if (!resposta.ok) {
+                    throw new Error("Erro de comunicação com o servidor.");
+                }
+
+                const dados = await resposta.json();
+
+                oracaoTexto.innerText = dados.oracao;
+                
+                divResultado.style.display = 'block';
+                setTimeout(() => {
+                    divResultado.style.opacity = '1';
+                }, 50);
+
+            } catch (erro) {
+                console.error(erro);
+    
+                oracaoTexto.innerText = "Senhor Deus, neste momento entrego a minha vida em Tuas mãos. Peço que o Seu Espírito Santo venha me consolar, me dar direção e me encher com a Tua paz que excede todo entendimento. Que a Tua vontade, que é boa, perfeita e agradável, se cumpra em minha vida. Em nome de Jesus, amém.";
+                
+                divResultado.style.display = 'block';
+                setTimeout(() => {
+                    divResultado.style.opacity = '1';
+                }, 50);
+            } finally {
+                botao.disabled = false;
+                botao.innerText = "🙏 Gerar Nova Oração";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Mês 1 - Plano de Leitura | Raízes das Escrituras</title>
+    <meta name="description" content="Acompanhe seu plano de leitura bíblica diário - Mês 1.">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    
+    <link rel="manifest" href="manifest.json">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8TCP5MM38F');
+    </script>
+
+    <style>
+        .container-leitura { max-width: 800px; margin: 20px auto 40px auto; padding: 30px; background: #fcfcfc; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        
+        .dias-leitura { list-style: none; padding: 0; margin-top: 30px; max-height: 450px; overflow-y: auto; padding-right: 10px; }
+        
+        .dias-leitura::-webkit-scrollbar { width: 8px; }
+        .dias-leitura::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        .dias-leitura::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dias-leitura::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .item-leitura { display: flex; align-items: center; padding: 15px 10px; border-bottom: 1px solid #e2e8f0; font-size: 1.1rem; transition: background 0.2s; }
+        .item-leitura:hover { background: #f8fafc; }
+        .item-leitura:last-child { border-bottom: none; }
+        .checkbox-leitura { width: 22px; height: 22px; margin-right: 15px; cursor: pointer; accent-color: #2e4a3b; }
+        .texto-capitulo { color: #1e293b; cursor: pointer; flex-grow: 1; user-select: none; }
+        .concluido .texto-capitulo { text-decoration: line-through; color: #94a3b8; }
+        .barra-progresso { height: 12px; background: #e2e8f0; border-radius: 6px; margin: 20px 0; overflow: hidden; }
+        .progresso-preenchido { height: 12px; background: #2e4a3b; width: 0%; transition: width 0.4s ease; }
+    </style>
+</head>
+
+<body style="padding-top: 70px;">
+
+    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.VERTICAL }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <header>
+        <div class="cabecalho-centralizado">
+            <h1>📖 Mês 1 - Leitura</h1>
+            <a href="indice-leitura.html" class="btn-voltar">Voltar para o Índice</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <a href="index.html" style="color: #2e4a3b; text-decoration: none;">🏠 Home</a> 
+            <span style="margin: 0 5px;">&gt;</span> 
+            <a href="indice-leitura.html" style="color: #2e4a3b; text-decoration: none;">Plano de Leitura</a>
+            <span style="margin: 0 5px;">&gt;</span> 
+            <strong style="color: #333;">Mês 1</strong>
+        </nav>
+
+        <div class="container-leitura">
+            <h2 style="text-align: center; color: #2e4a3b; margin-top: 0;">Bíblia em 1 Ano - Mês 1</h2>
+            <p style="text-align: center; color: #64748b;">Marque os capítulos após a leitura. Seu progresso fica salvo automaticamente neste navegador.</p>
+
+            <div class="barra-progresso">
+                <div id="barraPreenchida" class="progresso-preenchido"></div>
+            </div>
+            <p style="text-align: right; font-size: 0.95rem; font-weight: bold; color: #2e4a3b; margin-top: -10px;" id="textoProgresso">0% concluído</p>
+
+            <ul class="dias-leitura" id="listaDias">
+                <li class="item-leitura" id="dia1"><input type="checkbox" class="checkbox-leitura" id="check-dia1" onchange="marcarLeitura('dia1')"><label for="check-dia1" class="texto-capitulo"><strong>Dia 1:</strong> Gênesis 1 a 3</label><a href="https://www.bibliaonline.com.br/acf/gn/1" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia2"><input type="checkbox" class="checkbox-leitura" id="check-dia2" onchange="marcarLeitura('dia2')"><label for="check-dia2" class="texto-capitulo"><strong>Dia 2:</strong> Gênesis 4 a 7</label><a href="https://www.bibliaonline.com.br/acf/gn/4" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia3"><input type="checkbox" class="checkbox-leitura" id="check-dia3" onchange="marcarLeitura('dia3')"><label for="check-dia3" class="texto-capitulo"><strong>Dia 3:</strong> Gênesis 8 a 11</label><a href="https://www.bibliaonline.com.br/acf/gn/8" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia4"><input type="checkbox" class="checkbox-leitura" id="check-dia4" onchange="marcarLeitura('dia4')"><label for="check-dia4" class="texto-capitulo"><strong>Dia 4:</strong> Gênesis 12 a 15</label><a href="https://www.bibliaonline.com.br/acf/gn/12" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia5"><input type="checkbox" class="checkbox-leitura" id="check-dia5" onchange="marcarLeitura('dia5')"><label for="check-dia5" class="texto-capitulo"><strong>Dia 5:</strong> Gênesis 16 a 18</label><a href="https://www.bibliaonline.com.br/acf/gn/16" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia6"><input type="checkbox" class="checkbox-leitura" id="check-dia6" onchange="marcarLeitura('dia6')"><label for="check-dia6" class="texto-capitulo"><strong>Dia 6:</strong> Gênesis 19 a 21</label><a href="https://www.bibliaonline.com.br/acf/gn/19" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia7"><input type="checkbox" class="checkbox-leitura" id="check-dia7" onchange="marcarLeitura('dia7')"><label for="check-dia7" class="texto-capitulo"><strong>Dia 7:</strong> Gênesis 22 a 24</label><a href="https://www.bibliaonline.com.br/acf/gn/22" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia8"><input type="checkbox" class="checkbox-leitura" id="check-dia8" onchange="marcarLeitura('dia8')"><label for="check-dia8" class="texto-capitulo"><strong>Dia 8:</strong> Gênesis 25 a 26</label><a href="https://www.bibliaonline.com.br/acf/gn/25" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia9"><input type="checkbox" class="checkbox-leitura" id="check-dia9" onchange="marcarLeitura('dia9')"><label for="check-dia9" class="texto-capitulo"><strong>Dia 9:</strong> Gênesis 27 a 29</label><a href="https://www.bibliaonline.com.br/acf/gn/27" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia10"><input type="checkbox" class="checkbox-leitura" id="check-dia10" onchange="marcarLeitura('dia10')"><label for="check-dia10" class="texto-capitulo"><strong>Dia 10:</strong> Gênesis 30 a 31</label><a href="https://www.bibliaonline.com.br/acf/gn/30" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia11"><input type="checkbox" class="checkbox-leitura" id="check-dia11" onchange="marcarLeitura('dia11')"><label for="check-dia11" class="texto-capitulo"><strong>Dia 11:</strong> Gênesis 32 a 34</label><a href="https://www.bibliaonline.com.br/acf/gn/32" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia12"><input type="checkbox" class="checkbox-leitura" id="check-dia12" onchange="marcarLeitura('dia12')"><label for="check-dia12" class="texto-capitulo"><strong>Dia 12:</strong> Gênesis 35 a 37</label><a href="https://www.bibliaonline.com.br/acf/gn/35" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia13"><input type="checkbox" class="checkbox-leitura" id="check-dia13" onchange="marcarLeitura('dia13')"><label for="check-dia13" class="texto-capitulo"><strong>Dia 13:</strong> Gênesis 38 a 40</label><a href="https://www.bibliaonline.com.br/acf/gn/38" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia14"><input type="checkbox" class="checkbox-leitura" id="check-dia14" onchange="marcarLeitura('dia14')"><label for="check-dia14" class="texto-capitulo"><strong>Dia 14:</strong> Gênesis 41 a 42</label><a href="https://www.bibliaonline.com.br/acf/gn/41" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia15"><input type="checkbox" class="checkbox-leitura" id="check-dia15" onchange="marcarLeitura('dia15')"><label for="check-dia15" class="texto-capitulo"><strong>Dia 15:</strong> Gênesis 43 a 45</label><a href="https://www.bibliaonline.com.br/acf/gn/43" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia16"><input type="checkbox" class="checkbox-leitura" id="check-dia16" onchange="marcarLeitura('dia16')"><label for="check-dia16" class="texto-capitulo"><strong>Dia 16:</strong> Gênesis 46 a 47</label><a href="https://www.bibliaonline.com.br/acf/gn/46" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia17"><input type="checkbox" class="checkbox-leitura" id="check-dia17" onchange="marcarLeitura('dia17')"><label for="check-dia17" class="texto-capitulo"><strong>Dia 17:</strong> Gênesis 48 a 50</label><a href="https://www.bibliaonline.com.br/acf/gn/48" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia18"><input type="checkbox" class="checkbox-leitura" id="check-dia18" onchange="marcarLeitura('dia18')"><label for="check-dia18" class="texto-capitulo"><strong>Dia 18:</strong> Êxodo 1 a 3</label><a href="https://www.bibliaonline.com.br/acf/ex/1" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia19"><input type="checkbox" class="checkbox-leitura" id="check-dia19" onchange="marcarLeitura('dia19')"><label for="check-dia19" class="texto-capitulo"><strong>Dia 19:</strong> Êxodo 4 a 6</label><a href="https://www.bibliaonline.com.br/acf/ex/4" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia20"><input type="checkbox" class="checkbox-leitura" id="check-dia20" onchange="marcarLeitura('dia20')"><label for="check-dia20" class="texto-capitulo"><strong>Dia 20:</strong> Êxodo 7 a 9</label><a href="https://www.bibliaonline.com.br/acf/ex/7" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia21"><input type="checkbox" class="checkbox-leitura" id="check-dia21" onchange="marcarLeitura('dia21')"><label for="check-dia21" class="texto-capitulo"><strong>Dia 21:</strong> Êxodo 10 a 12</label><a href="https://www.bibliaonline.com.br/acf/ex/10" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia22"><input type="checkbox" class="checkbox-leitura" id="check-dia22" onchange="marcarLeitura('dia22')"><label for="check-dia22" class="texto-capitulo"><strong>Dia 22:</strong> Êxodo 13 a 15</label><a href="https://www.bibliaonline.com.br/acf/ex/13" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia23"><input type="checkbox" class="checkbox-leitura" id="check-dia23" onchange="marcarLeitura('dia23')"><label for="check-dia23" class="texto-capitulo"><strong>Dia 23:</strong> Êxodo 16 a 18</label><a href="https://www.bibliaonline.com.br/acf/ex/16" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia24"><input type="checkbox" class="checkbox-leitura" id="check-dia24" onchange="marcarLeitura('dia24')"><label for="check-dia24" class="texto-capitulo"><strong>Dia 24:</strong> Êxodo 19 a 21</label><a href="https://www.bibliaonline.com.br/acf/ex/19" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia25"><input type="checkbox" class="checkbox-leitura" id="check-dia25" onchange="marcarLeitura('dia25')"><label for="check-dia25" class="texto-capitulo"><strong>Dia 25:</strong> Êxodo 22 a 24</label><a href="https://www.bibliaonline.com.br/acf/ex/22" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia26"><input type="checkbox" class="checkbox-leitura" id="check-dia26" onchange="marcarLeitura('dia26')"><label for="check-dia26" class="texto-capitulo"><strong>Dia 26:</strong> Êxodo 25 a 27</label><a href="https://www.bibliaonline.com.br/acf/ex/25" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia27"><input type="checkbox" class="checkbox-leitura" id="check-dia27" onchange="marcarLeitura('dia27')"><label for="check-dia27" class="texto-capitulo"><strong>Dia 27:</strong> Êxodo 28 a 29</label><a href="https://www.bibliaonline.com.br/acf/ex/28" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia28"><input type="checkbox" class="checkbox-leitura" id="check-dia28" onchange="marcarLeitura('dia28')"><label for="check-dia28" class="texto-capitulo"><strong>Dia 28:</strong> Êxodo 30 a 32</label><a href="https://www.bibliaonline.com.br/acf/ex/30" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia29"><input type="checkbox" class="checkbox-leitura" id="check-dia29" onchange="marcarLeitura('dia29')"><label for="check-dia29" class="texto-capitulo"><strong>Dia 29:</strong> Êxodo 33 a 35</label><a href="https://www.bibliaonline.com.br/acf/ex/33" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia30"><input type="checkbox" class="checkbox-leitura" id="check-dia30" onchange="marcarLeitura('dia30')"><label for="check-dia30" class="texto-capitulo"><strong>Dia 30:</strong> Êxodo 36 a 38</label><a href="https://www.bibliaonline.com.br/acf/ex/36" target="_blank" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+            </ul>
+        </div>
+
+        <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <div style="flex: 1; min-width: 250px; background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2e4a3b; text-align: left;">
+                <h3 style="font-size: 1.1rem; color: #333; margin-top: 0;">Explore outras áreas:</h3>
+                <ul style="list-style-type: none; padding: 0; margin-top: 10px; line-height: 1.8;">
+                    <li><strong>Biblioteca Bíblica ➡️</strong> <a href="conhecer-escrituras.html" style="color: #2e4a3b; text-decoration: none;">Conhecer as Escrituras</a></li>
+                    <li><strong>Devocional 📚</strong> <a href="devocional-diario.html" style="color: #2e4a3b; text-decoration: none;">Devocional Diário</a></li>
+                </ul>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
+                <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site tem edificado a sua vida, considere apoiar a sua manutenção.</p>
+                <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;">31995077541</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="rodape-container">
+            <div class="rodape-texto">
+                <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
+                <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
+                <a href="politica-de-privacidade.html">Política de Privacidade</a>
+            </div>
+            <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const itens = document.querySelectorAll('.item-leitura');
+            itens.forEach(item => {
+                const id = item.id;
+                const checkbox = item.querySelector('.checkbox-leitura');
+                const estaMarcado = localStorage.getItem('leitura_' + id) === 'true';
+                
+                if (estaMarcado) {
+                    checkbox.checked = true;
+                    item.classList.add('concluido');
+                }
+            });
+            atualizarProgresso();
+        });
+
+        function marcarLeitura(id) {
+            const item = document.getElementById(id);
+            const checkbox = item.querySelector('.checkbox-leitura');
+            const estaMarcado = checkbox.checked;
+
+            localStorage.setItem('leitura_' + id, estaMarcado);
+
+            if (estaMarcado) {
+                item.classList.add('concluido');
+            } else {
+                item.classList.remove('concluido');
+            }
+            
+            atualizarProgresso();
+        }
+
+        function atualizarProgresso() {
+            const checkboxes = document.querySelectorAll('.checkbox-leitura');
+            const total = checkboxes.length;
+            const marcados = document.querySelectorAll('.checkbox-leitura:checked').length;
+            
+            const porcentagem = total === 0 ? 0 : Math.round((marcados / total) * 100);
+            
+            document.getElementById('barraPreenchida').style.width = porcentagem + '%';
+            document.getElementById('textoProgresso').innerText = porcentagem + '% concluído';
+        }
+    </script>
+</body>
+</html>

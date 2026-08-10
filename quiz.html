@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Bíblico Mensal | Raízes das Escrituras</title>
+    <meta name="description" content="Teste seus conhecimentos bíblicos com perguntas renovadas automaticamente todo mês.">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    
+    <link rel="manifest" href="manifest.json">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8TCP5MM38F');
+    </script>
+
+    <style>
+        .quiz-container { max-width: 700px; margin: 40px auto; padding: 40px 30px; background: #fcfcfc; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; text-align: center; }
+        .pergunta-quiz { font-size: 1.4rem; color: #2e4a3b; margin-bottom: 25px; font-weight: bold; }
+        .opcoes-quiz { display: flex; flex-direction: column; gap: 12px; }
+        .btn-opcao { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 15px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: all 0.2s; color: #1e293b; text-align: left; }
+        .btn-opcao:hover:not(:disabled) { background: #e2e8f0; border-color: #94a3b8; }
+        .btn-opcao:disabled { cursor: default; }
+        .btn-opcao.correta { background: #22c55e !important; color: white; border-color: #16a34a; }
+        .btn-opcao.errada { background: #ef4444 !important; color: white; border-color: #dc2626; }
+        .btn-proxima { margin-top: 25px; padding: 12px 30px; background: #2e4a3b; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; display: none; margin-left: auto; margin-right: auto; font-weight: bold; }
+        .btn-proxima:hover { background: #1e3a2b; }
+        .nivel-container { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; width: 100%; }
+        .btn-nivel { padding: 15px; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border: none; color: white; transition: opacity 0.2s; }
+        .btn-nivel:hover { opacity: 0.9; }
+        .nivel-facil { background: #22c55e; }
+        .nivel-medio { background: #f59e0b; }
+        .nivel-dificil { background: #ef4444; }
+        .resultado-quiz { font-size: 1.5rem; color: #2e4a3b; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+
+<body style="padding-top: 70px;">
+
+    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.VERTICAL }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <header>
+        <div class="cabecalho-centralizado">
+            <h1>🧠 Quiz Bíblico Mensal</h1>
+            <a href="index.html" class="btn-voltar">Voltar para Home</a>
+        </div>
+    </header>
+
+    <main>
+        <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <a href="index.html" style="color: #2e4a3b; text-decoration: none;">🏠 Home</a> 
+            <span style="margin: 0 5px;">&gt;</span> 
+            <strong style="color: #333;">Quiz Bíblico</strong>
+        </nav>
+
+        <div class="quiz-container" id="caixaQuiz">
+            <div id="telaNiveis">
+                <h2 style="color: #2e4a3b; margin-bottom: 10px;" id="tituloMesQuiz">Quiz do Mês</h2>
+                <p style="color: #64748b; margin-bottom: 30px;">Escolha a dificuldade para começar:</p>
+                <div class="nivel-container">
+                    <button class="btn-nivel nivel-facil" onclick="iniciarQuiz('facil')">🟢 Fácil (10 Perguntas)</button>
+                    <button class="btn-nivel nivel-medio" onclick="iniciarQuiz('medio')">🟡 Médio (10 Perguntas)</button>
+                    <button class="btn-nivel nivel-dificil" onclick="iniciarQuiz('dificil')">🔴 Difícil (10 Perguntas)</button>
+                </div>
+            </div>
+
+            <div id="quizApp" style="display: none;">
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <button onclick="voltarParaMenu()" class="btn-voltar">← Voltar para Níveis</button>
+                </div>
+                
+                <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px; text-transform: uppercase; font-weight: bold;" id="contador"></div>
+                <p class="pergunta-quiz" id="pergunta"></p>
+                <div class="opcoes-quiz" id="opcoes"></div>
+                <button class="btn-proxima" id="btnProxima" onclick="proximaPergunta()">Próxima ➔</button>
+            </div>
+        </div>
+
+        <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <div style="flex: 1; min-width: 250px; background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2e4a3b; text-align: left;">
+                <h3 style="font-size: 1.1rem; color: #333; margin-top: 0;">Explore outras áreas:</h3>
+                <ul style="list-style-type: none; padding: 0; margin-top: 10px; line-height: 1.8;">
+                    <li><strong>Plano de Leitura 📅</strong> <a href="indice-leitura.html" style="color: #2e4a3b; text-decoration: none;">Ler a Bíblia em 1 Ano</a></li>
+                    <li><strong>Devocional 📚</strong> <a href="devocional-diario.html" style="color: #2e4a3b; text-decoration: none;">Devocional Diário</a></li>
+                </ul>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
+                <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site tem edificado a sua vida, considere apoiar a sua manutenção.</p>
+                <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;">31995077541</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="rodape-container">
+            <div class="rodape-texto">
+                <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
+                <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
+                <a href="politica-de-privacidade.html">Política de Privacidade</a>
+            </div>
+            <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
+        </div>
+    </footer>
+
+    <script src="perguntas.js"></script>
+
+    <script>
+        const mesesDisponiveis = [...new Set(bancoDePerguntas.map(p => p.mes))].sort((a, b) => a - b);
+        const mesReal = new Date().getMonth() + 1; 
+        const indexLoop = (mesReal - 1) % mesesDisponiveis.length;
+        const mesAtual = mesesDisponiveis[indexLoop];
+
+        const nomesMeses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        document.getElementById("tituloMesQuiz").innerText = `Quiz do Mês de ${nomesMeses[mesAtual] || "Geral"}`;
+
+        let perguntasFiltradas = [];
+        let perguntaAtual = 0;
+        let pontuacao = 0;
+        let respondido = false;
+
+        function iniciarQuiz(nivelEscolhido) {
+            perguntasFiltradas = bancoDePerguntas.filter(p => p.mes === mesAtual && p.nivel === nivelEscolhido);
+            
+            if (perguntasFiltradas.length === 0) {
+                alert(`As perguntas do mês de ${nomesMeses[mesAtual]} para o nível ${nivelEscolhido} ainda não foram cadastradas.`);
+                return;
+            }
+
+            perguntaAtual = 0;
+            pontuacao = 0;
+            document.getElementById("telaNiveis").style.display = "none";
+            document.getElementById("quizApp").style.display = "block";
+            carregarPergunta();
+        }
+
+        function voltarParaMenu() {
+            document.getElementById("quizApp").style.display = "none";
+            document.getElementById("telaNiveis").style.display = "block";
+            perguntaAtual = 0;
+            respondido = false;
+        }
+
+        function carregarPergunta() {
+            respondido = false;
+            document.getElementById("btnProxima").style.display = "none";
+            const dados = perguntasFiltradas[perguntaAtual];
+            document.getElementById("contador").innerText = `Pergunta ${perguntaAtual + 1} de ${perguntasFiltradas.length}`;
+            document.getElementById("pergunta").innerText = dados.pergunta;
+            const op = document.getElementById("opcoes");
+            op.innerHTML = "";
+            dados.opcoes.forEach((o, i) => {
+                const b = document.createElement("button");
+                b.innerText = o; b.className = "btn-opcao";
+                b.onclick = () => {
+                    if (respondido) return;
+                    respondido = true;
+                    const botoes = document.querySelectorAll(".btn-opcao");
+                    botoes.forEach(btn => btn.disabled = true);
+                    if(i === dados.respostaCorreta) { b.classList.add("correta"); pontuacao++; }
+                    else { b.classList.add("errada"); botoes[dados.respostaCorreta].classList.add("correta"); }
+                    document.getElementById("btnProxima").style.display = "block";
+                };
+                op.appendChild(b);
+            });
+        }
+
+        function proximaPergunta() {
+            perguntaAtual++;
+            if (perguntaAtual < perguntasFiltradas.length) {
+                carregarPergunta();
+            } else {
+                mostrarResultado();
+            }
+        }
+
+        function mostrarResultado() {
+            let mensagem = pontuacao === perguntasFiltradas.length ? "Perfeito! Gabaritou el nível!" : (pontuacao >= perguntasFiltradas.length / 2 ? "Muito bem! Bom conhecimento." : "Continue lendo e tente novamente!");
+            
+            document.getElementById("caixaQuiz").innerHTML = `
+                <div style="font-size: 5rem; margin-bottom: 10px;">🏆</div>
+                <h2 style="color: #2e4a3b; font-size: 2rem; margin-bottom: 10px;">Quiz Concluído!</h2>
+                <p class="resultado-quiz">Você acertou ${pontuacao} de ${perguntasFiltradas.length} perguntas.</p>
+                <p style="color: #64748b; font-size: 1.1rem; margin-bottom: 25px;">${mensagem}</p>
+                <button class="btn-proxima" style="display: block;" onclick="location.reload()">Escolher Outro Nível 🔄</button>
+            `;
+        }
+    </script>
+</body>
+</html>

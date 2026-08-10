@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
     
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </head>
 
 <body>
@@ -102,7 +108,20 @@
                     <h3>Momento de reflexão</h3>
                     <p>Reserve um momento para meditar e fortalecer sua caminhada espiritual.</p>
                 </a>
+                
+                <a href="indice-leitura.html" class="card-principal">
+                    <span class="icone-card">📅</span>
+                    <h3>Plano de Leitura</h3>
+                    <p>Acompanhe seu progresso e leia a Bíblia inteira em 1 ano, no seu ritmo.</p>
+                </a>
+                
+                <a href="quiz.html" class="card-principal">
+                    <span class="icone-card">🧠</span>
+                    <h3>Quiz Bíblico</h3>
+                    <p>Teste os seus conhecimentos sobre as Escrituras de forma interativa.</p>
+                </a>
             </div>
+            
         </section>
 
         <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">

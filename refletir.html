@@ -21,6 +21,12 @@
         gtag('js', new Date());
         gtag('config', 'G-8TCP5MM38F');
     </script>
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </head>
 
 <body style="padding-top: 70px;">
@@ -88,6 +94,17 @@
                     <h3>Diário de Gratidão</h3>
                     <p>Lembre-se dos feitos do Senhor. Reflexões sobre como reconhecer a graça de Deus nos pequenos detalhes.</p>
                 </a>
+
+                <a href="reflexao-guiada.html" class="card-tema">
+                    <h3>Reflexão Guiada</h3>
+                    <p>Descreva como você está se sentindo e receba um versículo bíblico exato para o seu momento.</p>
+                </a>
+
+                <a href="oracao.html" class="card-tema">
+                    <h3>Sala de Oração</h3>
+                    <p>Compartilhe o que pesa no seu coração e receba uma oração personalizada baseada na Palavra.</p>
+                </a>
+                
             </div>
         </section>
 

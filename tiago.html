@@ -21,6 +21,12 @@
         gtag('js', new Date());
         gtag('config', 'G-8TCP5MM38F');
     </script>
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </head>
 
 <body style="padding-top: 70px;">
@@ -48,7 +54,6 @@
         
         <img src="tiago.jpeg" alt="Símbolos de sabedoria prática e cuidado com os necessitados" class="img-destaque">
 
-        <!-- Início: Breadcrumb -->
         <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px;">
             <a href="index.html" style="color: #2e4a3b; text-decoration: none;">🏠 Home</a> 
             <span style="margin: 0 5px;">&gt;</span> 
@@ -56,8 +61,7 @@
             <span style="margin: 0 5px;">&gt;</span> 
             <strong style="color: #333;">Tiago</strong>
         </nav>
-        <!-- Fim: Breadcrumb -->
-    
+
         <section class="testamento">
             <h2>A Fé que Funciona na Prática</h2>
             <p>A Carta de Tiago, escrita pelo meio-irmão de Jesus, é frequentemente chamada de "os Provérbios do Novo Testamento". É um dos livros mais práticos da Bíblia, focando não em doutrinas teológicas complexas, mas na ética e no comportamento cristão no dia a dia. Tiago argumenta vigorosamente que a verdadeira fé cristã não é apenas uma crença intelectual, mas uma força transformadora que resulta inevitavelmente em boas obras. Ele aborda temas cotidianos e desafiadores, como o controle da língua, a paciência nas provações, a imparcialidade, o cuidado com os pobres e o perigo do apego às riquezas materiais.</p>
@@ -93,7 +97,6 @@
             </a>
         </div>
 
-        <!-- Início: Aprofunde seu estudo -->
         <div style="text-align: center; margin: 50px 0; padding: 30px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
             <h2 style="color: #2e4a3b; margin-top: 0; font-size: 1.5rem;">🎥 Aprofunde seu estudo</h2>
             <p style="color: #475569; margin-bottom: 25px; font-size: 1rem;">Deseja conhecer mais sobre a Carta de Tiago?<br>Acesse estudos relacionados no YouTube.</p>
@@ -101,8 +104,7 @@
                 ▶ Ver estudos no YouTube
             </a>
         </div>
-        <!-- Fim: Aprofunde seu estudo -->
-
+    
         <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
         
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px;">

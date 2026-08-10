@@ -21,6 +21,12 @@
         gtag('js', new Date());
         gtag('config', 'G-8TCP5MM38F');
     </script>
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </head>
 
 <body style="padding-top: 70px;">
@@ -110,7 +116,6 @@
                 </ul>
             </div>
 
-            <!-- Caixa 2: Doação PIX e Contato E-mail -->
             <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
                 <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
                 <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este estudo foi útil, considere apoiar a manutenção do site.</p>

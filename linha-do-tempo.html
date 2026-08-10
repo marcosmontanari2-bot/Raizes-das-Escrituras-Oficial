@@ -15,7 +15,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
 
     <style>
-        /* Estilos específicos para a Linha do Tempo Visual */
+
         .timeline-container {
             position: relative;
             max-width: 800px;
@@ -84,6 +84,12 @@
         gtag('js', new Date());
         gtag('config', 'G-8TCP5MM38F');
     </script>
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </head>
 
 <body style="padding-top: 70px;">
@@ -178,7 +184,6 @@
                 </div>
             </div>
 
-            <!-- Passo 6 -->
             <div class="timeline-step" id="igreja">
                 <div class="timeline-content">
                     <h3>✝️ O Messias e a Igreja (Séc. I d.C.)</h3>
