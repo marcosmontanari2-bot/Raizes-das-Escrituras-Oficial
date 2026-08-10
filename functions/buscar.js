@@ -1,15 +1,15 @@
-exports.handler = async function(event, context) {
+export async function onRequest(context) {
+  const request = context.request;
   
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Método não permitido" };
+  if (request.method !== "POST") {
+    return new Response("Método não permitido", { status: 405 });
   }
 
   try {
-
-    const corpo = JSON.parse(event.body);
+    const corpo = await request.json();
     const sentimento = corpo.sentimento;
     
-    const apiKey = process.env.GROQ_API_KEY;
+    const apiKey = context.env.GROQ_API_KEY;
 
     const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -36,16 +36,16 @@ exports.handler = async function(event, context) {
     const dados = await resposta.json();
     const versiculoIA = dados.choices[0].message.content;
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ versiculo: versiculoIA })
-    };
+    return new Response(JSON.stringify({ versiculo: versiculoIA }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
 
   } catch (erro) {
     console.error("Erro na função:", erro);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ erro: "Não foi possível buscar a Palavra neste momento." })
-    };
+    return new Response(JSON.stringify({ erro: "Não foi possível buscar a Palavra neste momento." }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
 };
