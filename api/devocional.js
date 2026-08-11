@@ -5,7 +5,6 @@ export default async function (request) {
   try {
     const corpo = await request.json();
     
-    // AQUI ESTÁ O CONSERTO: Agora ele busca a palavra independentemente do nome que o HTML mandar
     const tema = corpo.sentimento || corpo.tema || corpo.texto || "Fé e Esperança";
     
     const apiKey = process.env.GROQ_API_KEY;
