@@ -4,7 +4,10 @@ export default async function (request) {
   if (request.method !== "POST") return new Response("Método não permitido", { status: 405 });
   try {
     const corpo = await request.json();
-    const tema = corpo.tema || "Consolo e Proteção";
+    
+    // AQUI ESTÁ O CONSERTO: Agora ele acha a palavra de qualquer jeito!
+    const tema = corpo.sentimento || corpo.tema || corpo.texto || "Consolo e Proteção";
+    
     const apiKey = process.env.GROQ_API_KEY;
 
     const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
