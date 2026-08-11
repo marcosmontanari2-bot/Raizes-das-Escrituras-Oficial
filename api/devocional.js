@@ -5,7 +5,7 @@ export default async function (request) {
   try {
     const corpo = await request.json();
     
-    const tema = corpo.sentimento || corpo.tema || corpo.texto || "Fé e Esperança";
+    const tema = corpo.sentimento || corpo.tema || corpo.texto || corpo.palavra || "fé e esperança";
     
     const apiKey = process.env.GROQ_API_KEY;
 
@@ -15,7 +15,7 @@ export default async function (request) {
       body: JSON.stringify({
         model: "llama3-70b-8192",
         messages: [
-          { role: "system", content: "Você é um pastor e escritor cristão sábio. Crie um Devocional Diário profundo e acolhedor baseado nas Escrituras." },
+          { role: "system", content: "Você é um conselheiro devocional cristão. Escreva um devocional diário curto, inspirador e edificante com base no tema ou sentimento enviado pelo usuário." },
           { role: "user", content: tema }
         ],
         temperature: 0.7
