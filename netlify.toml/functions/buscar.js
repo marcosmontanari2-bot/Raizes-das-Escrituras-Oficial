@@ -1,6 +1,4 @@
-export async function onRequest(context) {
-  const request = context.request;
-  
+export default async (request, context) => {
   if (request.method !== "POST") {
     return new Response("Método não permitido", { status: 405 });
   }
@@ -9,7 +7,7 @@ export async function onRequest(context) {
     const corpo = await request.json();
     const sentimento = corpo.sentimento;
     
-    const apiKey = context.env.GROQ_API_KEY;
+    const apiKey = Netlify.env.get("GROQ_API_KEY");
 
     const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",

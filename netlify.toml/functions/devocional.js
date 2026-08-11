@@ -1,15 +1,14 @@
-export async function onRequest(context) {
-  const request = context.request;
-  
-  if (request.method !== "POST") {
-    return new Response("Método não permitido", { status: 405 });
+exports.handler = async function(event, context) {
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Método não permitido" };
   }
 
   try {
-    const corpo = await request.json();
+    const corpo = JSON.parse(event.body);
     const tema = corpo.tema || "Fé e Esperança";
     
-    const apiKey = context.env.GROQ_API_KEY;
+    
+    const apiKey = process.env.GROQ_API_KEY;
 
     const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -36,16 +35,18 @@ export async function onRequest(context) {
     const dados = await resposta.json();
     const devocionalIA = dados.choices[0].message.content;
 
-    return new Response(JSON.stringify({ devocional: devocionalIA }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" }
-    });
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ devocional: devocionalIA })
+    };
 
   } catch (erro) {
     console.error("Erro na função:", erro);
-    return new Response(JSON.stringify({ erro: "Não foi possível gerar o devocional neste momento." }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" }
-    });
+    return {
+      statusCode: 500,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ erro: "Não foi possível gerar o devocional neste momento." })
+    };
   }
 };
