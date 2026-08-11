@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/buscar", "destination": "/api/buscar" },
+    { "source": "/functions/buscar", "destination": "/api/buscar" },
+    { "source": "/devocional", "destination": "/api/devocional" },
+    { "source": "/functions/devocional", "destination": "/api/devocional" },
+    { "source": "/orar", "destination": "/api/orar" },
+    { "source": "/functions/orar", "destination": "/api/orar" },
+    { "source": "/salmos", "destination": "/api/salmos" },
+    { "source": "/functions/salmos", "destination": "/api/salmos" }
+  ]
+}
