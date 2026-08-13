@@ -3,8 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!document.getElementById('btn-tema')) {
         const btn = document.createElement('button');
         btn.id = 'btn-tema';
-        btn.innerHTML = localStorage.getItem('tema-raizes') === 'escuro' ? '☀️ Claro' : '🌙 Escuro';
-        btn.style.cssText = "position: fixed; top: 15px; left: 20px; z-index: 99999; background: #f8fafc; padding: 8px 12px; border-radius: 20px; cursor: pointer; border: 1px solid #cbd5e1; box-shadow: 0 2px 5px rgba(0,0,0,0.1);";
+        btn.innerHTML = localStorage.getItem('tema-raizes') === 'escuro' ? '☀️' : '🌙';
+        
+        btn.style.cssText = `
+            position: fixed; top: 15px; left: 20px; z-index: 99999; 
+            background: #f8fafc; color: #0f172a; width: 42px; height: 42px; 
+            border-radius: 50%; cursor: pointer; border: 1px solid #cbd5e1; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 18px; 
+            display: flex; align-items: center; justify-content: center; padding: 0;
+        `;
         document.body.appendChild(btn);
 
         if (localStorage.getItem('tema-raizes') === 'escuro') document.body.classList.add('dark-mode');
@@ -13,28 +20,116 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('tema-raizes', isDark ? 'escuro' : 'claro');
-            btn.innerHTML = isDark ? '☀️ Claro' : '🌙 Escuro';
+            btn.innerHTML = isDark ? '☀️' : '🌙';
         });
     }
 
-    
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
+    if (!document.getElementById('btn-progresso')) {
+        const btnProg = document.createElement('a');
+        btnProg.id = 'btn-progresso';
+        btnProg.href = 'progresso.html';
+        btnProg.innerHTML = '📊';
+        btnProg.title = 'Meu Progresso de Leitura';
         
-        
-        if (!document.getElementById('install-banner')) {
-            const banner = document.createElement('div');
-            banner.id = 'install-banner';
-            banner.style.cssText = "position:fixed; bottom:0; left:0; width:100%; background:#2e4a3b; color:white; padding:15px; text-align:center; z-index:100000; box-shadow:0 -4px 10px rgba(0,0,0,0.2);";
-            banner.innerHTML = '📲 Instale o App para acesso rápido! <button id="btn-instalar" style="margin-left:10px; background:white; border:none; padding:5px 10px; cursor:pointer;">Instalar</button>';
-            document.body.appendChild(banner);
+        btnProg.style.cssText = `
+            position: fixed; top: 15px; left: 72px; z-index: 99999; 
+            background: #f8fafc; color: #0f172a; width: 42px; height: 42px; 
+            border-radius: 50%; cursor: pointer; border: 1px solid #cbd5e1; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 18px; 
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+        `;
+        document.body.appendChild(btnProg);
+    }
+
+    const mainElement = document.querySelector('main');
+    if (mainElement && !document.getElementById('container-marcar-lido')) {
+        const pageKey = window.location.pathname.split('/').pop();
+        if (pageKey && pageKey !== 'index.html' && pageKey !== '' && !pageKey.includes('progresso') && !pageKey.includes('favoritos')) {
             
-            document.getElementById('btn-instalar').addEventListener('click', () => {
-                deferredPrompt.prompt();
-                banner.style.display = 'none';
-            });
+            let lidos = JSON.parse(localStorage.getItem('raizes_lidos') || '[]');
+            let jaLido = lidos.includes(pageKey);
+
+            const containerLido = document.createElement('div');
+            containerLido.id = 'container-marcar-lido';
+            containerLido.style.cssText = "margin: 30px 0 10px 0; text-align: left; padding: 0 15px;";
+            
+            const btnLido = document.createElement('button');
+            btnLido.id = 'btn-marcar-lido';
+            btnLido.innerHTML = jaLido ? '✅ Página Concluída (Lido)' : '📖 Marcar página como lida';
+            btnLido.style.cssText = jaLido 
+                ? "background: #dcfce7; border: 1px solid #22c55e; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: bold; color: #166534;"
+                : "background: #f1f5f9; border: 1px solid #cbd5e1; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: bold; color: #1e293b;";
+            
+            btnLido.onclick = () => {
+                let currentLidos = JSON.parse(localStorage.getItem('raizes_lidos') || '[]');
+                if (currentLidos.includes(pageKey)) {
+                    currentLidos = currentLidos.filter(p => p !== pageKey);
+                    localStorage.setItem('raizes_lidos', JSON.stringify(currentLidos));
+                    btnLido.innerHTML = '📖 Marcar página como lida';
+                    btnLido.style.background = '#f1f5f9';
+                    btnLido.style.color = '#1e293b';
+                    btnLido.style.borderColor = '#cbd5e1';
+                } else {
+                    currentLidos.push(pageKey);
+                    localStorage.setItem('raizes_lidos', JSON.stringify(currentLidos));
+                    btnLido.innerHTML = '✅ Página Concluída (Lido)';
+                    btnLido.style.background = '#dcfce7';
+                    btnLido.style.color = '#166534';
+                    btnLido.style.borderColor = '#22c55e';
+                }
+            };
+
+            containerLido.appendChild(btnLido);
+            mainElement.appendChild(containerLido);
+        }
+    }
+
+    const observer = new MutationObserver(() => {
+        const resultadoTexto = document.getElementById('resultadoTexto') || document.getElementById('resultado');
+        if (resultadoTexto && resultadoTexto.innerText.trim().length > 10 && !document.getElementById('barra-acoes')) {
+            
+            const barra = document.createElement('div');
+            barra.id = 'barra-acoes';
+            barra.style.cssText = "margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 15px;";
+            
+            const btnOuvir = document.createElement('button');
+            btnOuvir.innerHTML = '🔊 Ouvir';
+            btnOuvir.style.cssText = "background: #f1f5f9; border: 1px solid #cbd5f1; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold; color: #1e293b;";
+            btnOuvir.onclick = () => {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance(resultadoTexto.innerText);
+                    utterance.lang = 'pt-BR';
+                    window.speechSynthesis.speak(utterance);
+                }
+            };
+
+            const btnWpp = document.createElement('button');
+            btnWpp.innerHTML = '📱 Compartilhar';
+            btnWpp.style.cssText = "background: #25d366; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold;";
+            btnWpp.onclick = () => {
+                const texto = encodeURIComponent("🌱 Raízes das Escrituras:\n\n" + resultadoTexto.innerText);
+                window.open(`https://api.whatsapp.com/send?text=${texto}`, '_blank');
+            };
+
+            const btnFav = document.createElement('button');
+            btnFav.innerHTML = '⭐ Favoritar';
+            btnFav.style.cssText = "background: #fef08a; border: 1px solid #eab308; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold; color: #854d0e;";
+            btnFav.onclick = () => {
+                let favoritos = JSON.parse(localStorage.getItem('raizes_favoritos') || '[]');
+                favoritos.push(resultadoTexto.innerText);
+                localStorage.setItem('raizes_favoritos', JSON.stringify(favoritos));
+                alert('✨ Mensagem salva nos favoritos com sucesso!');
+            };
+
+            barra.appendChild(btnOuvir);
+            barra.appendChild(btnWpp);
+            barra.appendChild(btnFav);
+            resultadoTexto.parentNode.appendChild(barra);
         }
     });
+
+    if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
 });
