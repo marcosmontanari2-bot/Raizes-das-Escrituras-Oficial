@@ -14,7 +14,7 @@ module.exports = async function handler(req, res) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                model: 'llama3-8b-8192',
+                model: 'llama-3.1-8b-instant',
                 messages: [
                     { role: 'system', content: 'Você é um intercessor cristão.' },
                     { role: 'user', content: 'Escreva uma oração curta e reconfortante sobre: ' + pedido }
