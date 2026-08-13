@@ -1,30 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const mainElement = document.querySelector('main');
+    const footerElement = document.querySelector('footer');
 
     if (!document.getElementById('floating-toolbar')) {
         const toolbar = document.createElement('div');
         toolbar.id = 'floating-toolbar';
         toolbar.style.cssText = `
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            z-index: 99999; 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(5px);
-            padding: 8px 12px; 
+            margin: 30px auto; 
+            max-width: 320px;
+            background: #28533b; 
+            padding: 10px 15px; 
             border-radius: 30px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
-            border: 1px solid #cbd5e1; 
+            border: 1px solid #1e3b29; 
             display: flex; 
-            gap: 10px; 
+            justify-content: center;
+            gap: 15px; 
             align-items: center;
         `;
 
         const btnStyle = `
-            background: #f8fafc; 
+            background: #ffffff; 
             color: #0f172a; 
-            width: 40px; 
-            height: 40px; 
+            width: 42px; 
+            height: 42px; 
             border-radius: 50%; 
             cursor: pointer; 
             border: 1px solid #cbd5e1; 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             align-items: center; 
             justify-content: center; 
             padding: 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-decoration: none;
         `;
 
@@ -69,10 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
         toolbar.appendChild(btnTema);
         toolbar.appendChild(btnProg);
         toolbar.appendChild(btnFav);
-        document.body.appendChild(toolbar);
+
+        if (footerElement) {
+            footerElement.parentNode.insertBefore(toolbar, footerElement);
+        } else if (mainElement) {
+            mainElement.appendChild(toolbar);
+        }
     }
 
-    const mainElement = document.querySelector('main');
     if (mainElement && !document.getElementById('container-marcar-lido')) {
         const pageKey = window.location.pathname.split('/').pop();
         if (pageKey && pageKey !== 'index.html' && pageKey !== '' && !pageKey.includes('progresso') && !pageKey.includes('favoritos')) {
@@ -88,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnLido.id = 'btn-marcar-lido';
             btnLido.innerHTML = jaLido ? '✅ Página Concluída (Lido)' : '📖 Marcar página como lida';
             btnLido.style.cssText = jaLido 
-                ? "background: #dcfce7; border: 1px solid #22c55e; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: bold; color: #166534;"
+                ? "background: #dcfce7; border: 1px solid #021609; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: bold; color: #166534;"
                 : "background: #f1f5f9; border: 1px solid #cbd5e1; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: bold; color: #1e293b;";
             
             btnLido.onclick = () => {
@@ -106,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btnLido.innerHTML = '✅ Página Concluída (Lido)';
                     btnLido.style.background = '#dcfce7';
                     btnLido.style.color = '#166534';
-                    btnLido.style.borderColor = '#22c55e';
+                    btnLido.style.borderColor = '#02250f';
                 }
             };
 
@@ -142,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const btnWpp = document.createElement('button');
             btnWpp.innerHTML = '📱 Compartilhar';
-            btnWpp.style.cssText = "background: #25d366; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold;";
+            btnWpp.style.cssText = "background: #011a0a; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold;";
             btnWpp.onclick = () => {
                 const texto = encodeURIComponent("🌱 Raízes das Escrituras:\n\n" + resultadoTexto.innerText);
                 window.open(`https://api.whatsapp.com/send?text=${texto}`, '_blank');
@@ -150,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const btnFav = document.createElement('button');
             btnFav.innerHTML = '⭐ Favoritar';
-            btnFav.style.cssText = "background: #fef08a; border: 1px solid #eab308; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold; color: #854d0e;";
+            btnFav.style.cssText = "background: #dcfce7; border: 1px solid #043f1a; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold; color: #166534;";
             btnFav.onclick = () => {
                 let favoritos = JSON.parse(localStorage.getItem('raizes_favoritos') || '[]');
                 favoritos.push(resultadoTexto.innerText);
