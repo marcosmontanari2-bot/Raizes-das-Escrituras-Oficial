@@ -340,3 +340,41 @@ blockquote {
     transform: scale(1.2); 
     transform-origin: top center; 
 }
+
+body.dark-mode {
+    background-color: #0f172a !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .caixa-interativa, 
+body.dark-mode .resultado-caixa,
+body.dark-mode header,
+body.dark-mode div[style*="background-color: #f8fafc"] {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, 
+body.dark-mode h4, body.dark-mode p, body.dark-mode strong, 
+body.dark-mode a {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .input-sentimento {
+    background-color: #0f172a !important;
+    color: #fff !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode div[style*="background: #e2e8f0"] {
+    background: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .btn-voltar {
+    color: #a7f3d0 !important; /* Verde mais claro para ler melhor no escuro */
+}
+
+
+body.dark-mode .texto-escuro { color: #f8fafc !important; }

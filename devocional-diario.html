@@ -137,49 +137,39 @@
 
     <script>
         async function gerarDevocional() {
-            const inputElemento = document.getElementById('temaDevocional');
-            const temaUsuario = inputElemento.value.trim() || "Renovação Espiritual";
-            const divResultado = document.getElementById('resultado');
-            const devocionalTexto = document.getElementById('devocionalTexto');
+            const input = document.getElementById('temaDevocional');
             const botao = document.getElementById('btnAcao');
+            const divResultado = document.getElementById('resultado');
+            const textoResultado = document.getElementById('devocionalTexto');
 
             botao.disabled = true;
-            botao.innerText = "⏳ Preparando o Devocional...";
-            divResultado.style.opacity = '0';
+            botao.innerText = "⏳ Gerando...";
+            textoResultado.innerText = "Conectando com a Inteligência Artificial...";
+            divResultado.style.display = 'block';
+            divResultado.style.opacity = '1';
 
             try {
-                
                 const resposta = await fetch('/api/devocional', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tema: temaUsuario })
+                    body: JSON.stringify({ tema: input.value })
                 });
 
+                const dados = await resposta.json();
+
                 if (!resposta.ok) {
-                    throw new Error("Erro de comunicação com o servidor.");
+                    throw new Error(dados.error || "Erro de comunicação com o servidor.");
                 }
 
-                const dados = await resposta.json();
-                devocionalTexto.innerText = dados.devocional;
-                
-                divResultado.style.display = 'block';
-                setTimeout(() => {
-                    divResultado.style.opacity = '1';
-                }, 50);
+                textoResultado.innerText = dados.devocional;
 
             } catch (erro) {
-                console.error(erro);
-                devocionalTexto.innerText = "“Confie no Senhor de todo o seu coração e não se apoie em sua própria inteligência; reconheça o Senhor em todos os seus caminhos, e ele endireitará as suas veredas.” - Provérbios 3:5-6\n\nQue hoje o seu coração seja renovado pela certeza de que Deus está guiando cada um dos seus passos.";
-                
-                divResultado.style.display = 'block';
-                setTimeout(() => {
-                    divResultado.style.opacity = '1';
-                }, 50);
+                textoResultado.innerText = "❌ ERRO: " + erro.message;
             } finally {
                 botao.disabled = false;
                 botao.innerText = "✨ Gerar Novo Devocional";
             }
         }
     </script>
-</body>
+<script src="ui-config.js"></script></body>
 </html>

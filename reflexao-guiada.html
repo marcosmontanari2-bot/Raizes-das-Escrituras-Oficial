@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Reflexão Guiada | Raízes das Escrituras</title>
-    <meta name="description" content="Descreva como você se sente e encontre uma palavra bíblica de conforto e encorajamento para o seu momento atual.">
-    <meta name="robots" content="index, follow">
-    
-    <meta property="og:title" content="Reflexão Guiada | Raízes das Escrituras">
-    <meta property="og:description" content="Descreva como você se sente e encontre uma palavra bíblica de conforto e encorajamento para o seu momento atual.">
-
+    <meta name="description" content="Receba um versículo bíblico e uma palavra de conforto para o seu momento.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4304266101909031" crossorigin="anonymous"></script>
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
     <script>
-         window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-8TCP5MM38F');
@@ -28,13 +20,13 @@
     <style>
         .ferramenta-reflexao { max-width: 800px; margin: 20px auto 40px auto; text-align: center; padding: 20px; }
         .caixa-interativa { background-color: #fcfcfc; border-radius: 8px; padding: 40px 20px; margin: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .input-sentimento { width: 90%; max-width: 500px; padding: 15px; margin: 20px 0; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.3s ease; }
+        .input-sentimento { width: 90%; max-width: 550px; padding: 15px; margin: 20px 0; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.3s ease; box-sizing: border-box; }
         .input-sentimento:focus { border-color: #2e4a3b; }
         .btn-buscar { background-color: #2e4a3b; color: white; padding: 15px 35px; border: none; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease; }
         .btn-buscar:hover { background-color: #1b3327; }
         .btn-buscar:disabled { background-color: #94a3b8; cursor: not-allowed; }
         .resultado-caixa { margin-top: 40px; padding: 30px; border-radius: 8px; background: white; border-left: 5px solid #2e4a3b; display: none; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.05); opacity: 0; transition: opacity 0.5s ease; }
-        .versiculo-texto { margin-top: 0; font-size: 1.4rem; font-style: italic; color: #1e293b; line-height: 1.6; }
+        .resultado-texto { margin-top: 0; font-size: 1.15rem; color: #1e293b; line-height: 1.8; white-space: pre-wrap; font-style: italic; }
     </style>
 <link rel="manifest" href="manifest.json">
 <script>
@@ -56,13 +48,12 @@
 
     <header>
         <div class="cabecalho-centralizado">
-            <h1>🕊️ Reflexão Guiada</h1>
+            <h1>🧭 Reflexão Guiada</h1>
             <a href="refletir.html" class="btn-voltar">Voltar para reflexões</a>
         </div>
     </header>
 
     <main>
-        
         <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
             <a href="index.html" style="color: #2e4a3b; text-decoration: none;">🏠 Home</a> 
             <span style="margin: 0 5px;">&gt;</span> 
@@ -72,18 +63,16 @@
         </nav>
 
         <div class="ferramenta-reflexao">
-            <h2>O que você sente hoje?</h2>
-            <p>Descreva como você está se sentindo agora e permita que a Palavra de Deus traga consolo, direção e esperança para o seu momento atual.</p>
-            
+            <h2>O que está afligindo o seu coração hoje?</h2>
+            <p>Escreva o que você está sentindo e receba um versículo e uma palavra de conforto para iluminar o seu caminho.</p>
             <div class="caixa-interativa">
-                <input type="text" id="estadoEmocional" class="input-sentimento" placeholder="Ex: Estou me sentindo triste e sozinho..." onkeydown="if(event.key === 'Enter'){ buscarVersiculo(); }">
+                <input type="text" id="inputSentimento" class="input-sentimento" placeholder="Ex: Estou me sentindo muito ansioso e preocupado com amanhã..." onkeydown="if(event.key === 'Enter'){ buscarVersiculo(); }">
                 <br>
                 <button onclick="buscarVersiculo()" class="btn-buscar" id="btnAcao">
-                    📖 Receber uma Palavra
+                    ✨ Buscar Reflexão
                 </button>
-                
                 <div id="resultado" class="resultado-caixa">
-                    <h3 id="versiculoTexto" class="versiculo-texto"></h3>
+                    <div id="resultadoTexto" class="resultado-texto"></div>
                 </div>
             </div>
         </div>
@@ -91,7 +80,6 @@
         <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
         
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
-            
             <div style="flex: 1; min-width: 250px; background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2e4a3b; text-align: left;">
                 <h3 style="font-size: 1.1rem; color: #333; margin-top: 0;">Explore outras áreas:</h3>
                 <ul style="list-style-type: none; padding: 0; margin-top: 10px; line-height: 1.8;">
@@ -102,21 +90,10 @@
 
             <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
                 <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
-                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site has edificado a sua vida, considere apoiar a sua manutenção.</p>
-                
-                <p style="margin-bottom: 5px; color: #333; font-size: 0.9rem;"><strong>Chave PIX (Celular):</strong></p>
-                <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;" title="Clique para copiar">
-                    31995077541
-                </div>
-                
-                <div style="margin-top: 15px; font-size: 0.85rem; color: #475569;">
-                    <strong>Contato / E-mail:</strong><br>
-                    <a href="mailto:marcosmontanari2@gmail.com" style="color: #2e4a3b; text-decoration: underline; font-weight: bold;">marcosmontanari2@gmail.com</a>
-                </div>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site tem edificado a sua vida, considere apoiar a sua manutenção.</p>
+                <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;">31995077541</div>
             </div>
-
         </div>
-
     </main>
 
     <footer>
@@ -126,63 +103,48 @@
                 <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
                 <a href="politica-de-privacidade.html">Política de Privacidade</a>
             </div>
-            
             <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
         </div>
     </footer>
 
     <script>
         async function buscarVersiculo() {
-            const inputElemento = document.getElementById('estadoEmocional');
-            const inputUsuario = inputElemento.value.trim();
+            const inputElemento = document.getElementById('inputSentimento');
+            const temaUsuario = inputElemento.value.trim() || "Paz";
             const divResultado = document.getElementById('resultado');
-            const versiculoTexto = document.getElementById('versiculoTexto');
+            const resultadoTexto = document.getElementById('resultadoTexto');
             const botao = document.getElementById('btnAcao');
-
-            if (!inputUsuario) {
-                alert("Por favor, digite como você está se sentindo.");
-                return;
-            }
-
-            botao.disabled = true;
-            botao.innerText = "⏳ Buscando na Palavra...";
-            divResultado.style.opacity = '0';
-
-            try {
             
+            botao.disabled = true;
+            botao.innerText = "⏳ Buscando Palavra...";
+            resultadoTexto.innerText = "Conectando com a Inteligência Artificial...";
+            divResultado.style.opacity = '1';
+            divResultado.style.display = 'block';
+            
+            try {
+                
                 const resposta = await fetch('/api/buscar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ sentimento: inputUsuario })
+                    body: JSON.stringify({ sentimento: temaUsuario })
                 });
-
-                if (!resposta.ok) {
-                    throw new Error("Erro de comunicação com o servidor.");
-                }
-
-                const dados = await resposta.json();
-
-                versiculoTexto.innerText = dados.versiculo;
                 
-                divResultado.style.display = 'block';
-                setTimeout(() => {
-                    divResultado.style.opacity = '1';
-                }, 50);
-
+                const dados = await resposta.json();
+                
+                if (!resposta.ok) {
+                    throw new Error(dados.error || "Erro de comunicação com o servidor.");
+                }
+                
+                resultadoTexto.innerText = dados.resultado;
+                
             } catch (erro) {
                 console.error(erro);
-                versiculoTexto.innerText = "“O Senhor é refúgio para os oprimidos, uma torre segura na hora da adversidade.” - Salmos 9:9";
-                
-                divResultado.style.display = 'block';
-                setTimeout(() => {
-                    divResultado.style.opacity = '1';
-                }, 50);
+                resultadoTexto.innerText = "❌ ERRO: " + erro.message;
             } finally {
                 botao.disabled = false;
-                botao.innerText = "📖 Receber Nova Palavra";
-                inputElemento.value = ""; 
+                botao.innerText = "✨ Buscar Outra Reflexão";
             }
         }
     </script>
-</body>
+<script src="ui-config.js"></script></body>
 </html>

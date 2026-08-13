@@ -125,33 +125,35 @@
             
             botao.disabled = true;
             botao.innerText = "⏳ Buscando nos Salmos...";
-            divResultado.style.opacity = '0';
+            meditacaoTexto.innerText = "Conectando com a Inteligência Artificial...";
+            divResultado.style.opacity = '1';
+            divResultado.style.display = 'block';
             
             try {
-            
                 const resposta = await fetch('/api/salmos', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tema: temaUsuario })
                 });
                 
-                if (!resposta.ok) throw new Error("Erro de comunicação");
-                
                 const dados = await resposta.json();
-                meditacaoTexto.innerText = dados.meditacao;
                 
-                divResultado.style.display = 'block';
-                setTimeout(() => { divResultado.style.opacity = '1'; }, 50);
+                if (!resposta.ok) {
+                    throw new Error(dados.error || "Erro de comunicação com o servidor.");
+                }
+                
+            
+                meditacaoTexto.innerText = dados.resultado;
+                
             } catch (erro) {
                 console.error(erro);
-                meditacaoTexto.innerText = "“O Senhor é o meu pastor; de nada terei falta...” — Salmos 23:1";
-                divResultado.style.display = 'block';
-                setTimeout(() => { divResultado.style.opacity = '1'; }, 50);
+                
+                meditacaoTexto.innerText = "❌ ERRO: " + erro.message;
             } finally {
                 botao.disabled = false;
                 botao.innerText = "📜 Nova Meditação nos Salmos";
             }
         }
     </script>
-</body>
+<script src="ui-config.js"></script></body>
 </html>

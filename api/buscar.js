@@ -1,28 +1,36 @@
-export const config = { runtime: 'edge' };
+module.exports = async function handler(req, res) {
+    if (req.method !== 'POST') return res.status(405).json({ error: 'Método não permitido' });
+    
+    try {
+        const apiKey = process.env.GROQ_API_KEY;
+        if (!apiKey) return res.status(500).json({ error: 'Chave da API ausente.' });
 
-export default async function (request) {
-  if (request.method !== "POST") return new Response("Método não permitido", { status: 405 });
-  try {
-    const corpo = await request.json();
-    const sentimento = corpo.sentimento;
-    const apiKey = process.env.GROQ_API_KEY;
 
-    const resposta = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: { "Authorization": `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "llama3-70b-8192",
-        messages: [
-          { role: "system", content: "Você é um sábio conselheiro bíblico. O usuário dirá o que está sentindo. Retorne APENAS um único versículo bíblico da tradução NVI que conforte, oriente ou encoraje essa pessoa, seguido da referência bíblica. Exemplo do formato desejado: 'O Senhor é o meu pastor; de nada terei falta.' - Salmos 23:1. Não escreva mais nenhuma palavra, introdução ou explicação. Apenas o versículo e a referência." },
-          { role: "user", content: sentimento }
-        ],
-        temperature: 0.6
-      })
-    });
-    const dados = await resposta.json();
-    const versiculoIA = dados.choices[0].message.content;
-    return new Response(JSON.stringify({ versiculo: versiculoIA }), { status: 200, headers: { "Content-Type": "application/json" } });
-  } catch (erro) {
-    return new Response(JSON.stringify({ erro: "Não foi possível buscar a Palavra neste momento." }), { status: 500, headers: { "Content-Type": "application/json" } });
-  }
-}
+        const sentimento = req.body?.sentimento || req.body?.tema || 'Paz';
+        
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${apiKey}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                model: 'llama3-8b-8192',
+                messages: [
+                    { role: 'system', content: 'Você é um conselheiro bíblico.' },
+                    { role: 'user', content: 'Responda apenas com um versículo bíblico e uma pequena frase de consolo para: ' + sentimento }
+                ]
+            })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error?.message || 'Erro na API do Groq');
+
+        res.status(200).json({ 
+            versiculo: data.choices[0].message.content,
+            resultado: data.choices[0].message.content
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};

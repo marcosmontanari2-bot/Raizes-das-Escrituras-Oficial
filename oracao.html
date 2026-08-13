@@ -15,7 +15,7 @@
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
     <script>
-         window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-8TCP5MM38F');
@@ -143,45 +143,39 @@
                 return;
             }
 
+        
             botao.disabled = true;
             botao.innerText = "⏳ Escrevendo oração...";
-            divResultado.style.opacity = '0';
+            oracaoTexto.innerText = "Conectando com a Inteligência Artificial...";
+            divResultado.style.display = 'block';
+            divResultado.style.opacity = '1';
 
             try {
-            
                 const resposta = await fetch('/api/orar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ sentimento: inputUsuario })
+                    body: JSON.stringify({ pedido: inputUsuario })
                 });
-
-                if (!resposta.ok) {
-                    throw new Error("Erro de comunicação com o servidor.");
-                }
 
                 const dados = await resposta.json();
 
-                oracaoTexto.innerText = dados.oracao;
                 
-                divResultado.style.display = 'block';
-                setTimeout(() => {
-                    divResultado.style.opacity = '1';
-                }, 50);
+                if (!resposta.ok) {
+                    throw new Error(dados.error || "Erro de comunicação com o servidor.");
+                }
+
+            
+                oracaoTexto.innerText = dados.resultado;
 
             } catch (erro) {
-                console.error(erro);
     
-                oracaoTexto.innerText = "Senhor Deus, neste momento entrego a minha vida em Tuas mãos. Peço que o Seu Espírito Santo venha me consolar, me dar direção e me encher com a Tua paz que excede todo entendimento. Que a Tua vontade, que é boa, perfeita e agradável, se cumpra em minha vida. Em nome de Jesus, amém.";
-                
-                divResultado.style.display = 'block';
-                setTimeout(() => {
-                    divResultado.style.opacity = '1';
-                }, 50);
+                oracaoTexto.innerText = "❌ ERRO: " + erro.message;
+                console.error(erro);
             } finally {
                 botao.disabled = false;
                 botao.innerText = "🙏 Gerar Nova Oração";
             }
         }
     </script>
-</body>
+<script src="ui-config.js"></script></body>
 </html>
