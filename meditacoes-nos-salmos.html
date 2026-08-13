@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
     
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4304266101909031" crossorigin="anonymous"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
@@ -98,7 +99,6 @@
             <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
                 <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
                 <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site tem edificado a sua vida, considere apoiar a sua manutenção.</p>
-                <p style="margin-bottom: 5px; color: #333; font-size: 0.9rem;"><strong>Chave PIX (Celular):</strong></p>
                 <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;">31995077541</div>
             </div>
         </div>
@@ -122,22 +122,29 @@
             const divResultado = document.getElementById('resultado');
             const meditacaoTexto = document.getElementById('meditacaoTexto');
             const botao = document.getElementById('btnAcao');
+            
             botao.disabled = true;
             botao.innerText = "⏳ Buscando nos Salmos...";
             divResultado.style.opacity = '0';
+            
             try {
-                const resposta = await fetch('/.netlify/functions/salmos', {
+            
+                const resposta = await fetch('/api/salmos', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tema: temaUsuario })
                 });
-                if (!resposta.ok) throw new Error("Erro");
+                
+                if (!resposta.ok) throw new Error("Erro de comunicação");
+                
                 const dados = await resposta.json();
                 meditacaoTexto.innerText = dados.meditacao;
+                
                 divResultado.style.display = 'block';
                 setTimeout(() => { divResultado.style.opacity = '1'; }, 50);
             } catch (erro) {
-                meditacaoTexto.innerText = "“O Senhor é o meu pastor; de nada terei falta...”";
+                console.error(erro);
+                meditacaoTexto.innerText = "“O Senhor é o meu pastor; de nada terei falta...” — Salmos 23:1";
                 divResultado.style.display = 'block';
                 setTimeout(() => { divResultado.style.opacity = '1'; }, 50);
             } finally {

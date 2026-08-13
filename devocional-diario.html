@@ -87,7 +87,7 @@
         </div>
 
         <div style="text-align: center; margin: 30px 0;">
-            <a href="https://www.youtube.com/results?search_query=devocional+diário" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background-color: #2e4a3b; color: white; padding: 14px 28px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 1rem; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#1b3327'" onmouseout="this.style.backgroundColor='#2e4a3b'">
+            <a href="https://www.youtube.com/results?search_query=devocional+diário" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background-color: #2e4a3b; color: white; padding: 14px 28px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 1rem; transition: background-color 0.3s ease;">
                 📺 Canal de Devocional no YouTube
             </a>
         </div>
@@ -148,7 +148,8 @@
             divResultado.style.opacity = '0';
 
             try {
-                const resposta = await fetch('/.netlify/functions/devocional', {
+                
+                const resposta = await fetch('/api/devocional', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tema: temaUsuario })

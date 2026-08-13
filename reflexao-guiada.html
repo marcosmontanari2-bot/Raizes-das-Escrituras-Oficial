@@ -102,7 +102,7 @@
 
             <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
                 <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
-                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site tem edificado a sua vida, considere apoiar a sua manutenção.</p>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site has edificado a sua vida, considere apoiar a sua manutenção.</p>
                 
                 <p style="margin-bottom: 5px; color: #333; font-size: 0.9rem;"><strong>Chave PIX (Celular):</strong></p>
                 <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;" title="Clique para copiar">
@@ -149,8 +149,8 @@
             divResultado.style.opacity = '0';
 
             try {
-
-                const resposta = await fetch('/.netlify/functions/buscar', {
+            
+                const resposta = await fetch('/api/buscar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ sentimento: inputUsuario })
@@ -178,10 +178,9 @@
                     divResultado.style.opacity = '1';
                 }, 50);
             } finally {
-
                 botao.disabled = false;
                 botao.innerText = "📖 Receber Nova Palavra";
-                inputElemento.value = ""; // Limpa a caixinha
+                inputElemento.value = ""; 
             }
         }
     </script>
