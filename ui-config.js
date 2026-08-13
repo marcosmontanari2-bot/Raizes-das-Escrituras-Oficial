@@ -41,6 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(btnProg);
     }
 
+    if (!document.getElementById('btn-favoritos')) {
+        const btnFav = document.createElement('a');
+        btnFav.id = 'btn-favoritos';
+        btnFav.href = 'favoritos.html';
+        btnFav.innerHTML = '⭐';
+        btnFav.title = 'Meus Favoritos';
+        
+        btnFav.style.cssText = `
+            position: fixed; top: 15px; left: 124px; z-index: 99999; 
+            background: #f8fafc; color: #0f172a; width: 42px; height: 42px; 
+            border-radius: 50%; cursor: pointer; border: 1px solid #cbd5e1; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 18px; 
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+        `;
+        document.body.appendChild(btnFav);
+    }
+
     const mainElement = document.querySelector('main');
     if (mainElement && !document.getElementById('container-marcar-lido')) {
         const pageKey = window.location.pathname.split('/').pop();
@@ -98,7 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
             btnOuvir.onclick = () => {
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
-                    const utterance = new SpeechSynthesisUtterance(resultadoTexto.innerText);
+                    
+                    let textoLimpo = resultadoTexto.innerText
+                        .replace(/[*#_`~>]/g, '')
+                        .replace(/\n+/g, '. ');
+
+                    const utterance = new SpeechSynthesisUtterance(textoLimpo);
                     utterance.lang = 'pt-BR';
                     window.speechSynthesis.speak(utterance);
                 }
