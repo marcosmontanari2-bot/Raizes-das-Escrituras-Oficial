@@ -1,61 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    if (!document.getElementById('btn-tema')) {
-        const btn = document.createElement('button');
-        btn.id = 'btn-tema';
-        btn.innerHTML = localStorage.getItem('tema-raizes') === 'escuro' ? '☀️' : '🌙';
-        
-        btn.style.cssText = `
-            position: fixed; top: 15px; left: 20px; z-index: 99999; 
-            background: #f8fafc; color: #0f172a; width: 42px; height: 42px; 
-            border-radius: 50%; cursor: pointer; border: 1px solid #cbd5e1; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 18px; 
-            display: flex; align-items: center; justify-content: center; padding: 0;
+
+    if (!document.getElementById('floating-toolbar')) {
+        const toolbar = document.createElement('div');
+        toolbar.id = 'floating-toolbar';
+        toolbar.style.cssText = `
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            z-index: 99999; 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(5px);
+            padding: 8px 12px; 
+            border-radius: 30px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+            border: 1px solid #cbd5e1; 
+            display: flex; 
+            gap: 10px; 
+            align-items: center;
         `;
-        document.body.appendChild(btn);
+
+        const btnStyle = `
+            background: #f8fafc; 
+            color: #0f172a; 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            border: 1px solid #cbd5e1; 
+            font-size: 18px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-decoration: none;
+        `;
+
+        const btnTema = document.createElement('button');
+        btnTema.id = 'btn-tema';
+        btnTema.innerHTML = localStorage.getItem('tema-raizes') === 'escuro' ? '☀️' : '🌙';
+        btnTema.title = 'Alternar Tema';
+        btnTema.style.cssText = btnStyle;
 
         if (localStorage.getItem('tema-raizes') === 'escuro') document.body.classList.add('dark-mode');
 
-        btn.addEventListener('click', () => {
+        btnTema.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('tema-raizes', isDark ? 'escuro' : 'claro');
-            btn.innerHTML = isDark ? '☀️' : '🌙';
+            btnTema.innerHTML = isDark ? '☀️' : '🌙';
         });
-    }
 
-    if (!document.getElementById('btn-progresso')) {
         const btnProg = document.createElement('a');
         btnProg.id = 'btn-progresso';
         btnProg.href = 'progresso.html';
         btnProg.innerHTML = '📊';
         btnProg.title = 'Meu Progresso de Leitura';
-        
-        btnProg.style.cssText = `
-            position: fixed; top: 15px; left: 72px; z-index: 99999; 
-            background: #f8fafc; color: #0f172a; width: 42px; height: 42px; 
-            border-radius: 50%; cursor: pointer; border: 1px solid #cbd5e1; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 18px; 
-            display: flex; align-items: center; justify-content: center; text-decoration: none;
-        `;
-        document.body.appendChild(btnProg);
-    }
+        btnProg.style.cssText = btnStyle;
 
-    if (!document.getElementById('btn-favoritos')) {
         const btnFav = document.createElement('a');
         btnFav.id = 'btn-favoritos';
         btnFav.href = 'favoritos.html';
         btnFav.innerHTML = '⭐';
         btnFav.title = 'Meus Favoritos';
-        
-        btnFav.style.cssText = `
-            position: fixed; top: 15px; left: 124px; z-index: 99999; 
-            background: #f8fafc; color: #0f172a; width: 42px; height: 42px; 
-            border-radius: 50%; cursor: pointer; border: 1px solid #cbd5e1; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 18px; 
-            display: flex; align-items: center; justify-content: center; text-decoration: none;
-        `;
-        document.body.appendChild(btnFav);
+        btnFav.style.cssText = btnStyle;
+
+        toolbar.appendChild(btnTema);
+        toolbar.appendChild(btnProg);
+        toolbar.appendChild(btnFav);
+        document.body.appendChild(toolbar);
     }
 
     const mainElement = document.querySelector('main');
