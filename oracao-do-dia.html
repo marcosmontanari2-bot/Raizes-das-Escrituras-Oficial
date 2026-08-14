@@ -44,6 +44,23 @@
             <p id="texto-oracao" style="font-size: 1.3rem; font-style: italic; color: #2e4a3b; line-height: 1.6; margin-bottom: 25px;">
                 Carregando a oração de hoje...
             </p>
+
+            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+                
+                <button id="btn-ouvir" style="padding: 10px 20px; background-color: #2e4a3b; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-family: inherit;">
+                    🔊 Ouvir
+                </button>
+
+                <button id="btn-salvar" style="padding: 10px 20px; background-color: #011f10; color: #2e4a3b; border: 1px solid #cbd5e1; border-radius: 5px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-family: inherit;">
+                    💾 Copiar
+                </button>
+                
+                <button id="btn-compartilhar" style="padding: 10px 20px; background-color: #012c11; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-family: inherit;">
+                    📲 Compartilhar
+                </button>
+
+            </div>
+
             <a href="index.html" style="padding: 10px 20px; background-color: #2e4a3b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 0.95rem;">Voltar para o Início</a>
         </div>
 
@@ -123,6 +140,85 @@
         } else {
             document.getElementById('texto-oracao').innerText = "ERRO: Link do Google Docs inválido.";
         }
+
+        const btnOuvir = document.getElementById('btn-ouvir');
+        let falando = false;
+        let narrador = window.speechSynthesis;
+        let voz;
+
+        btnOuvir.addEventListener('click', () => {
+            const textoOracao = document.getElementById('texto-oracao').innerText;
+
+            if (textoOracao.includes("Carregando") || textoOracao.includes("Erro") || textoOracao.includes("vazio")) return;
+
+            if (!falando) {
+                voz = new SpeechSynthesisUtterance(textoOracao);
+                voz.lang = 'pt-BR'; 
+                voz.rate = 0.9;     
+                voz.pitch = 1.0;    
+
+                voz.onend = () => {
+                    falando = false;
+                    btnOuvir.innerHTML = '🔊 Ouvir';
+                    btnOuvir.style.backgroundColor = '#2e4a3b'; 
+                };
+
+                narrador.speak(voz);
+                falando = true;
+                
+                btnOuvir.innerHTML = '⏹️ Parar';
+                btnOuvir.style.backgroundColor = '#d9534f'; 
+                
+            } else {
+                narrador.cancel();
+                falando = false;
+                btnOuvir.innerHTML = '🔊 Ouvir';
+                btnOuvir.style.backgroundColor = '#2e4a3b'; 
+            }
+        });
+
+        window.addEventListener('beforeunload', () => {
+            if (narrador) { narrador.cancel(); }
+        });
+
+        document.getElementById('btn-salvar').addEventListener('click', () => {
+            const textoOracao = document.getElementById('texto-oracao').innerText;
+            
+            if (textoOracao.includes("Carregando") || textoOracao.includes("Erro") || textoOracao.includes("vazio")) return;
+
+            navigator.clipboard.writeText(textoOracao).then(() => {
+                const btn = document.getElementById('btn-salvar');
+                btn.innerHTML = '✅ Copiado!';
+                btn.style.backgroundColor = '#dcfce3';
+                
+                setTimeout(() => {
+                    btn.innerHTML = '💾 Copiar';
+                    btn.style.backgroundColor = '#f1f5f9';
+                }, 2000);
+            }).catch(err => {
+                alert('Erro ao copiar a oração.');
+            });
+        });
+
+        document.getElementById('btn-compartilhar').addEventListener('click', async () => {
+            const textoOracao = document.getElementById('texto-oracao').innerText;
+            
+            if (textoOracao.includes("Carregando") || textoOracao.includes("Erro") || textoOracao.includes("vazio")) return; 
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Oração do Dia - Raízes das Escrituras',
+                        text: textoOracao + '\n\n🙏 Leia mais em: ' + window.location.href,
+                    });
+                } catch (err) {
+                    console.log('Compartilhamento cancelado.');
+                }
+            } else {
+                alert('Seu navegador não suporta compartilhamento direto. Use o botão de Copiar!');
+            }
+        });
+
     </script>
     
     <script src="ui-config.js"></script>
