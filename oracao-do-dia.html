@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Oração do Dia | Raízes das Escrituras</title>
+    <meta name="description" content="Conheça as raízes, compreenda as Escrituras e viva seus ensinamentos.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4304266101909031" crossorigin="anonymous"></script>
+
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.VERTICAL}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <header class="hero">
+        <div class="hero-conteudo">
+            <img src="logo.jpeg" alt="Logo Raízes das Escrituras" class="logo-site">
+            <h1>Oração do Dia</h1>
+        </div>
+    </header>
+
+    <main style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <p id="texto-oracao" style="font-size: 1.3rem; font-style: italic; color: #2e4a3b; line-height: 1.6; margin-bottom: 25px;">
+                Carregando a oração de hoje...
+            </p>
+            <a href="index.html" style="padding: 10px 20px; background-color: #2e4a3b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 0.95rem;">Voltar para o Início</a>
+        </div>
+
+        <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 40px;">
+            
+            <div style="flex: 1; min-width: 280px; padding: 25px; border: 1px solid #cbd5e1; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <h4 style="font-size: 1.2rem; color: #2e4a3b; margin-top: 0; margin-bottom: 15px;">Explore outras áreas:</h4>
+                <p style="margin-bottom: 10px; font-size: 0.95rem;"><a href="conhecer-escrituras.html" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">Biblioteca Bíblica ➡️</a> Conhecer as Escrituras</p>
+                <p style="margin: 0; font-size: 0.95rem;"><a href="aprofundar.html" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">Aprofundamento 📚</a> Estudos Temáticos</p>
+            </div>
+
+            <div style="flex: 1; min-width: 280px; padding: 25px; border: 1px dashed #cbd5e1; background-color: #f8fafc; border-radius: 8px; text-align: center;">
+                <h4 style="font-size: 1.2rem; color: #2e4a3b; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">Se este site tem edificado a sua vida, considere apoiar a sua manutenção.</p>
+                
+                <p style="margin-bottom: 5px; color: #333; font-size: 0.9rem;"><strong>Chave PIX (Celular):</strong></p>
+                <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; border: 1px solid #cbd5e1;">
+                    31995077541
+                </div>
+                
+                <div style="margin-top: 15px; font-size: 0.85rem; color: #475569;">
+                    <strong>Contato / E-mail:</strong><br>
+                    <a href="mailto:marcosmontanari2@gmail.com" style="color: #2e4a3b; text-decoration: underline; font-weight: bold;">marcosmontanari2@gmail.com</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="rodape-container">
+            <div class="rodape-texto">
+                <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
+                <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
+                <a href="politica-de-privacidade.html">Política de Privacidade</a>
+            </div>
+            <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
+        </div>
+    </footer>
+    
+    <script>
+        const idPlanilha = '1X7SZdgBXrSJsZhlJ4CpkC8Thz1w7j3_nGZ3vnIxZA';
+        const url = `https://docs.google.com/spreadsheets/d/${idPlanilha}/gviz/tq?tqx=out:json`;
+
+        fetch(url)
+            .then(res => res.text())
+            .then(text => {
+                const json = JSON.parse(text.substr(47).slice(0, -2));
+                const oracao = json.table.rows[0].c[0].v;
+                document.getElementById('texto-oracao').innerText = `"${oracao}"`;
+            })
+            .catch(() => {
+                document.getElementById('texto-oracao').innerText = "Não foi possível carregar a oração. Verifique a planilha.";
+            });
+    </script>
+    <script src="ui-config.js"></script>
+</body>
+</html>
