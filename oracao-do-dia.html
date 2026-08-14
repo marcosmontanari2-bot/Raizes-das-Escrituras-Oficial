@@ -88,18 +88,22 @@
     </footer>
     
     <script>
-        const idPlanilha = '1X7SZdgBXrSJsZhlJ4CpkC8Thz1w7j3_nGZ3vnIxZA';
-        const url = `https://docs.google.com/spreadsheets/d/${idPlanilha}/gviz/tq?tqx=out:json`;
+    
+        const urlPublicada = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ1v4C0lI64GrialKBfRwOhvMUSqTtPAz2Pd7otvplcUsz97Z9crWimFDA2WbZ-4-atxmkMJt7n9f4f/pub?output=csv';
 
-        fetch(url)
+        fetch(urlPublicada)
             .then(res => res.text())
-            .then(text => {
-                const json = JSON.parse(text.substr(47).slice(0, -2));
-                const oracao = json.table.rows[0].c[0].v;
-                document.getElementById('texto-oracao').innerText = `"${oracao}"`;
+            .then(csvText => {
+            
+                const primeiraLinha = csvText.split('\n')[0].replace(/"/g, '');
+                if(primeiraLinha) {
+                    document.getElementById('texto-oracao').innerText = `"${primeiraLinha}"`;
+                } else {
+                    document.getElementById('texto-oracao').innerText = "A planilha está vazia.";
+                }
             })
             .catch(() => {
-                document.getElementById('texto-oracao').innerText = "Não foi possível carregar a oração. Verifique a planilha.";
+                document.getElementById('texto-oracao').innerText = "Não foi possível carregar a oração.";
             });
     </script>
     <script src="ui-config.js"></script>
