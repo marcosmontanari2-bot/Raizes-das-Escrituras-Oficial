@@ -87,25 +87,46 @@
         </div>
     </footer>
     
+  
     <script>
     
-        const urlPublicada = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ1v4C0lI64GrialKBfRwOhvMUSqTtPAz2Pd7otvplcUsz97Z9crWimFDA2WbZ-4-atxmkMJt7n9f4f/pub?output=csv';
+        const urlDaPlanilha = 'https://docs.google.com/spreadsheets/d/1X7sZdgBXyrSRJSzhlJ4CpkC8THz1w7j3_nGZ3vnlXzA/edit?usp=sharing';
+        const idMatch = urlDaPlanilha.match(/\/d\/([a-zA-Z0-9-_]+)/);
 
-        fetch(urlPublicada)
-            .then(res => res.text())
-            .then(csvText => {
+        if (idMatch && idMatch[1]) {
+            const idPlanilha = idMatch[1];
             
-                const primeiraLinha = csvText.split('\n')[0].replace(/"/g, '');
-                if(primeiraLinha) {
-                    document.getElementById('texto-oracao').innerText = `"${primeiraLinha}"`;
-                } else {
-                    document.getElementById('texto-oracao').innerText = "A planilha está vazia.";
-                }
-            })
-            .catch(() => {
-                document.getElementById('texto-oracao').innerText = "Não foi possível carregar a oração.";
-            });
+            const url = `https://docs.google.com/spreadsheets/d/${idPlanilha}/gviz/tq?tqx=out:csv`;
+
+            fetch(url)
+                .then(resposta => {
+                    if (!resposta.ok) {
+                        throw new Error("Planilha não encontrada. Verifique se o link colado está correto.");
+                    }
+                    return resposta.text();
+                })
+                .then(texto => {
+                
+                    let oracao = texto.split('\n')[0].trim();
+            
+                    if (oracao.startsWith('"') && oracao.endsWith('"')) {
+                        oracao = oracao.slice(1, -1);
+                    }
+                    
+                    if (oracao && oracao !== "") {
+                        document.getElementById('texto-oracao').innerText = `"${oracao}"`;
+                    } else {
+                        document.getElementById('texto-oracao').innerText = "A planilha está vazia.";
+                    }
+                })
+                .catch(erro => {
+                    document.getElementById('texto-oracao').innerText = "Erro ao carregar: " + erro.message;
+                });
+        } else {
+            document.getElementById('texto-oracao').innerText = "ERRO: O link colado no código não parece ser uma URL válida do Google Planilhas.";
+        }
     </script>
     <script src="ui-config.js"></script>
+
 </body>
 </html>
