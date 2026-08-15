@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/buscar", "destination": "/api/buscar" },
     { "source": "/functions/buscar", "destination": "/api/buscar" },
