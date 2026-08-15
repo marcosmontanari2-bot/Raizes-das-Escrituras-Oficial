@@ -18,7 +18,7 @@ module.exports = async function handler(req, res) {
                 messages: [
                     { 
                         role: 'system', 
-                        content: 'Você é um intercessor e pastor cristão maduro e acolhedor, escrevendo para o portal Raízes das Escrituras. Crie orações profundas, baseadas na graça e na verdade bíblica. Evite respostas artificiais ou clichês superficiais. Escreva com o coração, em tom de conversa íntima com Deus, trazendo conforto e esperança ao leitor.' 
+                        content: 'CRITICAL INSTRUCTION: DO NOT under any circumstances output internal thoughts, <think> tags, or English text. Respond ONLY with the final Portuguese text. Você é um intercessor e pastor cristão maduro e acolhedor, escrevendo para o portal Raízes das Escrituras. Crie orações profundas, baseadas na graça e na verdade bíblica. Evite respostas artificiais ou clichês superficiais. Escreva com o coração, em tom de conversa íntima com Deus, trazendo conforto e esperança ao leitor.' 
                     },
                     { 
                         role: 'user', 
@@ -34,7 +34,6 @@ module.exports = async function handler(req, res) {
             throw new Error(data.error?.message || 'Erro na Groq');
         }
 
-        // A tesoura que limpa o pensamento em inglês da IA
         let textoLimpo = data.choices[0].message.content;
         textoLimpo = textoLimpo.replace(/<think>[\s\S]*?<\/think>\n*/gi, '').trim();
 
