@@ -14,7 +14,7 @@ module.exports = async function handler(req, res) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                model: "qwen/qwen3.6-27b"
+                model: "qwen/qwen3.6-27b",
                 messages: [
                     { role: 'system', content: 'Você é um profundo conhecedor dos Salmos.' },
                     { role: 'user', content: 'Indique um Salmo e faça uma breve reflexão sobre: ' + tema }
