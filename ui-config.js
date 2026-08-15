@@ -54,14 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btnProg = document.createElement('a');
         btnProg.id = 'btn-progresso';
-        btnProg.href = 'progresso.html';
+        btnProg.href='progresso';
         btnProg.innerHTML = '📊';
         btnProg.title = 'Meu Progresso de Leitura';
         btnProg.style.cssText = btnStyle;
 
         const btnFav = document.createElement('a');
         btnFav.id = 'btn-favoritos';
-        btnFav.href = 'favoritos.html';
+        btnFav.href='favoritos';
         btnFav.innerHTML = '⭐';
         btnFav.title = 'Meus Favoritos';
         btnFav.style.cssText = btnStyle;
