@@ -1,4 +1,4 @@
-const CACHE_NAME = 'raizes-escrituras-v2';
+const CACHE_NAME = 'raizes-escrituras-v3';
 const assetsToCache = [
     '/',
     'index.html',
@@ -6,7 +6,6 @@ const assetsToCache = [
     'style.css',
     'ui-config.js'
 ];
-
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
@@ -16,7 +15,6 @@ self.addEventListener('install', (event) => {
     );
     self.skipWaiting();
 });
-
 
 self.addEventListener('activate', (event) => {
     event.waitUntil(
@@ -34,8 +32,15 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        fetch(event.request).catch(() => {
-            return caches.match('offline.html');
+        caches.match(event.request).then((cachedResponse) => {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            return fetch(event.request).catch(() => {
+                if (event.request.mode === 'navigate') {
+                    return caches.match('offline.html');
+                }
+            });
         })
     );
 });

@@ -54,14 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btnProg = document.createElement('a');
         btnProg.id = 'btn-progresso';
-        btnProg.href='progresso';
+        btnProg.href = 'progresso';
         btnProg.innerHTML = '📊';
         btnProg.title = 'Meu Progresso de Leitura';
         btnProg.style.cssText = btnStyle;
 
         const btnFav = document.createElement('a');
         btnFav.id = 'btn-favoritos';
-        btnFav.href='favoritos';
+        btnFav.href = 'favoritos';
         btnFav.innerHTML = '⭐';
         btnFav.title = 'Meus Favoritos';
         btnFav.style.cssText = btnStyle;
@@ -171,5 +171,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.body) {
         observer.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // Injeção automática do Banner de Instalação do Aplicativo (PWA)
+    if (!document.getElementById('install-banner')) {
+        const bannerHTML = `
+            <div id="install-banner" style="display: none; background-color: #2e4a3b; color: white; padding: 15px; text-align: center; position: fixed; bottom: 0; width: 100%; z-index: 100000; box-shadow: 0 -4px 10px rgba(0,0,0,0.2); flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px;">
+                <span style="font-size: 0.95rem; font-weight: bold;">🌱 Leve o Raízes no seu celular! Instale o app.</span>
+                <div>
+                    <button id="install-btn" style="background-color: #f8fafc; color: #2e4a3b; border: none; padding: 8px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-right: 10px;">Instalar</button>
+                    <button id="close-banner-btn" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">✖</button>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', bannerHTML);
+
+        let deferredPrompt;
+        const installBanner = document.getElementById('install-banner');
+        const installBtn = document.getElementById('install-btn');
+        const closeBtn = document.getElementById('close-banner-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBanner) installBanner.style.display = 'flex';
+        });
+
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (installBanner) installBanner.style.display = 'none';
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                }
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                if (installBanner) installBanner.style.display = 'none';
+            });
+        }
     }
 });
