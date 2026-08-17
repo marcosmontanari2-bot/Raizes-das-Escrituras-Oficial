@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        window.gtag = function() {};
+        window.dataLayer = { push: function() {} };
+    }
+
     const mainElement = document.querySelector('main');
     const footerElement = document.querySelector('footer');
 
