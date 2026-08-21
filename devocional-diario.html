@@ -129,7 +129,7 @@
                 <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
                 <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
                 <a href="politica-de-privacidade.html">Política de Privacidade</a><br>
-<a href="sobre.html">Sobre o Projeto</a>
+                <a href="sobre.html">Sobre o Projeto</a>
             </div>
             
             <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
@@ -138,28 +138,24 @@
 
     <script>
         async function gerarDevocional() {
-            const input = document.getElementById('temaDevocional');
-            const botao = document.getElementById('btnAcao');
+            const inputElemento = document.getElementById('temaDevocional');
+            const temaUsuario = inputElemento.value.trim() || "Esperança e Paz";
             const divResultado = document.getElementById('resultado');
             const textoResultado = document.getElementById('devocionalTexto');
+            const botao = document.getElementById('btnAcao');
 
             botao.disabled = true;
             botao.innerText = "⏳ Gerando...";
             textoResultado.innerText = "Conectando com a Inteligência Artificial...";
-            divResultado.style.display = 'block';
             divResultado.style.opacity = '1';
-
-            let temaEscolhido = input.value;
-            if (!temaEscolhido) temaEscolhido = "um tema aleatório sobre fé";
-            
-        
-            let comandoIA = temaEscolhido + " [INSTRUÇÃO DE SISTEMA: Você está proibido de mostrar o seu processo de raciocínio, rascunhos ou textos em inglês. Você DEVE obrigatoriamente iniciar a sua resposta escrevendo [INICIO], logo depois coloque os 3 parágrafos do devocional em português limpo, e termine escrevendo [FIM]. NADA PODE EXISTIR FORA DESSAS DUAS PALAVRAS.]";
+            divResultado.style.display = 'block';
 
             try {
+            
                 const resposta = await fetch('/api/devocional', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tema: comandoIA }) 
+                    body: JSON.stringify({ tema: temaUsuario }) 
                 });
 
                 const dados = await resposta.json();
@@ -168,27 +164,18 @@
                     throw new Error(dados.error || "Erro de comunicação com o servidor.");
                 }
 
-                let textoCru = dados.devocional;
-                let textoLimpo = textoCru;
+                let textoLimpo = dados.devocional || "";
 
+                textoLimpo = textoLimpo.replace(/<think>[\s\S]*?<\/think>/gi, '');
                 
-                if (textoCru.includes('[INICIO]')) {
-                    textoLimpo = textoCru.split('[INICIO]')[1];
-                }
+                textoLimpo = textoLimpo.replace(/<think>[\s\S]*/gi, ''); 
                 
-                if (textoLimpo.includes('[FIM]')) {
-                    textoLimpo = textoLimpo.split('[FIM]')[0]; 
-                }
-
                 textoLimpo = textoLimpo.replace(/\*\*/g, '').replace(/###/g, '').trim();
-
-                if (textoLimpo.includes('Deconstruct') || textoLimpo.includes('Paragraph')) {
-                    textoLimpo = "O servidor está com lentidão para processar o texto final. Por favor, clique em gerar novamente.";
-                }
 
                 textoResultado.innerText = textoLimpo;
 
             } catch (erro) {
+                console.error(erro);
                 textoResultado.innerText = "❌ ERRO: " + erro.message;
             } finally {
                 botao.disabled = false;
