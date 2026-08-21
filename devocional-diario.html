@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Devocional Diário | Raízes das Escrituras</title>
     <meta name="description" content="Receba uma reflexão diária personalizada, um versículo, uma oração e acompanhe devocionais no YouTube.">
-    
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
-
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4304266101909031" crossorigin="anonymous"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
@@ -26,30 +23,19 @@
         .caixa-interativa { background-color: #fcfcfc; border-radius: 8px; padding: 40px 20px; margin: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
         .input-sentimento { width: 90%; max-width: 550px; padding: 15px; margin: 20px 0; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.3s ease; box-sizing: border-box; }
         .input-sentimento:focus { border-color: #2e4a3b; }
-        
         .btn-buscar { background-color: #2e4a3b; color: white; padding: 15px 35px; border: none; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease; }
         .btn-buscar:hover { background-color: #1b3327; }
         .btn-buscar:disabled { background-color: #94a3b8; cursor: not-allowed; }
-        
         .resultado-caixa { margin-top: 40px; padding: 30px; border-radius: 8px; background: white; border-left: 5px solid #2e4a3b; display: none; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.05); opacity: 0; transition: opacity 0.5s ease; }
-        .devocional-texto { margin-top: 0; font-size: 1.15rem; color: #1e293b; line-height: 1.8; white-space: pre-wrap; }
-        
-        /* Estilos dos botões de ação do print (Ouvir, Compartilhar, Favoritar) */
-        .botoes-acao { display: none; flex-wrap: wrap; gap: 10px; margin-top: 25px; border-top: 1px solid #e2e8f0; padding-top: 20px; }
-        .btn-acao { padding: 10px 18px; border-radius: 6px; font-weight: bold; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease; }
-        .btn-ouvir { background: white; border: 1px solid #cbd5e1; color: #334155; }
-        .btn-ouvir:hover { background: #f1f5f9; }
-        .btn-compartilhar { background: #0f172a; border: 1px solid #0f172a; color: white; }
-        .btn-compartilhar:hover { background: #1e293b; }
-        .btn-favoritar { background: #f0fdf4; border: 1px solid #22c55e; color: #166534; }
-        .btn-favoritar:hover { background: #dcfce7; }
+        .devocional-texto { margin-top: 0; font-size: 1.15rem; color: #1e293b; line-height: 1.8; white-space: pre-wrap; font-style: italic; }
     </style>
-<link rel="manifest" href="manifest.json">
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-</script>
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+
 </head>
 
 <body style="padding-top: 70px;">
@@ -70,7 +56,6 @@
     </header>
 
     <main>
-        
         <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
             <a href="index.html" style="color: #2e4a3b; text-decoration: none;">🏠 Home</a> 
             <span style="margin: 0 5px;">&gt;</span> 
@@ -82,23 +67,14 @@
         <div class="ferramenta-reflexao">
             <h2>Qual tema deseja meditar hoje?</h2>
             <p>Digite um assunto (ex: Paz no meio da tempestade, Confiança, Família, Vitória) ou clique no botão para gerar o devocional do dia.</p>
-            
             <div class="caixa-interativa">
                 <input type="text" id="temaDevocional" class="input-sentimento" placeholder="Ex: Força para vencer a ansiedade..." onkeydown="if(event.key === 'Enter'){ gerarDevocional(); }">
                 <br>
                 <button onclick="gerarDevocional()" class="btn-buscar" id="btnAcao">
-                    ✨ Gerar Novo Devocional
+                    ✨ Gerar Devocional
                 </button>
-                
                 <div id="resultado" class="resultado-caixa">
                     <div id="devocionalTexto" class="devocional-texto"></div>
-                    
-                    <!-- Botões extras do seu layout -->
-                    <div id="botoesExtras" class="botoes-acao">
-                        <button class="btn-acao btn-ouvir">🔊 Ouvir</button>
-                        <button class="btn-acao btn-compartilhar">📱 Compartilhar</button>
-                        <button class="btn-acao btn-favoritar">⭐ Favoritar</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -112,7 +88,6 @@
         <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
         
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
-            
             <div style="flex: 1; min-width: 250px; background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2e4a3b; text-align: left;">
                 <h3 style="font-size: 1.1rem; color: #333; margin-top: 0;">Explore outras áreas:</h3>
                 <ul style="list-style-type: none; padding: 0; margin-top: 10px; line-height: 1.8;">
@@ -121,23 +96,21 @@
                 </ul>
             </div>
 
-            <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: center;">
-                <h4 style="font-size: 1.1rem; color: #475569; margin-top: 0; margin-bottom: 10px;">Apoie este projeto 🌱</h4>
-                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Se este site tem edificado a sua vida, considere apoiar a sua manutenção.</p>
+           <div style="flex: 1; min-width: 280px; padding: 25px; border: 1px dashed #cbd5e1; background-color: #f8fafc; border-radius: 8px; text-align: center;">
+                <h4 style="font-size: 1.2rem; color: #2e4a3b; margin-top: 0; margin-bottom: 15px;">Apoie este projeto 🌱</h4>
+                <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 15px;">Este site é mantido de forma independente. Se os estudos têm abençoado a sua vida, considere apoiar a manutenção e criação de novos conteúdos.</p>
                 
-                <p style="margin-bottom: 5px; color: #333; font-size: 0.9rem;"><strong>Chave PIX (Celular):</strong></p>
-                <div style="background: #e2e8f0; display: inline-block; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #1e293b; user-select: all; cursor: pointer;" title="Clique para copiar">
+                <p style="margin-bottom: 5px; color: #333; font-size: 0.95rem;"><strong>Chave PIX (Celular):</strong></p>
+                <div style="background: #e2e8f0; display: inline-block; padding: 8px 16px; border-radius: 4px; font-family: monospace; font-size: 1.1rem; color: #1e293b; user-select: all; cursor: pointer; border: 1px solid #cbd5e1;" title="Clique para copiar">
                     31995077541
                 </div>
                 
-                <div style="margin-top: 15px; font-size: 0.85rem; color: #475569;">
-                    <strong>Contato / E-mail:</strong><br>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: #475569;">
+                    <strong>Fale Conosco:</strong><br>
                     <a href="mailto:marcosmontanaria@gmail.com" style="color: #2e4a3b; text-decoration: underline; font-weight: bold;">marcosmontanaria@gmail.com</a>
                 </div>
             </div>
-
         </div>
-
     </main>
 
     <footer>
@@ -146,9 +119,8 @@
                 <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
                 <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
                 <a href="politica-de-privacidade.html">Política de Privacidade</a><br>
-                <a href="sobre.html">Sobre o Projeto</a>
+<a href="sobre.html">Sobre o Projeto</a>
             </div>
-            
             <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
         </div>
     </footer>
@@ -156,63 +128,35 @@
     <script>
         async function gerarDevocional() {
             const inputElemento = document.getElementById('temaDevocional');
-            const temaUsuario = inputElemento.value.trim();
+            const temaUsuario = inputElemento.value.trim() || "Esperança e Paz";
             const divResultado = document.getElementById('resultado');
-            const textoResultado = document.getElementById('devocionalTexto');
+            const devocionalTexto = document.getElementById('devocionalTexto');
             const botao = document.getElementById('btnAcao');
-            const botoesExtras = document.getElementById('botoesExtras');
-
+            
             botao.disabled = true;
             botao.innerText = "⏳ Gerando...";
-            textoResultado.innerText = "Conectando com a Inteligência Artificial...";
-            divResultado.style.display = 'block';
+            devocionalTexto.innerText = "Conectando com a Inteligência Artificial...";
             divResultado.style.opacity = '1';
-            botoesExtras.style.display = 'none';
-
+            divResultado.style.display = 'block';
+            
             try {
-                let temaEscolhido = temaUsuario;
-                if (!temaEscolhido) temaEscolhido = "Esperança e Paz";
-
-                let idUnico = new Date().getTime(); 
-                let comandoIA = temaEscolhido + " [Escreva algo INÉDITO. Ignore memórias. Semente: " + idUnico + "]";
-
                 const resposta = await fetch('/api/devocional', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                   
-                    body: JSON.stringify({ 
-                        tema: comandoIA,
-                        temperature: 0.8
-                    }) 
+                    body: JSON.stringify({ tema: temaUsuario })
                 });
-
+                
                 const dados = await resposta.json();
-
+                
                 if (!resposta.ok) {
                     throw new Error(dados.error || "Erro de comunicação com o servidor.");
                 }
-
-                let textoCru = dados.devocional || dados.resultado || "";
-
-                if (textoCru.includes('</think>')) {
-                    textoCru = textoCru.split('</think>').pop(); 
-                }
+            
+                devocionalTexto.innerText = dados.devocional || dados.resultado;
                 
-                let paragrafos = textoCru.split(/\n+/)
-                    .map(p => p.trim())
-                    .filter(p => p.length > 20 && !p.includes('<think>')); 
-
-                let qtd = Math.min(3, paragrafos.length);
-                let textoLimpo = paragrafos.slice(-qtd).join('\n\n');
-
-                textoLimpo = textoLimpo.replace(/[*#`]/g, '').trim();
-
-                textoResultado.innerText = textoLimpo;
-                botoesExtras.style.display = 'flex';
-
             } catch (erro) {
                 console.error(erro);
-                textoResultado.innerText = "❌ ERRO: " + erro.message;
+                devocionalTexto.innerText = "❌ ERRO: " + erro.message;
             } finally {
                 botao.disabled = false;
                 botao.innerText = "✨ Gerar Novo Devocional";
