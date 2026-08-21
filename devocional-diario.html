@@ -149,11 +149,16 @@
             divResultado.style.display = 'block';
             divResultado.style.opacity = '1';
 
+            let comandoIA = input.value;
+            if (!comandoIA) comandoIA = "um tema aleatório"; 
+                        
+            comandoIA += " (ATENÇÃO: Responda APENAS com o texto do devocional. Não inclua NENHUMA saudação como 'Aqui está' ou 'Claro'. Não use asteriscos ** para formatação. Apenas escreva 3 parágrafos puros: o versículo, a reflexão e a oração).";
+
             try {
                 const resposta = await fetch('/api/devocional', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tema: input.value })
+                    body: JSON.stringify({ tema: comandoIA }) // Envia o comando com a regra
                 });
 
                 const dados = await resposta.json();
@@ -162,7 +167,9 @@
                     throw new Error(dados.error || "Erro de comunicação com o servidor.");
                 }
 
-                textoResultado.innerText = dados.devocional;
+                let textoLimpo = dados.devocional.replace(/\*\*/g, '').replace(/###/g, '').trim();
+
+                textoResultado.innerText = textoLimpo;
 
             } catch (erro) {
                 textoResultado.innerText = "❌ ERRO: " + erro.message;
