@@ -94,11 +94,17 @@
             </ul>
         </section>
         
-        <div style="text-align: center; margin-bottom: 40px;">
-            <a href="https://www.bible.com/pt/bible/129/GEN.1.NVI" target="_blank" class="btn-ler-externo">
+        <!-- 👇 SEÇÃO DE LEITURA ATUALIZADA 👇 -->
+        <div style="text-align: center; margin-bottom: 40px;" id="leitura">
+            <a href="#leitura" id="btn-ler-genesis" class="btn-ler-externo" style="cursor: pointer;">
                 📖 Ler Livro de Gênesis
             </a>
+            
+            <div id="conteudo-linguagem-simples" style="display: none; text-align: left; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px; margin-top: 20px; color: #333; line-height: 1.6;">
+                <!-- O conteúdo vai aparecer aqui dentro injetado pelo JavaScript -->
+            </div>
         </div>
+        <!-- 👆 FIM DA SEÇÃO DE LEITURA 👆 -->
 
         <div style="text-align: center; margin: 50px 0; padding: 30px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
             <h2 style="color: #2e4a3b; margin-top: 0; font-size: 1.5rem;">🎥 Aprofunde seu estudo</h2>
@@ -152,5 +158,7 @@
         </div>
     </footer>
 
-<script src="ui-config.js"></script></body>
+    <script src="ui-config.js"></script>
+    <script src="linguagem-simples.js"></script>
+</body>
 </html>
