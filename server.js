@@ -46,7 +46,15 @@ const server = http.createServer(async (req, res) => {
                 }
 
                 let textoLimpo = data.choices[0].message.content;
+                
+            
                 textoLimpo = textoLimpo.replace(/<think>[\s\S]*?<\/think>\n*/gi, '').trim();
+                
+                
+                if (textoLimpo.includes("Thinking Process:")) {
+                    let partes = textoLimpo.split(/Thinking Process:[\s\S]*?(?=\n\n)/i);
+                    textoLimpo = partes[partes.length - 1].trim();
+                }
 
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ resultado: textoLimpo }));

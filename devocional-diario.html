@@ -152,7 +152,18 @@
                     throw new Error(dados.error || "Erro de comunicação com o servidor.");
                 }
             
-                devocionalTexto.innerText = dados.devocional || dados.resultado;
+                
+                let textoBruto = dados.devocional || dados.resultado || "";
+                
+                let textoLimpo = textoBruto.replace(/<think>[\s\S]*?<\/think>/gi, '');
+                
+                if(textoLimpo.includes("Thinking Process:")) {
+                    let partes = textoLimpo.split(/(?:\r?\n){2,}/); // Separa por parágrafos longos
+                    // Pega apenas a última metade (que é provável que seja o devocional final)
+                    textoLimpo = partes[partes.length - 1]; 
+                }
+                
+                devocionalTexto.innerText = textoLimpo.trim();
                 
             } catch (erro) {
                 console.error(erro);
