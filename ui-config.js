@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         window.gtag = function() {};
         window.dataLayer = { push: function() {} };
@@ -60,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btnProg = document.createElement('a');
         btnProg.id = 'btn-progresso';
-        btnProg.href = 'progresso';
+        btnProg.href = 'progresso.html'; // Correção aplicada aqui
         btnProg.innerHTML = '📊';
         btnProg.title = 'Meu Progresso de Leitura';
         btnProg.style.cssText = btnStyle;
 
         const btnFav = document.createElement('a');
         btnFav.id = 'btn-favoritos';
-        btnFav.href = 'favoritos';
+        btnFav.href = 'favoritos.html'; // Correção aplicada aqui
         btnFav.innerHTML = '⭐';
         btnFav.title = 'Meus Favoritos';
         btnFav.style.cssText = btnStyle;
@@ -179,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(document.body, { childList: true, subtree: true });
     }
 
-    // Injeção automática do Banner de Instalação do Aplicativo (PWA)
     if (!document.getElementById('install-banner')) {
         const bannerHTML = `
             <div id="install-banner" style="display: none; background-color: #2e4a3b; color: white; padding: 15px; text-align: center; position: fixed; bottom: 0; width: 100%; z-index: 100000; box-shadow: 0 -4px 10px rgba(0,0,0,0.2); flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px;">
