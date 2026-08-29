@@ -143,7 +143,6 @@
                 alert("Por favor, escreva o seu pedido ou sentimento.");
                 return;
             }
-
         
             botao.disabled = true;
             botao.innerText = "⏳ Escrevendo oração...";
@@ -159,17 +158,33 @@
                 });
 
                 const dados = await resposta.json();
-
                 
                 if (!resposta.ok) {
                     throw new Error(dados.error || "Erro de comunicação com o servidor.");
                 }
 
             
-                oracaoTexto.innerText = dados.resultado;
+                let textoBruto = dados.resultado || dados.devocional || "";
+                
+            
+                let textoLimpo = textoBruto.replace(/<think>[\s\S]*?<\/think>/gi, '');
+                textoLimpo = textoLimpo.replace(/This is the end[\s\S]*/gi, '');
+                textoLimpo = textoLimpo.replace(/I'm sorry[\s\S]*/gi, '');
+                textoLimpo = textoLimpo.replace(/The instructions[\s\S]*/gi, '');
+                textoLimpo = textoLimpo.replace(/Drafting[\s\S]*?(?=\n\n[A-ZÀ-Ú]|$)/gi, '');
+                textoLimpo = textoLimpo.replace(/Thinking Process:[\s\S]*?(?=\n\n[A-ZÀ-Ú]|$)/gi, '');
+                
+                
+                textoLimpo = textoLimpo.replace(/\\x([0-9A-Fa-f]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+                textoLimpo = textoLimpo.replace(/\\u([0-9A-Fa-f]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+                
+                if (!textoLimpo.trim()) {
+                    textoLimpo = textoBruto;
+                }
+            
+                oracaoTexto.innerText = textoLimpo.trim();
 
             } catch (erro) {
-    
                 oracaoTexto.innerText = "❌ ERRO: " + erro.message;
                 console.error(erro);
             } finally {
