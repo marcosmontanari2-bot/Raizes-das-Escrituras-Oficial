@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Mês 6 - Plano de Leitura | Raízes das Escrituras</title>
+    <meta name="description" content="Acompanhe seu plano de leitura bíblica diário - Mês 6.">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4304266101909031" crossorigin="anonymous"></script>
+
+    <link rel="manifest" href="manifest.json">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TCP5MM38F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8TCP5MM38F');
+    </script>
+
+    <style>
+        .container-leitura { max-width: 800px; margin: 20px auto 40px auto; padding: 30px; background: #fcfcfc; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        
+        .dias-leitura { list-style: none; padding: 0; margin-top: 30px; max-height: 450px; overflow-y: auto; padding-right: 10px; }
+        
+        .dias-leitura::-webkit-scrollbar { width: 8px; }
+        .dias-leitura::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        .dias-leitura::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dias-leitura::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .item-leitura { display: flex; align-items: center; padding: 15px 10px; border-bottom: 1px solid #e2e8f0; font-size: 1.1rem; transition: background 0.2s; }
+        .item-leitura:hover { background: #f8fafc; }
+        .item-leitura:last-child { border-bottom: none; }
+        .checkbox-leitura { width: 22px; height: 22px; margin-right: 15px; cursor: pointer; accent-color: #2e4a3b; }
+        .texto-capitulo { color: #1e293b; cursor: pointer; flex-grow: 1; user-select: none; }
+        .concluido .texto-capitulo { text-decoration: line-through; color: #94a3b8; }
+        .barra-progresso { height: 12px; background: #e2e8f0; border-radius: 6px; margin: 20px 0; overflow: hidden; }
+        .progresso-preenchido { height: 12px; background: #2e4a3b; width: 0%; transition: width 0.4s ease; }
+    </style>
+</head>
+
+<body style="padding-top: 70px;">
+
+    <div id="google_translate_element" style="position: absolute; top: 15px; right: 20px; z-index: 99999;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.VERTICAL }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <header>
+        <div class="cabecalho-centralizado">
+            <h1>📖 Mês 6 - Leitura</h1>
+            <a href="indice-leitura.html" class="btn-voltar">Voltar para os Meses</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <nav style="font-size: 0.9rem; margin-top: 15px; margin-bottom: 20px; color: #64748b; text-align: left; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <a href="index.html" style="color: #2e4a3b; text-decoration: none;">🏠 Home</a> 
+            <span style="margin: 0 5px;">&gt;</span> 
+            <a href="indice-leitura.html" style="color: #2e4a3b; text-decoration: none;">Plano de Leitura</a>
+            <span style="margin: 0 5px;">&gt;</span> 
+            <strong style="color: #333;">Mês 6</strong>
+        </nav>
+
+        <div class="container-leitura">
+            <h2 style="text-align: center; color: #2e4a3b; margin-top: 0;">Bíblia em 1 Ano - Mês 6</h2>
+            <p style="text-align: center; color: #64748b;">Marque os capítulos após a leitura. Seu progresso fica salvo automaticamente neste navegador.</p>
+
+            <div class="barra-progresso">
+                <div id="barraPreenchida" class="progresso-preenchido"></div>
+            </div>
+            <p style="text-align: right; font-size: 0.95rem; font-weight: bold; color: #2e4a3b; margin-top: -10px;" id="textoProgresso">0% concluído</p>
+
+            <ul class="dias-leitura" id="listaDias">
+                <li class="item-leitura" id="dia152"><input type="checkbox" class="checkbox-leitura" id="check-dia152" onchange="marcarLeitura('dia152')"><label for="check-dia152" class="texto-capitulo"><strong>Dia 152:</strong> Jó 18 a 20</label><a href="leitor.html?livro=jo&capitulos=18-20" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia153"><input type="checkbox" class="checkbox-leitura" id="check-dia153" onchange="marcarLeitura('dia153')"><label for="check-dia153" class="texto-capitulo"><strong>Dia 153:</strong> Jó 21 a 23</label><a href="leitor.html?livro=jo&capitulos=21-23" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia154"><input type="checkbox" class="checkbox-leitura" id="check-dia154" onchange="marcarLeitura('dia154')"><label for="check-dia154" class="texto-capitulo"><strong>Dia 154:</strong> Jó 24 a 26</label><a href="leitor.html?livro=jo&capitulos=24-26" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia155"><input type="checkbox" class="checkbox-leitura" id="check-dia155" onchange="marcarLeitura('dia155')"><label for="check-dia155" class="texto-capitulo"><strong>Dia 155:</strong> Jó 27 a 29</label><a href="leitor.html?livro=jo&capitulos=27-29" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia156"><input type="checkbox" class="checkbox-leitura" id="check-dia156" onchange="marcarLeitura('dia156')"><label for="check-dia156" class="texto-capitulo"><strong>Dia 156:</strong> Jó 30 a 32</label><a href="leitor.html?livro=jo&capitulos=30-32" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia157"><input type="checkbox" class="checkbox-leitura" id="check-dia157" onchange="marcarLeitura('dia157')"><label for="check-dia157" class="texto-capitulo"><strong>Dia 157:</strong> Jó 33 a 35</label><a href="leitor.html?livro=jo&capitulos=33-35" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia158"><input type="checkbox" class="checkbox-leitura" id="check-dia158" onchange="marcarLeitura('dia158')"><label for="check-dia158" class="texto-capitulo"><strong>Dia 158:</strong> Jó 36 a 38</label><a href="leitor.html?livro=jo&capitulos=36-38" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia159"><input type="checkbox" class="checkbox-leitura" id="check-dia159" onchange="marcarLeitura('dia159')"><label for="check-dia159" class="texto-capitulo"><strong>Dia 159:</strong> Jó 39 a 41</label><a href="leitor.html?livro=jo&capitulos=39-41" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia160">
+                    <input type="checkbox" class="checkbox-leitura" id="check-dia160" onchange="marcarLeitura('dia160')">
+                    <label for="check-dia160" class="texto-capitulo"><strong>Dia 160:</strong> Jó 42 / Salmos 1 a 2</label>
+                    <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                        <a href="leitor.html?livro=jo&capitulos=42" style="text-decoration: none; font-size: 0.85rem; background: #e2e8f0; padding: 4px 8px; border-radius: 4px; color: #2e4a3b; transition: 0.2s; white-space: nowrap;">Jó 📖</a>
+                        <a href="leitor.html?livro=salmos&capitulos=1-2" style="text-decoration: none; font-size: 0.85rem; background: #e2e8f0; padding: 4px 8px; border-radius: 4px; color: #2e4a3b; transition: 0.2s; white-space: nowrap;">Sl 📖</a>
+                    </div>
+                </li>
+                <li class="item-leitura" id="dia161"><input type="checkbox" class="checkbox-leitura" id="check-dia161" onchange="marcarLeitura('dia161')"><label for="check-dia161" class="texto-capitulo"><strong>Dia 161:</strong> Salmos 3 a 5</label><a href="leitor.html?livro=salmos&capitulos=3-5" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia162"><input type="checkbox" class="checkbox-leitura" id="check-dia162" onchange="marcarLeitura('dia162')"><label for="check-dia162" class="texto-capitulo"><strong>Dia 162:</strong> Salmos 6 a 8</label><a href="leitor.html?livro=salmos&capitulos=6-8" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia163"><input type="checkbox" class="checkbox-leitura" id="check-dia163" onchange="marcarLeitura('dia163')"><label for="check-dia163" class="texto-capitulo"><strong>Dia 163:</strong> Salmos 9 a 11</label><a href="leitor.html?livro=salmos&capitulos=9-11" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia164"><input type="checkbox" class="checkbox-leitura" id="check-dia164" onchange="marcarLeitura('dia164')"><label for="check-dia164" class="texto-capitulo"><strong>Dia 164:</strong> Salmos 12 a 14</label><a href="leitor.html?livro=salmos&capitulos=12-14" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia165"><input type="checkbox" class="checkbox-leitura" id="check-dia165" onchange="marcarLeitura('dia165')"><label for="check-dia165" class="texto-capitulo"><strong>Dia 165:</strong> Salmos 15 a 17</label><a href="leitor.html?livro=salmos&capitulos=15-17" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia166"><input type="checkbox" class="checkbox-leitura" id="check-dia166" onchange="marcarLeitura('dia166')"><label for="check-dia166" class="texto-capitulo"><strong>Dia 166:</strong> Salmos 18 a 20</label><a href="leitor.html?livro=salmos&capitulos=18-20" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia167"><input type="checkbox" class="checkbox-leitura" id="check-dia167" onchange="marcarLeitura('dia167')"><label for="check-dia167" class="texto-capitulo"><strong>Dia 167:</strong> Salmos 21 a 23</label><a href="leitor.html?livro=salmos&capitulos=21-23" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia168"><input type="checkbox" class="checkbox-leitura" id="check-dia168" onchange="marcarLeitura('dia168')"><label for="check-dia168" class="texto-capitulo"><strong>Dia 168:</strong> Salmos 24 a 26</label><a href="leitor.html?livro=salmos&capitulos=24-26" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia169"><input type="checkbox" class="checkbox-leitura" id="check-dia169" onchange="marcarLeitura('dia169')"><label for="check-dia169" class="texto-capitulo"><strong>Dia 169:</strong> Salmos 27 a 29</label><a href="leitor.html?livro=salmos&capitulos=27-29" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia170"><input type="checkbox" class="checkbox-leitura" id="check-dia170" onchange="marcarLeitura('dia170')"><label for="check-dia170" class="texto-capitulo"><strong>Dia 170:</strong> Salmos 30 a 32</label><a href="leitor.html?livro=salmos&capitulos=30-32" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia171"><input type="checkbox" class="checkbox-leitura" id="check-dia171" onchange="marcarLeitura('dia171')"><label for="check-dia171" class="texto-capitulo"><strong>Dia 171:</strong> Salmos 33 a 35</label><a href="leitor.html?livro=salmos&capitulos=33-35" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia172"><input type="checkbox" class="checkbox-leitura" id="check-dia172" onchange="marcarLeitura('dia172')"><label for="check-dia172" class="texto-capitulo"><strong>Dia 172:</strong> Salmos 36 a 38</label><a href="leitor.html?livro=salmos&capitulos=36-38" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia173"><input type="checkbox" class="checkbox-leitura" id="check-dia173" onchange="marcarLeitura('dia173')"><label for="check-dia173" class="texto-capitulo"><strong>Dia 173:</strong> Salmos 39 a 41</label><a href="leitor.html?livro=salmos&capitulos=39-41" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia174"><input type="checkbox" class="checkbox-leitura" id="check-dia174" onchange="marcarLeitura('dia174')"><label for="check-dia174" class="texto-capitulo"><strong>Dia 174:</strong> Salmos 42 a 44</label><a href="leitor.html?livro=salmos&capitulos=42-44" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia175"><input type="checkbox" class="checkbox-leitura" id="check-dia175" onchange="marcarLeitura('dia175')"><label for="check-dia175" class="texto-capitulo"><strong>Dia 175:</strong> Salmos 45 a 47</label><a href="leitor.html?livro=salmos&capitulos=45-47" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia176"><input type="checkbox" class="checkbox-leitura" id="check-dia176" onchange="marcarLeitura('dia176')"><label for="check-dia176" class="texto-capitulo"><strong>Dia 176:</strong> Salmos 48 a 50</label><a href="leitor.html?livro=salmos&capitulos=48-50" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia177"><input type="checkbox" class="checkbox-leitura" id="check-dia177" onchange="marcarLeitura('dia177')"><label for="check-dia177" class="texto-capitulo"><strong>Dia 177:</strong> Salmos 51 a 53</label><a href="leitor.html?livro=salmos&capitulos=51-53" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia178"><input type="checkbox" class="checkbox-leitura" id="check-dia178" onchange="marcarLeitura('dia178')"><label for="check-dia178" class="texto-capitulo"><strong>Dia 178:</strong> Salmos 54 a 56</label><a href="leitor.html?livro=salmos&capitulos=54-56" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia179"><input type="checkbox" class="checkbox-leitura" id="check-dia179" onchange="marcarLeitura('dia179')"><label for="check-dia179" class="texto-capitulo"><strong>Dia 179:</strong> Salmos 57 a 59</label><a href="leitor.html?livro=salmos&capitulos=57-59" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia180"><input type="checkbox" class="checkbox-leitura" id="check-dia180" onchange="marcarLeitura('dia180')"><label for="check-dia180" class="texto-capitulo"><strong>Dia 180:</strong> Salmos 60 a 62</label><a href="leitor.html?livro=salmos&capitulos=60-62" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+                <li class="item-leitura" id="dia181"><input type="checkbox" class="checkbox-leitura" id="check-dia181" onchange="marcarLeitura('dia181')"><label for="check-dia181" class="texto-capitulo"><strong>Dia 181:</strong> Salmos 63 a 65</label><a href="leitor.html?livro=salmos&capitulos=63-65" style="text-decoration: none; font-size: 0.9rem; background: #e2e8f0; padding: 4px 10px; border-radius: 4px; color: #2e4a3b; transition: 0.2s;">Ler 📖</a></li>
+            </ul>
+        </div>
+
+        <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 40px; padding: 0 15px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <div style="flex: 1; min-width: 250px; background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2e4a3b; text-align: left;">
+                <h3 style="font-size: 1.1rem; color: #333; margin-top: 0;">Explore outras áreas:</h3>
+                <ul style="list-style-type: none; padding: 0; margin-top: 10px; line-height: 1.8;">
+                    <li><strong>Biblioteca Bíblica ➡️</strong> <a href="conhecer-escrituras.html" style="color: #2e4a3b; text-decoration: none;">Conhecer as Escrituras</a></li>
+                    <li><strong>Devocional 📚</strong> <a href="devocional-diario.html" style="color: #2e4a3b; text-decoration: none;">Devocional Diário</a></li>
+                </ul>
+            </div>
+
+            <div style="flex: 1; min-width: 280px; padding: 25px; border: 1px dashed #cbd5e1; background-color: #f8fafc; border-radius: 8px; text-align: center;">
+                <h4 style="font-size: 1.2rem; color: #2e4a3b; margin-top: 0; margin-bottom: 15px;">Apoie este projeto 🌱</h4>
+                <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 15px;">Este site é mantido de forma independente. Se os estudos têm abençoado a sua vida, considere apoiar a manutenção e criação de novos conteúdos.</p>
+                
+                <p style="margin-bottom: 5px; color: #333; font-size: 0.95rem;"><strong>Chave PIX (Celular):</strong></p>
+                <div style="background: #e2e8f0; display: inline-block; padding: 8px 16px; border-radius: 4px; font-family: monospace; font-size: 1.1rem; color: #1e293b; user-select: all; cursor: pointer; border: 1px solid #cbd5e1;" title="Clique para copiar">
+                    31995077541
+                </div>
+                
+                <div style="margin-top: 20px; font-size: 0.9rem; color: #475569;">
+                    <strong>Fale Conosco:</strong><br>
+                    <a href="mailto:marcosmontanaria@gmail.com" style="color: #2e4a3b; text-decoration: underline; font-weight: bold;">marcosmontanaria@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="rodape-container">
+            <div class="rodape-texto">
+                <p>&copy; 2026 Raízes das Escrituras. Todos os direitos reservados.</p>
+                <p><em>"Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmos 119:105</em></p>
+                <a href="politica-de-privacidade.html">Política de Privacidade</a><br>
+<a href="sobre.html">Sobre o Projeto</a>
+            </div>
+            <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const itens = document.querySelectorAll('.item-leitura');
+            itens.forEach(item => {
+                const id = item.id;
+                const checkbox = item.querySelector('.checkbox-leitura');
+                const estaMarcado = localStorage.getItem('leitura_' + id) === 'true';
+                
+                if (estaMarcado) {
+                    checkbox.checked = true;
+                    item.classList.add('concluido');
+                }
+            });
+            atualizarProgresso();
+        });
+
+        function marcarLeitura(id) {
+            const item = document.getElementById(id);
+            const checkbox = item.querySelector('.checkbox-leitura');
+            const estaMarcado = checkbox.checked;
+
+            localStorage.setItem('leitura_' + id, estaMarcado);
+
+            if (estaMarcado) {
+                item.classList.add('concluido');
+            } else {
+                item.classList.remove('concluido');
+            }
+            
+            atualizarProgresso();
+        }
+
+        function atualizarProgresso() {
+            const checkboxes = document.querySelectorAll('.checkbox-leitura');
+            const total = checkboxes.length;
+            const marcados = document.querySelectorAll('.checkbox-leitura:checked').length;
+            
+            const porcentagem = total === 0 ? 0 : Math.round((marcados / total) * 100);
+            
+            document.getElementById('barraPreenchida').style.width = porcentagem + '%';
+            document.getElementById('textoProgresso').innerText = porcentagem + '% concluído';
+        }
+    </script>
+<script src="ui-config.js"></script></body>
+</html>
