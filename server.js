@@ -25,15 +25,15 @@ const server = http.createServer(async (req, res) => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        model: "llama-3.1-8b-instant",
+                        model: "qwen/qwen3.6-27b",
                         messages: [
                             { 
                                 role: 'system', 
-                                content: 'Você é um pastor cristão escrevendo para o portal Raízes das Escrituras. REGRA ABSOLUTA: Você deve colocar toda a sua resposta final obrigatoriamente entre as tags <texto> e </texto>. Escreva de forma acolhedora, em português. Não adicione comentários fora da tag.' 
+                                content: 'CRITICAL INSTRUCTION: DO NOT under any circumstances output internal thoughts, <think> tags, or English text. Respond ONLY with the final Portuguese text. Você é um intercessor e pastor cristão maduro e acolhedor, escrevendo para o portal Raízes das Escrituras. Crie orações profundas, baseadas na graça e na verdade bíblica. Evite respostas artificiais ou clichês superficiais. Escreva com o coração, em tom de conversa íntima com Deus, trazendo conforto e esperança ao leitor.' 
                             },
                             { 
                                 role: 'user', 
-                                content: 'Escreva a oração ou reflexão final (máximo 3 parágrafos) focada no tema: ' + (tema || "Paz e Proteção") + '. Lembre-se de colocar o texto dentro de <texto> e </texto>.' 
+                                content: 'Escreva uma oração cristã curta (máximo 3 parágrafos) focada neste tema ou sentimento: ' + (tema || "Paz e Proteção") + '. Seja sincero, poético e confortador. Encerre a oração em nome de Jesus. Não use títulos nem versículos soltos no início.' 
                             }
                         ]
                     })
@@ -45,28 +45,16 @@ const server = http.createServer(async (req, res) => {
                     throw new Error(data.error?.message || 'Erro na Groq');
                 }
 
-                let textoBruto = data.choices[0].message.content;
-                let textoLimpo = textoBruto;
-
-            
-                const regexTexto = /<texto>([\s\S]*?)<\/texto>/i;
-                const match = textoBruto.match(regexTexto);
-
-                if (match && match[1]) {
-                    textoLimpo = match[1].trim();
-                } else {
-                    
-                    textoLimpo = textoLimpo.replace(/<think>[\s\S]*?<\/think>/gi, '');
-                    textoLimpo = textoLimpo.replace(/.*?Drafting.*?\n/gi, '');
-                    if (textoLimpo.includes("Thinking Process:")) {
-                        let partes = textoLimpo.split(/Thinking Process:[\s\S]*?(?=\n\n)/i);
-                        textoLimpo = partes[partes.length - 1].trim();
-                    }
-                }
-
+                let textoLimpo = data.choices[0].message.content;
                 
-                textoLimpo = textoLimpo.replace(/\\x([0-9A-Fa-f]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
-                textoLimpo = textoLimpo.replace(/\\u([0-9A-Fa-f]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+            
+                textoLimpo = textoLimpo.replace(/<think>[\s\S]*?<\/think>\n*/gi, '').trim();
+                
+                
+                if (textoLimpo.includes("Thinking Process:")) {
+                    let partes = textoLimpo.split(/Thinking Process:[\s\S]*?(?=\n\n)/i);
+                    textoLimpo = partes[partes.length - 1].trim();
+                }
 
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ resultado: textoLimpo }));
