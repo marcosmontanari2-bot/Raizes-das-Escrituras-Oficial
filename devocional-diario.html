@@ -151,16 +151,23 @@
                 if (!resposta.ok) {
                     throw new Error(dados.error || "Erro de comunicação com o servidor.");
                 }
-            
                 
                 let textoBruto = dados.devocional || dados.resultado || "";
                 
+            
                 let textoLimpo = textoBruto.replace(/<think>[\s\S]*?<\/think>/gi, '');
+                textoLimpo = textoLimpo.replace(/\d+\.\s+\*\*Final Output Generation\.\*\*[\s\S]*/gi, '');
+                textoLimpo = textoLimpo.replace(/This is the end[\s\S]*/gi, '');
+                textoLimpo = textoLimpo.replace(/I'm sorry[\s\S]*/gi, '');
+                textoLimpo = textoLimpo.replace(/The instructions[\s\S]*/gi, '');
+                textoLimpo = textoLimpo.replace(/Drafting[\s\S]*?(?=\n\n[A-ZÀ-Ú]|$)/gi, '');
+                textoLimpo = textoLimpo.replace(/Thinking Process:[\s\S]*?(?=\n\n[A-ZÀ-Ú]|$)/gi, '');
                 
-                if(textoLimpo.includes("Thinking Process:")) {
-                    let partes = textoLimpo.split(/(?:\r?\n){2,}/); // Separa por parágrafos longos
-                    // Pega apenas a última metade (que é provável que seja o devocional final)
-                    textoLimpo = partes[partes.length - 1]; 
+                textoLimpo = textoLimpo.replace(/\\x([0-9A-Fa-f]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+                textoLimpo = textoLimpo.replace(/\\u([0-9A-Fa-f]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+                
+                if (!textoLimpo.trim()) {
+                    textoLimpo = textoBruto;
                 }
                 
                 devocionalTexto.innerText = textoLimpo.trim();

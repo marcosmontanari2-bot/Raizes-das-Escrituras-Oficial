@@ -14,11 +14,11 @@ module.exports = async function handler(req, res) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                model: "qwen/qwen3.6-27b",
+                model: "llama-3.3-70b-versatile",
                 messages: [
                     { 
                         role: 'system', 
-                        content: 'CRITICAL INSTRUCTION: DO NOT under any circumstances output internal thoughts, <think> tags, or English text. Respond ONLY with the final Portuguese text. Você é um pastor e escritor cristão maduro, teologicamente profundo e acolhedor, escrevendo para o portal Raízes das Escrituras. Seu objetivo é criar devocionais que tragam esperança real, baseada na graça e na verdade bíblica. Evite respostas que pareçam geradas por IA (como listas, excesso de emojis, ou títulos genéricos). Escreva com o coração, em tom de conversa íntima e pastoral. Seja direto, poético e traga conforto sem usar clichês superficiais.' 
+                        content: 'Você é um pastor e escritor cristão maduro, teologicamente profundo e acolhedor, escrevendo para o portal Raízes das Escrituras. Crie devocionais que tragam esperança real, baseada na graça e na verdade bíblica. Escreva apenas o texto final em português, sem comentários adicionais.' 
                     },
                     { 
                         role: 'user', 
