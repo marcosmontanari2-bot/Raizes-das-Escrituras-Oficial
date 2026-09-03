@@ -37,23 +37,22 @@
     <header class="hero">
         <div class="hero-conteudo">
             <a href="index.html"><img src="logo.jpeg" alt="Logo Raízes das Escrituras" class="logo-site"></a>
-            <h1>Raízes das Escrituras</h1>
-            <p>Conheça as raízes. Compreenda as Escrituras. Viva seus ensinamentos.</p>
+            <h1>Mural da Comunidade</h1>
         </div>
     </header>
 
-    <main>
-        <section style="padding: 3rem 1rem; max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2rem; color: #2e4a3b; margin-bottom: 15px;">Mural da Comunidade</h2>
+    <main style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
+        
+        <div style="text-align: center; margin-bottom: 40px;">
             <p style="color: #555; margin-bottom: 30px; font-size: 1.1rem;">Leia abaixo os testemunhos de graças alcançadas e pedidos de oração. (Conteúdos atualizados periodicamente).</p>
             
-            <div style="background: #ffffff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left; margin-bottom: 30px; width: 100%; box-sizing: border-box;">
-                <iframe src="https://docs.google.com/document/d/e/2PACX-1vQOY30_4a2ONy_KKa6lXlxvZBROkeiZeboCj0Zs7Tjii2iN3t9gCTUJnrhzzQK9H6yXLPRFUJ68VIs-/pub?embedded=true" style="width: 100%; min-width: 100%; height: 1200px; border: none; display: block;" frameborder="0"></iframe>
+            <div style="background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left; margin-bottom: 40px; width: 100%; box-sizing: border-box; min-height: 200px;">
+                <div id="texto-mural" style="font-size: 1.05rem; color: #333; line-height: 1.6; white-space: pre-wrap; font-family: inherit;">
+                    Carregando o mural da comunidade...
+                </div>
             </div>
-    
 
-        
-            <div style="background: #fff5f5; border: 1px solid #feb2b2; padding: 25px; border-radius: 8px; margin-bottom: 30px; text-align: center;">
+            <div style="background: #fff5f5; border: 1px solid #feb2b2; padding: 25px; border-radius: 8px; margin-bottom: 40px; text-align: center;">
                 <h3 style="color: #021d0d; margin-top: 0; margin-bottom: 10px; font-size: 1.3rem;">🎧 Ouça Nossas Orações no YouTube</h3>
                 <p style="color: #011f0d; font-size: 0.95rem; margin-bottom: 15px;">Acompanhe também os áudios e vídeos devocionais no canal <strong>Narrativas Sagradas</strong>.</p>
                 <a href="https://www.youtube.com/@Ra%C3%ADzesdasEscrituras"target="_blank" style="display: inline-block; background-color: #051603; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
@@ -62,14 +61,13 @@
             </div>
 
             <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJEcWyByJLZ2zQXKawCDEtGz1z3PKRrXO9IO58EmJuY7fdhQ/viewform" target="_blank" style="padding: 10px 20px; background-color: #2e4a3b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">🙏 Enviar Meu Pedido/Testemunho</a>
-                <a href="index.html" style="padding: 10px 20px; background-color: #64748b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">← Voltar para Início</a>
+                <a href="mural-de-oracoes.html" style="padding: 10px 20px; background-color: #2e4a3b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">🙏 Enviar Meu Pedido</a>
+                <a href="index.html" style="padding: 10px 20px; background-color: #64748b; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">← Voltar para o Início</a>
             </div>
-        </section>
+        </div>
 
         <hr style="margin: 40px 0 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
         
-
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 40px; padding: 0 15px; max-width: 600px; margin-left: auto; margin-right: auto;">
             <div style="flex: 1; min-width: 280px; padding: 25px; border: 1px dashed #cbd5e1; background-color: #f8fafc; border-radius: 8px; text-align: center;">
                 <h4 style="font-size: 1.2rem; color: #2e4a3b; margin-top: 0; margin-bottom: 15px;">Apoie este projeto 🌱</h4>
@@ -100,6 +98,40 @@
             <a href="apoie-o-projeto.html" class="btn-referencia">Apoie o Projeto 🌱</a>
         </div>
     </footer>
+    
+    <script>
+        const linkDoDocs = 'https://docs.google.com/document/d/1s8gkD5hLuwuAq8f1npUbGjADmeUQS4UjRHKtzYTyitw/edit?usp=sharing';
+
+        const idMatch = linkDoDocs.match(/\/d\/([a-zA-Z0-9-_]+)/);
+
+        if (idMatch && idMatch[1]) {
+            const idDocs = idMatch[1];
+            
+            const urlTxt = `https://docs.google.com/document/export?format=txt&id=${idDocs}`;
+
+            fetch(urlTxt)
+                .then(resposta => {
+                    if (!resposta.ok) {
+                        throw new Error("Documento não encontrado. Verifique o link e se ele está aberto para 'Qualquer pessoa com o link'.");
+                    }
+                    return resposta.text();
+                })
+                .then(texto => {
+                    let mural = texto.trim();
+                    
+                    if (mural) {
+                        document.getElementById('texto-mural').innerText = mural;
+                    } else {
+                        document.getElementById('texto-mural').innerText = "O mural está vazio no momento.";
+                    }
+                })
+                .catch(erro => {
+                    document.getElementById('texto-mural').innerText = "Erro ao carregar: " + erro.message;
+                });
+        } else {
+            document.getElementById('texto-mural').innerText = "Insira o link de compartilhamento do Google Docs no código fonte para o texto aparecer.";
+        }
+    </script>
     
     <script src="ui-config.js"></script>
 </body>
