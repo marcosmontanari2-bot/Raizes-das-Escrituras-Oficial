@@ -18,6 +18,60 @@
         gtag('js', new Date());
         gtag('config', 'G-8TCP5MM38F');
     </script>
+
+    <style>
+        
+        #texto-mural h1, #texto-mural h2, #texto-mural h3, #texto-mural h4 {
+            color: #2e4a3b !important;
+            font-weight: 800 !important;
+            margin-top: 28px !important;
+            margin-bottom: 12px !important;
+            line-height: 1.3 !important;
+        }
+        #texto-mural h1 { 
+            font-size: 1.5rem !important; 
+            border-bottom: 2px solid #e2e8f0; 
+            padding-bottom: 8px; 
+        }
+        #texto-mural h2 { 
+            font-size: 1.3rem !important; 
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 6px;
+        }
+        #texto-mural h3 { 
+            font-size: 1.2rem !important; 
+        }
+        #texto-mural h4 { 
+            font-size: 1.05rem !important; 
+        }
+        #texto-mural p { 
+            margin-bottom: 14px; 
+            line-height: 1.8; 
+            color: #334155;
+        }
+        .subtitulo-mural {
+            color: #2e4a3b !important;
+            font-size: 1.25rem !important;
+            font-weight: 800 !important;
+            margin-top: 30px !important;
+            margin-bottom: 12px !important;
+            padding-bottom: 6px !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .versiculo-mural {
+            margin: 25px 0 !important;
+            padding: 14px 18px !important;
+            background-color: #f8fafc !important;
+            border-left: 4px solid #2e4a3b !important;
+            border-radius: 4px !important;
+            font-style: italic !important;
+            color: #1e293b !important;
+            font-weight: 600 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,8 +81,8 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-            pageLanguage: 'pt', 
-            layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+                pageLanguage: 'pt', 
+                layout: google.translate.TranslateElement.InlineLayout.VERTICAL
             }, 'google_translate_element');
         }
     </script>
@@ -46,16 +100,14 @@
         <div style="text-align: center; margin-bottom: 40px;">
             <p style="color: #555; margin-bottom: 30px; font-size: 1.1rem;">Leia abaixo os testemunhos de graças alcançadas e pedidos de oração. (Conteúdos atualizados periodicamente).</p>
             
-            <div style="background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left; margin-bottom: 40px; width: 100%; box-sizing: border-box; min-height: 200px;">
-                <div id="texto-mural" style="font-size: 1.05rem; color: #333; line-height: 1.6; white-space: pre-wrap; font-family: inherit;">
-                    Carregando o mural da comunidade...
-                </div>
+            <div id="texto-mural" style="font-size: 1.05rem; line-height: 1.8; font-family: inherit; text-align: left; margin-bottom: 40px; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 30px 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                Carregando o mural da comunidade...
             </div>
 
             <div style="background: #fff5f5; border: 1px solid #feb2b2; padding: 25px; border-radius: 8px; margin-bottom: 40px; text-align: center;">
                 <h3 style="color: #021d0d; margin-top: 0; margin-bottom: 10px; font-size: 1.3rem;">🎧 Ouça Nossas Orações no YouTube</h3>
                 <p style="color: #011f0d; font-size: 0.95rem; margin-bottom: 15px;">Acompanhe também os áudios e vídeos devocionais no canal <strong>Narrativas Sagradas</strong>.</p>
-                <a href="https://www.youtube.com/@Ra%C3%ADzesdasEscrituras"target="_blank" style="display: inline-block; background-color: #051603; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <a href="https://www.youtube.com/@Ra%C3%ADzesdasEscrituras" target="_blank" style="display: inline-block; background-color: #051603; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                     ▶ Inscrever-se no Canal do YouTube
                 </a>
             </div>
@@ -106,21 +158,41 @@
 
         if (idMatch && idMatch[1]) {
             const idDocs = idMatch[1];
-            
-            const urlTxt = `https://docs.google.com/document/export?format=txt&id=${idDocs}`;
+            const urlHtml = `https://docs.google.com/document/export?format=html&id=${idDocs}`;
 
-            fetch(urlTxt)
+            fetch(urlHtml)
                 .then(resposta => {
                     if (!resposta.ok) {
-                        throw new Error("Documento não encontrado. Verifique o link e se ele está aberto para 'Qualquer pessoa com o link'.");
+                        throw new Error("Documento não encontrado. Verifique se o link está público como 'Qualquer pessoa com o link'.");
                     }
                     return resposta.text();
                 })
-                .then(texto => {
-                    let mural = texto.trim();
+                .then(htmlCompleto => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(htmlCompleto, 'text/html');
+
+                        const elementos = doc.body.querySelectorAll('h1, h2, h3, h4, p');
+                    elementos.forEach(el => {
+                        let txt = el.innerText.trim();
+                        
+                        
+                        txt = txt.replace(/^#+\s*/, '');
+
                     
-                    if (mural) {
-                        document.getElementById('texto-mural').innerText = mural;
+                        if (txt.includes('Testemunhos de Graças') || txt.includes('Pedidos de Oração')) {
+                            el.className = 'subtitulo-mural';
+                            el.innerHTML = txt;
+                        } 
+                        
+                        else if (txt.startsWith('"Orai uns pelos outros') || txt.includes('Tiago 5:16')) {
+                            el.className = 'versiculo-mural';
+                        }
+                    });
+
+                    const conteudoBody = doc.body.innerHTML;
+
+                    if (conteudoBody.trim()) {
+                        document.getElementById('texto-mural').innerHTML = conteudoBody;
                     } else {
                         document.getElementById('texto-mural').innerText = "O mural está vazio no momento.";
                     }
