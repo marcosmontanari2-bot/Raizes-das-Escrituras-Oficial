@@ -29,35 +29,52 @@
     </script>
 
     <style>
-    
-        #texto-estudo h1, #texto-estudo h2, #texto-estudo h3, #texto-estudo h4 {
+        #texto-estudo {
+            font-size: 1.05rem !important;
+            color: #334155 !important;
+            line-height: 1.8 !important;
+            text-align: left !important;
+        }
+
+        #texto-estudo p {
+            font-size: 1.05rem !important;
+            color: #334155 !important;
+            line-height: 1.8 !important;
+            margin: 0 0 14px 0 !important;
+            font-weight: normal !important;
+        }
+
+        #texto-estudo .titulo-real {
             color: #2e4a3b !important;
+            font-size: 1.5rem !important;
+            font-weight: 800 !important;
+            margin-top: 10px !important;
+            margin-bottom: 15px !important;
+            line-height: 1.35 !important;
+            border-bottom: 2px solid #e2e8f0 !important;
+            padding-bottom: 8px !important;
+            display: block !important;
+        }
+
+        #texto-estudo .subtitulo-real {
+            color: #2e4a3b !important;
+            font-size: 1.25rem !important;
             font-weight: 800 !important;
             margin-top: 25px !important;
-            margin-bottom: 12px !important;
-            line-height: 1.3 !important;
+            margin-bottom: 10px !important;
+            line-height: 1.35 !important;
+            display: block !important;
         }
-        #texto-estudo h1 { 
-            font-size: 1.5rem !important; 
-            border-bottom: 2px solid #e2e8f0; 
-            padding-bottom: 8px; 
-        }
-        #texto-estudo h2 { 
-            font-size: 1.3rem !important; 
+
+        #texto-estudo .continua-real {
+            margin-top: 25px !important;
+            padding: 14px 18px !important;
+            background-color: #f8fafc !important;
+            border-left: 4px solid #2e4a3b !important;
+            border-radius: 4px !important;
+            font-weight: bold !important;
             color: #2e4a3b !important;
-        }
-        #texto-estudo h3 { 
-            font-size: 1.15rem !important; 
-            color: #2e4a3b !important;
-        }
-        #texto-estudo h4 { 
-            font-size: 1.05rem !important; 
-            color: #2e4a3b !important;
-        }
-        #texto-estudo p { 
-            margin-bottom: 14px; 
-            line-height: 1.8; 
-            color: #334155;
+            display: block !important;
         }
     </style>
 </head>
@@ -82,13 +99,21 @@
 
     <main style="padding: 40px 20px; max-width: 850px; margin: 0 auto;">
         
+        <div id="container-seletor" style="display: none; margin-bottom: 20px; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <label for="seletor-estudos" style="font-weight: bold; color: #2e4a3b; font-size: 0.95rem;">
+                📚 Selecionar Estudo:
+            </label>
+            <select id="seletor-estudos" style="padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 5px; font-size: 0.95rem; color: #1e293b; background: white; max-width: 100%; cursor: pointer;">
+            </select>
+        </div>
+
         <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 30px 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 35px;">
             
-            <div id="texto-estudo" style="font-size: 1.05rem; color: #1e293b; line-height: 1.8; text-align: left; font-family: inherit; margin-bottom: 30px;">
+            <div id="texto-estudo">
                 Carregando o estudo...
             </div>
 
-            <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; padding-top: 25px; border-top: 1px solid #f1f5f9;">
+            <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; padding-top: 25px; border-top: 1px solid #f1f5f9; margin-top: 30px;">
                 <button id="btn-ouvir" style="padding: 10px 18px; background-color: #2e4a3b; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-family: inherit;">
                     🔊 Ouvir Estudo
                 </button>
@@ -114,7 +139,7 @@
             
             <div style="flex: 1; min-width: 280px; padding: 25px; border: 1px solid #cbd5e1; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
                 <h4 style="font-size: 1.2rem; color: #2e4a3b; margin-top: 0; margin-bottom: 15px;">Explore outras áreas:</h4>
-                <p style="margin-bottom: 10px; font-size: 0.95rem;"><a href="conhecer-escrituras.html" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">Biblioteca Bíblica ➡️</a> Conhecer as Escrituras</p>
+                <p style="margin-bottom: 10px; font-size: 0.95rem;"><a href="historia-igreja.html" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">História da Igreja 📜</a> Da Primitiva à Reforma</p>
                 <p style="margin: 0; font-size: 0.95rem;"><a href="oracao-do-dia.html" style="color: #2e4a3b; text-decoration: none; font-weight: bold;">Oração do Dia 🙏</a> Momento de Fé</p>
             </div>
 
@@ -153,25 +178,89 @@
         const linkDoDocs = 'https://docs.google.com/document/d/1zygs7MKy1sxGgWOob-i44oUVdPFoL5FmGMkYajKZSwc/edit?usp=sharing';
 
         const idMatch = linkDoDocs.match(/\/d\/([a-zA-Z0-9-_]+)/);
+        let listaHistorias = [];
 
         if (idMatch && idMatch[1]) {
             const idDocs = idMatch[1];
-            const urlHtml = `https://docs.google.com/document/export?format=html&id=${idDocs}`;
+            const urlTxt = `https://docs.google.com/document/export?format=txt&id=${idDocs}`;
 
-            fetch(urlHtml)
+            fetch(urlTxt)
                 .then(resposta => {
                     if (!resposta.ok) throw new Error("Documento não encontrado.");
                     return resposta.text();
                 })
-                .then(htmlCompleto => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(htmlCompleto, 'text/html');
-                    const conteudoBody = doc.body.innerHTML;
+                .then(textoBruto => {
+                    const textoLimpo = textoBruto.trim();
+                    if (!textoLimpo) {
+                        document.getElementById('texto-estudo').innerHTML = "O documento está vazio.";
+                        return;
+                    }
 
-                    if (conteudoBody.trim()) {
-                        document.getElementById('texto-estudo').innerHTML = conteudoBody;
-                    } else {
-                        document.getElementById('texto-estudo').innerText = "O documento está vazio.";
+                    let blocos = textoLimpo.split(/\r?\n\s*---\s*\r?\n/);
+
+                    if (blocos.length === 1) {
+                        blocos = textoLimpo.split(/(?=\r?\n\s*Estudo\s+\d+)/i);
+                    }
+
+                    listaHistorias = [];
+
+                    blocos.forEach(bloco => {
+                        const b = bloco.trim();
+                        if (!b || b.length < 40) return;
+
+                        const linhas = b.split(/\r?\n/);
+                        let titulo = "";
+                        let htmlMontado = "";
+
+                        linhas.forEach(linha => {
+                            let l = linha.trim();
+                            if (!l) {
+                                htmlMontado += '<div style="height: 10px;"></div>';
+                                return;
+                            }
+
+                            l = l.replace(/^#+\s*/, '');
+
+                            if (!titulo) {
+                                titulo = l;
+                                htmlMontado += `<div class="titulo-real">${l}</div>`;
+                            }
+                            else if (/^\d+\./.test(l) && l.length <= 55) {
+                                htmlMontado += `<div class="subtitulo-real">${l}</div>`;
+                            }
+                            else if (l.toLowerCase().includes('continua na pr') || l.toLowerCase().includes('próxima semana')) {
+                                htmlMontado += `<div class="continua-real">${l}</div>`;
+                            }
+                            else {
+                                htmlMontado += `<p>${l}</p>`;
+                            }
+                        });
+
+                        listaHistorias.push({
+                            titulo: titulo.substring(0, 80),
+                            html: htmlMontado
+                        });
+                    });
+
+                    if (listaHistorias.length > 1) {
+                        const seletor = document.getElementById('seletor-estudos');
+                        seletor.innerHTML = '';
+
+                        listaHistorias.forEach((h, index) => {
+                            const opt = document.createElement('option');
+                            opt.value = index;
+                            opt.textContent = (index === 0 ? "⭐ Atual: " : "📜 ") + h.titulo;
+                            seletor.appendChild(opt);
+                        });
+
+                        document.getElementById('container-seletor').style.display = 'flex';
+                        exibirHistoria(0);
+
+                        seletor.addEventListener('change', (e) => {
+                            exibirHistoria(parseInt(e.target.value));
+                        });
+                    } else if (listaHistorias.length === 1) {
+                        document.getElementById('texto-estudo').innerHTML = listaHistorias[0].html;
                     }
                 })
                 .catch(erro => {
@@ -179,6 +268,18 @@
                 });
         } else {
             document.getElementById('texto-estudo').innerText = "ERRO: Link do Google Docs inválido.";
+        }
+
+        function exibirHistoria(index) {
+            if (listaHistorias[index]) {
+                document.getElementById('texto-estudo').innerHTML = listaHistorias[index].html;
+                if (narrador && falando) {
+                    narrador.cancel();
+                    falando = false;
+                    btnOuvir.innerHTML = '🔊 Ouvir Estudo';
+                    btnOuvir.style.backgroundColor = '#2e4a3b';
+                }
+            }
         }
 
         const btnOuvir = document.getElementById('btn-ouvir');
@@ -243,7 +344,7 @@
                 try {
                     await navigator.share({
                         title: 'Lacunas Bíblicas - Raízes das Escrituras',
-                        text: textoEstudo.substring(0, 180) + '...\n\n📖 Leia o estudo completo em: ' + window.location.href,
+                        text: textoEstudo.substring(0, 180) + '...\n\n📖 Leia completo em: ' + window.location.href,
                     });
                 } catch (err) {}
             } else {
